@@ -1812,6 +1812,82 @@ struct addrinfo *res0;
 
    return result;
 }
+
+dptr make_serv_from_addrinfo(name, res0, result)
+char *name;
+struct addrinfo *res0;
+ dptr result;
+{
+   struct b_record *rp;
+   dptr constr;
+   int nfields;
+   int len = 0, n;
+   char *p;
+
+   struct addrinfo *res;
+   CURTSTATE();
+
+   if (!(constr = rec_structor("posix_servent")))
+      return 0;
+
+   nfields = (int) ((struct b_proc *)BlkLoc(*constr))->nfields;
+   rp = alcrecd(nfields, BlkLoc(*constr));
+
+   result->dword = D_Record;
+   result->vword.bptr = (union block *)rp;
+
+   if (res0->ai_canonname)
+      String(rp->fields[0], res0->ai_canonname);
+   else
+      String(rp->fields[0], name);
+
+   String(rp->fields[1], name);
+
+   /* Retrieve each address and print out the hex bytes */
+
+   for(res = res0; res != NULL ; res = res->ai_next) {
+       len += res->ai_addrlen;
+   }
+
+   StrLoc(rp->fields[2]) = p = alcstr(NULL, len);
+
+   for(res = res0; res != NULL ; res = res->ai_next) {
+      char ipstrbuf[64];
+      int ipbuflen = 64;
+      int a;
+      unsigned short port;
+
+      switch (res->ai_family) {
+            case AF_INET:
+		port = ntohs(((struct sockaddr_in *) res->ai_addr)->sin_port);
+		sprintf(p, "%d", port);
+
+
+		while(*p) p++;
+                break;
+
+            case AF_INET6:
+	        port = ntohs(((struct sockaddr_in6 *) res->ai_addr)->sin6_port);
+		sprintf(p, "%d,", port);
+
+		while(*p) p++;
+                break;
+
+            default:
+                /*printf("Other %ld\n", res->ai_family);*/
+                break;
+        }
+     }
+
+   *--p = 0;
+   StrLen(rp->fields[2]) = DiffPtrs(p,StrLoc(rp->fields[2]));
+   n = DiffPtrs(p,strfree);             /* note the deallocation */
+   EVStrAlc(n);
+   strtotal += n;
+   strfree = p;                         /* give back unused space */
+
+   return result;
+}
 #endif					/* HAVE_GETADDRINFO */
 
 dptr make_host(hs, result)

@@ -2863,14 +2863,48 @@ function{0,1} getserv(s, proto)
 	    struct servent *serv;
 	    tended char *p;
 	    tended char* name;
+	    tended char* fstr;
+	    int ai_socktype, ai_proto, rc;
+	    struct addrinfo hints, *res0;
+
 	    p = 0;
 	    cnv:C_string(s, name);
             if (!is:null(proto))
 	       if (!cnv:C_string(proto, p))
 		  runerr(103, proto);
-  
+
 	    if (p && !getprotobyname(p))
 	       runerr(1047, proto);
+	    /*
+	    if (p) {
+	      if ((strcmp(p, "tcp") == 0) || (strcmp(p, "TCP") == 0) ) {
+		ai_socktype = SOCK_STREAM;
+		ai_proto = IPPROTO_TCP;
+	        }
+	      else if ((strcmp(p, "udp") == 0) || (strcmp(p, "UDP") == 0) ) {
+		ai_socktype = SOCK_DGRAM;
+		ai_proto = IPPROTO_UDP;
+	      }
+	      else
+	       runerr(1047, proto);
+	    }
+	    else {
+	      ai_socktype = 0;
+	      ai_proto = 0;
+	    }
+
+	    INIT_ADDRINFO_HINTS(hints, AF_UNSPEC, ai_socktype, 0, ai_proto);
+
+	    if ( (rc = getaddrinfo(NULL, name, &hints, &res0)) != 0) {
+	      set_gaierrortext(rc);
+	      fail;
+	    }
+	    if (make_serv_from_addrinfo(name, res0, &result) == 0)
+	      syserr("failed to create posix record constructor");
+
+	    freeaddrinfo(res0);
+	    */
+
 	    if ((serv = getservbyname(name, p)) == NULL) {
 #if NT
 /* TODO: call WSAGetLastError to find out what went wrong and set errortext */
