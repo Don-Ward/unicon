@@ -41,7 +41,7 @@ procedure main(args)
 #-------------------- Initialisation & option processing
 	if \opt["help"] | \opt["?"] then usage()
 
-	Tests := set ("SecureHash", "Defaults", "GrandSlam", "Errors")
+	Tests := set ("SecureHash", "Defaults", "GrandSlam", "Errors", "GC", "LSOF")
 	passes := failures := 0
 
 	if \opt["Verbose"] | \opt["verbose"] then verbose := 1
@@ -88,8 +88,12 @@ procedure doTest(test)
 	local SHA1abc := "A9993E364706816ABA3E25717850C26C9CD0D89D"
 	local SHA1Null := "DA39A3EE5E6B4B0D3255BFEF95601890AFD80709"
 	local ans
-	
+
+	static testNumber
+    initial { testNumber := 0 }
+
 	if /quiet then write(test, " test:")
+    testNumber +:= 1
 	case test of {
 		default: {
 			write(&errout, "Program error: unknown test \"", test, "\"")
@@ -193,6 +197,27 @@ procedure doTest(test)
 		"GrandSlam": {
 			GrandSlamTest()
 		}
+
+        # Not really a test: do a garbage collection
+        "GC": {
+           if \verbose then {
+              writes("Allocated storage =")
+              every writes(" ", &allocated)
+              write()
+
+              write("Collections =")
+              every writes(" ", &collections)
+              write()
+           }
+
+           collect()
+        }
+
+        # Not really a test: spawn a process to run lsof and log the results
+        "LSOF": {
+           if \verbose then { write("waiting for lsof_log_", testNumber, " ...") }
+           system("lsof -c iconx" || " >lsof_log_" || string(testNumber))
+        }
 
 		# Check the error detection of the SecureHash.Sha method
 		"Errors": {
@@ -315,6 +340,7 @@ procedure usage(s)
 		  "   Errors      Test expected errors.",
 		  "   GrandSlam   Test a subset of the RF6423 test suite,",
 		  "   SecureHash  Test the SecureHash class.",
+		  "   GC          Perform a garbage collection.",
 		  "",
 		  "   -? -help    Produce this output.",
 		  ""
