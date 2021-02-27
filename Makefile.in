@@ -387,6 +387,10 @@ Samples Samples-icont:	; cd tests; $(MAKE) Samples
 Test-iconc:		; cd tests; $(MAKE) Test-iconc
 Samples-iconc:		; cd tests; $(MAKE) Samples-iconc
 
+Test-CV:
+	$(CC) $(CFLAGS) ./tests/C_Version.c -o ./tests/C_Version
+	./tests/C_Version
+
 
 #################################################################
 #
