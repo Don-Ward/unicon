@@ -627,8 +627,19 @@ void init_threadstate( struct threadstate *ts)
    StrLen(ts->ksub) = 0;
    StrLoc(ts->ksub) = "";
 
+#ifndef RngLibrary
    ts->Kywd_ran = zerodesc;
    IntVal(ts->Kywd_ran) = getrandom();
+#else
+   ts->rng = rngDefInfo;
+   if (ts->rng) {
+     ts->hasSeed = 0;
+   } else {
+     ts->Kywd_ran = zerodesc;
+     IntVal(ts->Kywd_ran) = getrandom();
+   }
+#endif					/* RngLibrary */
+
    ts->K_errornumber = 0;
    ts->K_level = 0;
    ts->T_errornumber = 0;
@@ -1083,6 +1094,14 @@ Deliberate Syntax Error
 #ifdef MultiProgram
    EVInit();
 #endif					/* MultiProgram */
+
+#ifdef RngLibrary
+   StrLen(rngIconName) = 7;
+   StrLoc(rngIconName) = "rngIcon";
+   rngIconId = hash(&rngIconName);
+   rngLibs = NULL;
+   rngDefInfo = NULL;
+#endif					/* RngLibrary */
 
 /* this is the end of yonggang's compressed icode else-branch ! */
 

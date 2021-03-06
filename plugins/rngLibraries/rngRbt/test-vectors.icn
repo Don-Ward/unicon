@@ -1,0 +1,160 @@
+################################################################################
+# 
+# This file is released under the terms of the GNU LIBRARY GENERAL PUBLIC LICENSE
+# (LGPL) version 2. The licence may be found in the root directory of the Unicon
+# source directory in the file COPYING.
+#
+################################################################################
+#
+#    A program to recreate selected test vectors for the rngRbt generator.
+#    The output is in the same format as the verified.test-vectors file to
+#    facilitate mechanical comparison.
+#
+#    The selected.test-vectors file was created by hand by copying selected 
+#    excerpts from verified.test-vectors.
+# 
+#    The generator may be tested by
+#    Unicon -s test-vectors.icn
+#    ./test-vectors > test-output
+#    diff selected.test-vectors test.output
+# 
+#    Don Ward
+#    August 2019
+#
+################################################################################
+
+
+procedure main()
+$ifndef _RNG_LIBRARY
+   write(&errout, "RNG libraries are not available")
+$else
+   local zeroSeed := array(3,0)
+   local seed := array(3,0)
+   local op
+   local n
+   loadrng("rngRbt") | stop(&errout, "Cannot load the Rabbit library")
+
+   # Set 2 vector 0 (00000000000000000000000000000000 0000000000000000)
+   write("Set 2, vector#  0:")
+   test(&output,zeroSeed,0,192,256,448)
+
+   # Set 2 vector 9 (09090909090909009090909090909090 0000000000000000)
+   write("Set 2, vector#  9:")
+   seed[1] := s64("0909090909090909")
+   seed[2] := s64("0909090909090909")
+   seed[3] := 0
+   test(&output,seed,0,192,256,448)
+
+   # Set 3 vector 0 (000102030405060708090A0B0C0D0E0F 0000000000000000)
+   write("Set 3, vector#  0:")
+   seed[1] := s64("0706050403020100")
+   seed[2] := s64("0F0E0D0C0B0A0908")
+   seed[3] := 0
+   test(&output,seed,0,192,256,448)
+
+   # Set 5 Vector 0 (00000000000000000000000000000000 8000000000000000)
+   write("Set 5, vector#  0:")
+   seed[1] := 0
+   seed[2] := 0
+   seed[3] := 16R80
+   test(&output,seed,0,192,256,448)
+
+   # Set 6 vector 3 (0F62B5085BAE0154A7FA4DA0F34699EC 288FF65DC42B92F9)
+   write("Set 6, vector#  3:")
+   seed[1] := s64("5401AE5B08B5620F")
+   seed[2] := s64("EC9946F3A04DFAA7")
+   seed[3] := s64("F9922BC45DF68F28")
+   test(&output,seed,0,65472,65536,131008)
+$endif
+end
+
+# Produce a signed 64 bit integer from a hex string
+procedure s64(hex: string)
+   static hexchars
+   initial {
+      hexchars := "FEDCBAfedcba9876543210"
+   }
+   if *hex > 16 then stop("Hex string \"", hex, "\" is too long")
+   if *hex > (hex ? many(hexchars)) then stop("Bad hex string ", hex)
+   if *hex < 16 then {
+      return integer("16R" || hex)
+   } else {
+      if hex[1] ? any(hexchars[1:15]) then { # Top bit set
+         return ior(ishift("16R" || hex[1:9], 32), "16R" || hex[9:17])
+      } else {
+         return integer("16R" || hex)
+      }
+   }
+end
+   
+# The test vectors are specified by the ls byte being the first value
+# So we produce the data in the correct order
+# HB stands for Hex Byte, HB8 constructs 8 hex byes in the correct sequence
+# 
+
+procedure hexChar(n: integer)
+   static hexchars
+   initial {
+      hexchars := "0123456789ABCDEF"
+   }
+   if (n < 0) | (n > 15) then stop(&errout, "hexChar: out of range <", n, ">")
+   return hexchars[n+1]
+end
+
+procedure HB(n: integer)
+   return  hexChar(iand(ishift(n,-4), 16RF)) || hexChar(iand(n, 16RF))
+end
+
+procedure HB2(n: integer)
+   return HB(iand(n, 16RFF)) || HB(iand(ishift(n,-8), 16RFF)) 
+end
+
+procedure HB4(n: integer)
+   return HB2(iand(n, 16RFFFF)) || HB2(iand(ishift(n,-16), 16RFFFF))
+end
+
+procedure HB8(n: integer)
+   return HB4(iand(n, 16RFFFFFFFF)) || HB4(iand(ishift(n,-32), 16RFFFFFFFF))
+end
+
+# Produce 64 bytes of output
+procedure p64(f:file:&output, b, pos:integer)
+   local p := pos % 512
+   if p > (512 - 64) then stop("Buffer overflow at ",pos)
+   if pos < 0 then stop("Buffer underflow at ", pos)
+
+   write(right("stream[" || pos || ".." || pos+63 || "] = ",31), 
+         HB8(b[1 + p/8]), HB8(b[2+p/8]))
+   write(right("",31), HB8(b[3 + p/8]), HB8(b[4+p/8]))
+   write(right("",31), HB8(b[5 + p/8]), HB8(b[6+p/8]))
+   write(right("",31), HB8(b[7 + p/8]), HB8(b[8+p/8]))
+end
+   
+# Produce the output in the same format as the verified.test-vectors file
+procedure test(f :file, seed, pos[])
+   local b
+   local p, cpos, bpos
+
+   if (*seed ~= 3) then stop("Bad Seed")
+   if *pos > 1 then {
+      every p := 1 to *pos - 1 do {
+         if pos[p] >= pos[p+1] then stop("Cannot run the generator backwards")
+      }
+   }
+
+   write(right("key = ",31), HB8(seed[1]), HB8(seed[2]))
+   write(right("IV = ",31), HB8(seed[3]))
+   &random := seed
+   cpos := 0
+   every p := !pos do {
+      while cpos <= p do {
+         b := rngbits(512*8)
+         cpos +:= 512
+      }
+
+      p64(f, b, p)		# output 64 bytes
+   }
+ end
+
+
+   
