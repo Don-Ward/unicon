@@ -1,0 +1,267 @@
+# ----------------------------------------------------------------------------------------------------
+# This file is released under the terms of the GNU GENERAL PUBLIC LICENSE (GPL) version 2.
+# The licence may be found in the root directory of the Unicon source directory in the file COPYING.
+# ----------------------------------------------------------------------------------------------------
+# A program to take a listing from git show -name-status .. and clean it up:
+#    Remove any files that are deleted (and stay deleted -- files that are re-addded will remain)
+#    Remove duplicate entries -- All A and M entries for a file will only cause one line of output
+#    Renamed files are listed under their new name only
+#    Produce a sorted list of all the files (without the M/A/R actions)
+#
+#       Don Ward  October  2024
+#                 November 2024   Improved the parameter processing.
+#                                 Added help
+# ----------------------------------------------------------------------------------------------------
+# One way to use it is
+#   git  show --name-status --pretty="" `git rev-list --reverse head` | gitfiles -
+# another, is just to say
+#   gitfiles
+#(Although either of these commands generate quite a lot of output on a reasonably sized repository)
+#
+# It can also be used to supply extra parameters to git rev-list to limit the amount of output
+# e.g.
+#    gitfiles head
+#    gitfiles head~30..head
+#    gitfiles -30
+#    gitfiles --since=15.10.2024
+#    gitfiles --after=1.month.ago
+# Note that a parameter that specifies a single commit just lists the files in that commit.
+#
+# If you want a totally custom set of parameters use - and pipe the input in:
+#    git your-custom-parameters `git rev-list rev-list-custom-parameter-list` | gitfiles -
+#
+# For example uses, see the help procedures below.
+# ----------------------------------------------------------------------------------------------------
+
+link ximage
+link basename
+global debug
+procedure  main (args)
+   local f, filename, files, action, actions, actionFilter
+   local gitrvl, line, lineNo, arg, haveCommit
+   local hex := '0123456789abcdef'
+
+   # -------------------- Process the program arguments --------------------
+   #  look for the optional (and not mentioned anywhere) -debug argument
+   if \args[1] == "-debug" then { debug := 1; pop(args) } # -debug must be the first argument, if present
+
+   # Help arguments (or the action filter) if present, must be next.
+   \args[1] ? {
+      actions := 'ABCDMRTUX?!'
+      if = "-h" & pos(0) then {
+         shortHelp(actions)     # No return
+      } else if ="--help" & pos(0) then {
+         longHelp(actions)      # No return
+      } else {# look for optional action filter
+         if (actionFilter :=  cset(tab(many(actions)))) then {
+            if pos(0) then {
+               if (*actionFilter > 1) & member(actionFilter, "R") then {
+                  stop("R as an action filter must be by itself")
+               } 
+            } else {
+               stop("An action filter cannot contain \"", cset(tab(0)) -- actions, "\"")
+            }
+         }
+      }
+   }
+   if \actionFilter then pop(args)
+
+   if *\args = 0 then { # Default: show every file
+      f := open("git show --name-status --pretty=\"\" `git rev-list --reverse head`", "rp")
+   } else if \args[1] == "-" then {
+      f := &input
+   } else { # Assume that args are for git rev-list
+      # Need to take care to include a default commit if not specified.
+      # We also need to arrange that an argument specifying a single commit means only that
+      # commit (like git show) rather than all the commits that are reachable from it.
+      gitrvl := "git show --name-status --pretty=\"\" `git rev-list --reverse"
+      if *args = 1 then {
+         map(args[1]) ? {
+            if = "head" | ="@" | tab(many(hex)) then {
+               if not find("..") then { # Single commit
+                  gitrvl ||:= " ";  gitrvl ||:= args[1]
+                  gitrvl ||:= " ^"; gitrvl ||:= args[1]; gitrvl ||:= "~1"
+               } else {
+                  gitrvl ||:= " "; gitrvl ||:= args[1]
+               }
+               haveCommit := 1
+            } else { # probably an option
+               gitrvl ||:= " "; gitrvl ||:= args[1]
+            }
+         }
+      } else {
+         every arg := !args do {
+            if arg == "--" then { # end of options, subsequent args are pathnames
+               if /haveCommit then {
+                  gitrvl ||:= " head"
+                  haveCommit := 1
+               }
+            }
+            gitrvl ||:= " "; gitrvl ||:= arg
+            if arg[1] ~== "-" then haveCommit := 1
+         }
+      }
+      gitrvl ||:= if \haveCommit then "`" else " head`"
+      if \debug then write(&errout, "<", gitrvl, ">")
+      f := open(gitrvl, "rp")
+   } # end of processing parameters for git rev-list 
+
+   if /f then stop("No input")
+   actions := table(""); lineNo := 0
+
+   #-------------------- Process the input --------------------
+   every (line := !f) ? {
+      lineNo +:= 1
+      case action := move(1) of {
+         "A" | "C" | "M" | "D" | "T": # (Add | Copy |Modify | Delete | Change_type) filename
+            { tab(any('ACMTD')); tab(many('\t'));  actions[tab(0)] ||:= action }
+         "R":                   # Rename similarity_score old_file \t new_file
+            { tab(many(&digits)); tab(many('\t'));
+              if member(\actionFilter, "R") then { # special case for filtering rename actions
+                 actions[tab(0)] := "R"
+              } else {
+                 filename := tab(upto('\t')) # Old file name
+                 actions[filename] ||:= "D"  # Do the deletion first
+                 tab(many('\t'))             # in case it's
+                 actions[tab(0)] ||:= action # the same file name
+              }
+          }
+
+         # ToDo: Figure out if extra actions B U ? ! have a different format
+         "B" | "U" | "?" | "!" :
+            { tab(many('\t'));  actions[tab(0)] ||:= action }
+            
+         default:
+            { write(&errout, "Line ", lineNo, " [", line, "] -- Unknown action \"", action, "\"") }
+      }
+   }
+
+   if \debug then write(&errout, ximage(actions))   # see what the actions on each file are
+
+   # -------------------- Produce the results --------------------
+   files := []
+   if \actionFilter then {
+      # include files that match the action filter
+      every member(actionFilter, actions[(filename := key(actions))][-1]) do put(files, filename)
+   } else {      
+      # include files that have not been deleted as the last action.
+      # (This assumes the input listing is from earliest to latest).
+      every actions[filename := key(actions)][-1] ~== "D" do put(files, filename)
+   }
+   every write(!sort(files))
+end
+
+# ----------------------------------------------------------------------
+procedure shortHelp (actions, f )
+   local noExit, progname := basename(&progname)
+
+   if \f then { # Invoked by longHelp()
+      noExit := 1
+   } else { # Invoked directly
+      f := &errout
+   }
+      
+   write(f, "usage: ", progname, " [action-filter] [-]")
+   write(f, "       ", progname, " [action-filter] [commits]")
+   write(f, "       ", progname, " [-h] [--help]")
+   
+   every write(f,
+               ![
+                 "",
+                 progname || " takes the output from \"git show --name-status ...\" and cleans it up.",
+                 "\"clean up\" means",
+                 "  Remove any files that are deleted (and stay deleted -- files that are re-addded will remain).",
+                 "  Remove duplicate entries -- All A and M entries for a file will only cause one line of output.",
+                 "  Renamed files are listed under their new name only.",
+                 "The output is a sorted list of all the files (without the M/A/R etc. actions)",
+                 "",
+                 "The action-filter causes only those files whose final action matches one of the characters",
+                 "to be listed. Legal characters are  \"" || actions || "\". R is a special case:",
+                 "it must be by itself and in this case the output is old-filename new-filename",
+                 "",
+                 "The input either comes from an explicit use of git show e.g.",
+                 "   git show --name-status [extra parameters] | " || progname || " [action-filter] -",
+                 "or is specified by a series of commits. In this case the program runs git show and processes",
+                 "the output that is limited to the specified commits (and further limited by any action filter).",
+                 "",
+                 "Commits may be a single commit specified by a sha-1 string (or a symbolic name such as @ or head)",
+                 "or a range specified by any of the standard options of git rev-list"
+                 ])
+
+   if /noExit then exit(0)
+end
+
+# ----------------------------------------------------------------------
+procedure longHelp(actions)
+   local f := open ("less", "pw")
+   local progname := basename(&progname)
+
+   if /f then stop("Cannot open pipe. error = ", &errortext)
+   shortHelp(actions, f)
+   every write(f,
+               ![
+                 "",
+                 "Examples:",
+                 "   " || progname || "                       The files in every commit on the current branch and",
+                 repl(" ", 26 + *progname) ||                "their parents, all the way to the very first commit",
+                 "   " || progname || " head                  The files in the top commit",
+                 "   " || progname || " head~10..             The files in the most recent 10 commits",
+                 "   " || progname || " head -10              The files in the most recent 10 commits",
+                 "   " || progname || " --since=1.month.ago",
+                 " etc..",
+                 "",
+                 "The action filter further restricts the output",
+                 "action-filter   result",
+                 "A               show files that have been added but not subsequently modified",
+                 "M               show files that have been added and subsequently modified",
+                 "AM              show files that have not been deleted (this is the default)",
+                 "D               show files that have been deleted",
+                 "R               show old file name and new file name for files that have been renamed",
+                 "U               show files that are unmerged",
+                 "",
+                 "Example listing from the most recent 10 commits (showing deleted files, renamed files",
+                 "and files modified more than once, older commits are listed before newer):",
+                 "  M	src/DanceMaster/OL.icn",
+                 "  M	src/DanceMaster/makefile",
+                 "  A	src/util/GitFiles.icn",
+                 "  A	src/util/powers.icn",
+                 "  A	src/cat-n/cat-n.icn~",
+                 "  R075	src/util/GitFiles.icn	src/util/gitfiles.icn",
+                 "  A	src/Anagram/Anagram.icn",
+                 "  A	src/DanceMaster/OL.icn",
+                 "  D	src/cat-n/cat-n.icn~",
+                 "  M	src/Anagram/Anagram.icn",
+                 "  M	src/Anagram/Anagram.icn",
+                 "  R100	src/DanceMaster/OL.icn	src/lib/OL.icn",
+                 "  R100	src/Anagram/ThreadPool.icn	src/lib/ThreadPool.icn",
+                 "  R100	src/Anagram/columns.icn	src/lib/columns.icn",
+                 "",
+                 progname || " head -10 results in",
+                 "  src/Anagram/Anagram.icn",
+                 "  src/DanceMaster/makefile",
+                 "  src/lib/OL.icn",
+                 "  src/lib/ThreadPool.icn",
+                 "  src/lib/columns.icn",
+                 "  src/util/gitfiles.icn",
+                 "  src/util/powers.icn",
+                 "",
+                 progname || " D head -10 results in",
+                 "  src/Anagram/ThreadPool.icn",
+                 "  src/Anagram/columns.icn",
+                 "  src/DanceMaster/OL.icn",
+                 "  src/cat-n/cat-n.icn~",
+                 "  src/util/GitFiles.icn",
+                 "",
+                 progname || " R head -10 results in",
+                 "  src/Anagram/ThreadPool.icn	src/lib/ThreadPool.icn",
+                 "  src/Anagram/columns.icn	src/lib/columns.icn",
+                 "  src/DanceMaster/OL.icn	src/lib/OL.icn",
+                 "  src/util/GitFiles.icn	src/util/gitfiles.icn",
+                 "",
+                 "In all cases the files are listed ordered by sort()",
+                 "Note that status B or status X should not normally appear.",
+                 ""
+              ])
+   close(f)
+   exit(0)
+end
