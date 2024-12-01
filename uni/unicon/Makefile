@@ -69,16 +69,16 @@ ca.u : ca.icn
 
 # Commented out to avoid bootstrap problem.
 # Uncomment if you modify unigram.y/unigram.icn
-#unigram.u: unigram.icn
-#	$(ICONT) -c unigram
+unigram.u: unigram.icn
+	$(ICONT) -c unigram
 
 # build iyacc, and uncomment these lines, if you change the language grammar (or unigram.y)
-#unigram.icn : unigram.y ytab_h.icn
-#	$(IYACC) -i unigram.y
+unigram.icn : unigram.y ytab_h.icn
+	$(IYACC) -i unigram.y
 
-#ytab_h.icn: unigram.y
-#	$(IYACC) -i -d unigram.y
-#	mv unigram_tab.icn ytab_h.icn
+ytab_h.icn: unigram.y
+	$(IYACC) -i -d unigram.y
+	mv unigram_tab.icn ytab_h.icn
 
 # these lines were used when Idol was involved in the build process
 #unigram.icn : unigram.y ytab_h.icn
