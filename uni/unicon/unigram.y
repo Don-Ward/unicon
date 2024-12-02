@@ -199,8 +199,8 @@ end
 global outline, outcol, outfilename,package_level_syms,package_level_class_syms
 
 procedure Progend(x1)
-   static printAST, lockAST
-   initial { printAST := getenv("PRINT_AST"); lockAST := getenv("LOCK_AST") }
+   static printAST, lockAST, imageAST
+   initial { printAST := getenv("PRINT_AST"); lockAST := getenv("LOCK_AST");  imageAST := getenv("IMAGE_AST") }
 
    if *\parsingErrors > 0 then {
       every pe := !parsingErrors do {
@@ -267,6 +267,7 @@ procedure Progend(x1)
 #  iwrite("Generating code:")
    if \printAST then print_node(x1)
    if \lockAST then { InsertLocks(x1, []); if \printAST then print_node(x1)}
+   if \imageAST then write(ximage(x1))
    yyprint(x1)
    write(yyout)
 
@@ -1189,8 +1190,7 @@ record ParseError ( lineNumber, errorMessage )
 procedure InsertLocks(nd,crl)
    local k, n, undo, noKids
 
-   # ToDo: deal with multiple nested critical regions
-   #       and class declarations
+   # ToDo: deal with class declarations
 
    if \nd then {
       if type(nd) == "treenode" then {
@@ -1322,7 +1322,6 @@ procedure loopUnlocks(nd, crl)
          # search up the tree to find out how many critical regions will be exited
          nloops := 0; k := nd.parent
          while (nloops < nbrks) & \k do {
-#            write(k.label, " loops = ", nloops, " breaks = ", nbrks, " unlocks = ", answer.unlocks)
             case k.label of {
                "repeat"  | 
                 "every0" |
@@ -1334,7 +1333,6 @@ procedure loopUnlocks(nd, crl)
                 "critical": { answer.unlocks +:= 1 }
             }
             k := k.parent
- #           if /k then write("&null")
          }
          write("nloops =", nloops)
       }
@@ -1388,18 +1386,6 @@ procedure mkUnlock(expr, crl, locn)
    put(ulist, expr)
    push(ulist, "compound")
    return mkBrace( node ! ulist, locn)
-      
-   # return mkBrace(
-   #                node("compound", 
-   #                     node("invoke",
-   #                           token(IDENT, "unlock", locn.line, locn.column+2, locn.filename),
-   #                           token(LPAREN,"(", locn.line, locn.column+8, locn.filename),
-   #                           mtx,
-   #                           token(RPAREN,")", locn.line, locn.column+10, locn.filename)),
-   #                       ";",
-   #                       expr),
-   #                       locn
-   #                )
 end
 
 # expr -> 1 ( expr, unlock(mtx...) )
@@ -1421,19 +1407,6 @@ procedure mkUnlockExpr(expr, crl, locn)
                token(LPAREN,"(", locn.line, locn.column+1, locn.filename),
                node ! ulist,
                token(RPAREN,")", locn.line, locn.column+12, locn.filename))
-
-   # return node("invoke",
-   #             token(INTLIT, "1", locn.line, locn.column, locn.filename),
-   #             token(LPAREN,"(", locn.line, locn.column+1, locn.filename),
-   #             node("elst1",
-   #                  expr,
-   #                  token(COMMA, ",", locn.line, locn.column+2, locn.filename),
-   #                  node("invoke",
-   #                       token(IDENT, "unlock", locn.line, locn.column+4, locn.filename),
-   #                       token(LPAREN,"(", locn.line, locn.column+8, locn.filename),
-   #                       mtx,
-   #                       token(RPAREN,")", locn.line, locn.column+10, locn.filename)),
-   #             token(RPAREN,")", locn.line, locn.column+12, locn.filename)))
 end
 
 # critical mtx: expr -> { lock(mtx) ;  expr ; unlock(mtx) }
@@ -1458,10 +1431,9 @@ procedure mkLockUnlock(expr, mtx, locn)
                   )
 end
 
-link ximage
 # suspend expr -> suspend 1 ( expr, unlock(mtx...) } do lock(...mtx)
 procedure mkUnlockSusp(susp, crl, locn)
-   local donode, llist, tmp
+   local donode, llist
    susp.label := "Suspend1"     # was Suspend0, is now Suspend1
    susp.children[2] := mkUnlockExpr(susp.children[2],crl,locn)
    put(susp.children, token(DO, "do", locn.line, locn.column+2, locn.filename))
@@ -1472,22 +1444,10 @@ procedure mkUnlockSusp(susp, crl, locn)
                              !crl,
                              token(RPAREN,")", locn.line, locn.column+10, locn.filename)))
    push(llist, "compound")
-   tmp := mkBrace((node ! llist), locn)
-   #write(ximage(tmp))               
-   put(susp.children, tmp)
-
-
-   # susp.label := "Suspend1"     # was Suspend0, is now Suspend1
-   # susp.children[2] := mkUnlockExpr(susp.children[2],mtx,locn)
-   # put(susp.children, token(DO, "do", locn.line, locn.column+2, locn.filename))
-   # put(susp.children, node("invoke",
-   #                           token(IDENT, "lock", locn.line, locn.column+4, locn.filename),
-   #                           token(LPAREN,"(", locn.line, locn.column+6, locn.filename),
-   #                           mtx,
-   #                           token(RPAREN,")", locn.line, locn.column+10, locn.filename)))
+   put(susp.children, mkBrace((node ! llist), locn))
 end
 
-# suspend expr1 do expr2 -> suspend 1 (expr1; unlock(mtx) } do { lock(mtx); expr2 }
+# suspend expr1 do expr2 -> suspend 1 (expr1; unlock(mtx...) } do { lock(...mtx); expr2 }
 procedure mkUnlockSuspDo(susp, crl, locn)
    local llist
    susp.children[2] := mkUnlockExpr(susp.children[2],crl,locn)
@@ -1500,19 +1460,6 @@ procedure mkUnlockSuspDo(susp, crl, locn)
    put(llist, susp.children[4])
    push(llist, "compound")
    susp.children[4] := mkBrace((node ! llist), locn)
-
-   # susp.children[4] := mkBrace(
-   #                             node("compound",
-   #                                  node("invoke",
-   #                                       token(IDENT, "lock", locn.line, locn.column+2, locn.filename),
-   #                                       token(LPAREN,"(", locn.line, locn.column+8, locn.filename),
-   #                                       mtx,
-   #                                       token(RPAREN,")", locn.line, locn.column+10, locn.filename)),
-   #                                   ";",
-   #                                   susp.children[4]
-   #                                ),
-   #                                locn
-   #                              )
 end
 
 # break       -> {unlock(mtx...); break}
@@ -1521,17 +1468,6 @@ end
 # etc.
 procedure mkUnlockBreak(brk, crl, unlocks, locn)
    return mkUnlock(brk, crl[1+:unlocks], locn)
-   # return mkBrace(
-   #                node("compound",
-   #                     node("invoke",
-   #                          token(IDENT, "unlock", locn.line, locn.column+2, locn.filename),
-   #                          token(LPAREN,"(", locn.line, locn.column+8, locn.filename),
-   #                          mtx,
-   #                          token(RPAREN,")", locn.line, locn.column+10, locn.filename)),
-   #                      ";",
-   #                      brk),
-   #                      locn
-   #                )
 end
 
 # break expr       -> break 1 (expr, unlock(mtx...) )
