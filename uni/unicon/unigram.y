@@ -148,6 +148,7 @@
 %token  RCVBK        /* @<<      */
 
 %{
+link ximage
 
 procedure Keyword(x1,x2)
    static keywords
@@ -199,8 +200,8 @@ end
 global outline, outcol, outfilename,package_level_syms,package_level_class_syms
 
 procedure Progend(x1)
-   static printAST, lockAST, imageAST
-   initial { printAST := getenv("PRINT_AST"); lockAST := getenv("LOCK_AST");  imageAST := getenv("IMAGE_AST") }
+   static printAST, lockAST
+   initial { printAST := getenv("PRINT_AST"); lockAST := getenv("LOCK_AST") }
 
    if *\parsingErrors > 0 then {
       every pe := !parsingErrors do {
@@ -267,7 +268,6 @@ procedure Progend(x1)
 #  iwrite("Generating code:")
    if \printAST then print_node(x1)
    if \lockAST then { InsertLocks(x1, []); if \printAST then print_node(x1)}
-   if \imageAST then write(ximage(x1))
    yyprint(x1)
    write(yyout)
 
@@ -783,6 +783,7 @@ exprlist: nexpr ;
         | exprlist COMMA nexpr {
            if type($1)=="treenode" & ($1.label=="elst1") then {
               $$ := $1; put($$.children, $2, $3)
+              if type($3)=="treenode" then $3.parent := $1
               }
            else
               $$ := node("elst1", $1,$2,$3)
@@ -1181,7 +1182,7 @@ record ParseError ( lineNumber, errorMessage )
 #   Replace                    With
 #   fail                       { unlock(mtx...); fail }
 #   return                     { unlock(mtx...); return }
-#   return expr                return 1 ( expr, unlock(mtx...) )
+#   return expr                ( return 1 ( expr, unlock(mtx...) ) | (unlock(mtx...), fail) )
 #   suspend expr               suspend 1 (expr, unlock(mtx...) ) do lock(...mtx)
 #   suspend expr1 do expr2     suspend 1 (expr, unlock(mtx...) ) do { lock(...mtx) ; expr2}
 # 
@@ -1190,13 +1191,11 @@ record ParseError ( lineNumber, errorMessage )
 procedure InsertLocks(nd,crl)
    local k, n, undo, noKids
 
-   # ToDo: deal with class declarations
-
    if \nd then {
       if type(nd) == "treenode" then {
          case nd.label of {
             "critical" : {
-               write("Entering critical region ", image(nd.children[2].s))
+               #-- write("Entering critical region ", image(nd.children[2].s))
                push(crl, nd.children[2])
                InsertLocks(nd.children[4], crl)
                pop(crl)
@@ -1204,27 +1203,27 @@ procedure InsertLocks(nd,crl)
                # Note the assignment replaces the "critical" node so yyprint() never sees it.
                # but the break/next/return etc. analysis is done before the replacement.
                nd.parent.children[n] := mkLockUnlock(nd.children[4], nd.children[2], tokLocn(nd.children[1]))
-               write("Leaving critical region ", image(nd.children[2].s))
+               #-- write("Leaving critical region ", image(nd.children[2].s))
             }
 
             "return": {
-               InsertLocks(\nd.children[2],crl)
+               InsertLocks(nd.children[2],crl)
                if *crl > 0 then {
-                  write("return found in critical region")
+                  #-- write("return found in critical region")
                   if /nd.children[2] then { # plain return,  (no expression)
                      n := findNodeIndex(nd, nd.parent.children)
                      nd.parent.children[n] := mkUnlock(nd, crl, tokLocn(nd.children[1]))
                   } else { # return expr
-                     nd.children[2] := mkUnlockExpr(nd.children[2], crl, tokLocn(nd.children[1]))
-                  }
+                      nd.children[2] := mkUnlockFallibleExpr(nd.children[2], crl, tokLocn(nd.children[1]))
+                   }
                }
             }
 
             "Suspend0": {
                InsertLocks(\nd.children[2], crl)
                if *crl > 0 then {
-                  write("suspend found in critical region")
-                   mkUnlockSusp(nd, crl, tokLocn(nd.children[1]))
+                  #-- write("suspend found in critical region")
+                  mkUnlockSusp(nd, crl, tokLocn(nd.children[1]))
                }
             }
 
@@ -1232,14 +1231,14 @@ procedure InsertLocks(nd,crl)
                InsertLocks(\nd.children[2],crl)
                InsertLocks(\nd.children[4],crl)
                if *crl > 0 then {
-                  write("suspend-do found in critical region")
+                  #-- write("suspend-do found in critical region")
                   mkUnlockSuspDo(nd, crl, tokLocn(nd.children[1]))
                }
             }
 
             "Break" : {
                if *crl > 0 then {
-                  write("break found in critical region")
+                  #-- write("break found in critical region")
                   undo := loopUnlocks(nd, crl)
                   if undo.unlocks > 0 then {
                      n := findNodeIndex(nd, nd.parent.children)
@@ -1255,7 +1254,7 @@ procedure InsertLocks(nd,crl)
 
             "Next" : {
                if *crl > 0 then {
-                  write("next found in critical region")
+                  #-- write("next found in critical region")
                   undo := loopUnlocks(nd, crl)
                   if undo.unlocks > 0 then {
                      n := findNodeIndex(nd, nd.parent.children)
@@ -1269,7 +1268,9 @@ procedure InsertLocks(nd,crl)
             }
 
             default: {
+               #-- write("found a ", nd.label)
                every InsertLocks(!nd.children, crl)
+               #-- write("finished ", nd.label)
             }
          }
          
@@ -1277,11 +1278,20 @@ procedure InsertLocks(nd,crl)
          if *crl > 0 & /noKids then {
             every k := nd.children[n := 1 to *nd.children] do {
                if type(k) == "token" & k.tok == FAIL then {
-                  write("fail found in critical region at ", k.filename, " line ", k.line)
+                  #-- write("fail found in critical region at ", k.filename, " line ", k.line)
                   nd.children[n] := mkUnlock(k, crl, tokLocn(k))
                }
             }
          }              
+      } else if type(nd) == "Class__state" then {
+         #-- write("Class found")
+         every k := !nd.foreachmethod() do {
+            if type(k) == "Method__state" then {
+               InsertLocks(k.procbody, crl)
+            }
+         }
+  #-- } else {
+  #--    write("Found a ", type(nd))
       }
    }
 
@@ -1318,7 +1328,7 @@ procedure loopUnlocks(nd, crl)
 
          if type(k) == "token" then answer.expr := k
          answer.breaks := nbrks
-         write("nbrks = ", nbrks)
+         #-- write("nbrks = ", nbrks)
          # search up the tree to find out how many critical regions will be exited
          nloops := 0; k := nd.parent
          while (nloops < nbrks) & \k do {
@@ -1334,11 +1344,11 @@ procedure loopUnlocks(nd, crl)
             }
             k := k.parent
          }
-         write("nloops =", nloops)
+         #-- write("nloops =", nloops)
       }
    }
-   writes("answer.unlocks = ", answer.unlocks)
-   write(" answer.expr = ", if \answer.expr then image(answer.expr) else "&null")
+   #-- writes("answer.unlocks = ", answer.unlocks)
+   #-- write(" answer.expr = ", if \answer.expr then image(answer.expr) else "&null")
    return answer
 end
 
@@ -1359,6 +1369,24 @@ procedure tokLocn(nd)
    return noIdea
 end
 
+# intersperse the elements of list with a separator
+procedure separate(a,b,n)
+   local L
+   if type(a) = "list" then {  # list elements followed by separator
+      \n := *a
+      L := []
+      every 1 to n do put(L, a[n], b)
+      return L
+   } else if type(b) = "list" then {# list elements preceded by separator
+      \n := *b
+      l := []
+      every 1 to n do put(L, a, b[n])
+      return L
+   }
+   # else fail
+end
+
+
 # expr -> { expr }
 procedure mkBrace(expr, locn)
    return node("Brace", 
@@ -1367,7 +1395,6 @@ procedure mkBrace(expr, locn)
                 token(RBRACE,"}",locn.line, locn.column+5, locn.filename)
                )
 end
-
 
 # expr -> { unlock(mtx...) ; expr }
 procedure mkUnlock(expr, crl, locn)
@@ -1388,6 +1415,129 @@ procedure mkUnlock(expr, crl, locn)
    return mkBrace( node ! ulist, locn)
 end
 
+#  if expr is a literal
+#     expr -> { unlock(mtx...) ; expr }
+#  otherwise
+#     expr -> ( 1 ( expr, unlock(mtx...) ) | ( unlock(mtx...)\1, fail)\1 )
+procedure mkUnlockFallibleExpr(expr, crl, locn)
+   local sexpr, fexpr, mtx
+   trace := &trace
+   if type(expr)=="token" then {
+      return mkUnlock(expr, crl, locn)
+   } else {
+      sexpr := []; fexpr := []
+      # Assemble the chain of unlocks for the success and fail branches
+      every mtx := !crl do {
+         push(sexpr, node("invoke",
+                          token(IDENT, "unlock", locn.line, locn.column, locn.filename),
+                          token(LPAREN,"(", locn.line, locn.column, locn.filename),
+                          mtx,
+                          token(RPAREN,")", locn.line, locn.column, locn.filename)),
+                      token(COMMA, ",", locn.line, locn.column, locn.filename))
+         push(fexpr,token(COMMA, ",", locn.line, locn.column, locn.filename),
+                    node("invoke",
+                          token(IDENT, "unlock", locn.line, locn.column, locn.filename),
+                          token(LPAREN,"(", locn.line, locn.column, locn.filename),
+                          mtx,
+                          token(RPAREN,")", locn.line, locn.column, locn.filename)))
+      }
+      push(sexpr, expr, "elst1")
+      sexpr := node("invoke",
+                    token(INTLIT, "1", locn.line, locn.column, locn.filename),
+                    token(LPAREN,"(", locn.line, locn.column, locn.filename),
+                    node ! sexpr,
+                    token(RPAREN,")", locn.line, locn.column, locn.filename))
+      put(fexpr, token(FAIL,"fail",locn.line, locn.column, locn.filename))
+      push(fexpr, "elst1")
+      fexpr := node("limit",
+                    node("Paren",
+                         token(LPAREN,"(", locn.line, locn.column, locn.filename),
+                         node ! fexpr,
+                         token(RPAREN,")", locn.line, locn.column, locn.filename)),
+                    token(BACKSLASH, "\\",  locn.line, locn.column, locn.filename),
+                    token(INTLIT, "1", locn.line, locn.column, locn.filename))
+
+      return node("Paren",
+                  token(LPAREN,"(", locn.line, locn.column, locn.filename),
+                  node(BAR,
+                       sexpr,  # Do this if expr succeeds
+                       token(BAR, "|",  locn.line, locn.column, locn.filename),
+                       fexpr), # Do this if expr fails
+                   token(RPAREN,")", locn.line, locn.column, locn.filename))
+
+      # return node("limit",
+      #             node("Paren",
+      #                  token(LPAREN,"(", locn.line, locn.column, locn.filename),
+      #                  node(BAR,
+      #                       sexpr,  # Do this if expr succeeds
+      #                       token(BAR, "|",  locn.line, locn.column, locn.filename),
+      #                       fexpr), # Do this if expr fails
+      #                  token(RPAREN,")", locn.line, locn.column, locn.filename)),
+      #             token(BACKSLASH, "\\",  locn.line, locn.column, locn.filename),
+      #             token(INTLIT, "1", locn.line, locn.column, locn.filename))
+
+
+   }
+end
+#  if expr is not fallible
+#     expr -> { unlock(mtx...) ; expr }
+#  otherwise
+#     expr -> 1 ( expr, unlock(mtx...) ) | ( unlock(mtx...) & fail)
+# procedure mkUnlockFallibleExpr(expr, crl, locn)
+#    local fexpr, n
+#    if type(expr)=="token" then { # expr cannot fail
+#       return mkUnlock(expr, crl, locn)
+#    } else {
+#       # build the failure expression (which is a tree of "and" nodes)
+#       if *crl = 1 then {
+#          fexpr := node("and",
+#                        node("invoke",
+#                             token(IDENT, "unlock", locn.line, locn.column, locn.filename),
+#                             token(LPAREN,"(", locn.line, locn.column, locn.filename),
+#                             crl[1],
+#                             token(RPAREN,")", locn.line, locn.column, locn.filename)),
+#                             token(AND, "&", locn.line, locn.column, locn.filename),
+#                             token(FAIL,"fail",locn.line, locn.column, locn.filename))
+#       } else {
+#          fexpr := node("and",
+#                        node("invoke",
+#                             token(IDENT, "unlock", locn.line, locn.column, locn.filename),
+#                             token(LPAREN,"(", locn.line, locn.column, locn.filename),
+#                             crl[1],
+#                             token(RPAREN,")", locn.line, locn.column, locn.filename)),
+#                             token(AND, "&", locn.line, locn.column, locn.filename),
+#                        node("invoke",
+#                             token(IDENT, "unlock", locn.line, locn.column, locn.filename),
+#                             token(LPAREN,"(", locn.line, locn.column, locn.filename),
+#                             crl[2],
+#                             token(RPAREN,")", locn.line, locn.column, locn.filename)))
+
+#          every n := 3 to *crl do {
+#             fexpr := node("and",
+#                           fexpr,
+#                           token(AND, "&", locn.line, locn.column, locn.filename),
+#                           node("invoke",
+#                                token(IDENT, "unlock", locn.line, locn.column, locn.filename),
+#                                token(LPAREN,"(", locn.line, locn.column, locn.filename),
+#                                crl[n],
+#                                token(RPAREN,")", locn.line, locn.column, locn.filename)))
+#          }
+#          fexpr := node("and",
+#                        fexpr,
+#                        token(AND, "&", locn.line, locn.column, locn.filename),
+#                        token(FAIL,"fail",locn.line, locn.column, locn.filename))
+#       }
+      
+#       return node(BAR,
+#                   mkUnlockExpr(expr, crl, locn),
+#                   token(BAR, "|",  locn.line, locn.column, locn.filename),
+#                   node("Paren",
+#                        token(LPAREN,"(", locn.line, locn.column, locn.filename),
+#                        fexpr,
+#                        token(RPAREN,")", locn.line, locn.column, locn.filename)))
+#    }
+# end
+
 # expr -> 1 ( expr, unlock(mtx...) )
 procedure mkUnlockExpr(expr, crl, locn)
    local ulist, mtx
@@ -1400,7 +1550,7 @@ procedure mkUnlockExpr(expr, crl, locn)
                       mtx,
                       token(RPAREN,")", locn.line, locn.column+10, locn.filename)))
    }
-   push(ulist, expr, "elist1")
+   push(ulist, expr, "elst1")
 
    return node("invoke",
                token(INTLIT, "1", locn.line, locn.column, locn.filename),
@@ -1414,19 +1564,19 @@ procedure mkLockUnlock(expr, mtx, locn)
    return mkBrace(
                   node("compound",
                        node("invoke",
-                             token(IDENT, "lock", locn.line, locn.column+2, locn.filename),
-                             token(LPAREN,"(", locn.line, locn.column+8, locn.filename),
+                             token(IDENT, "lock", locn.line, locn.column, locn.filename),
+                             token(LPAREN,"(", locn.line, locn.column, locn.filename),
                              mtx,
-                             token(RPAREN,")", locn.line, locn.column+10, locn.filename)),
+                             token(RPAREN,")", locn.line, locn.column, locn.filename)),
                          ";",
-                         expr,
-                         ";",
-                         node("invoke",
-                             token(IDENT, "unlock", locn.line, locn.column+2, locn.filename),
-                             token(LPAREN,"(", locn.line, locn.column+8, locn.filename),
-                             mtx,
-                             token(RPAREN,")", locn.line, locn.column+10, locn.filename))
-                         ),
+                         mkUnlockFallibleExpr(expr, [mtx], locn)),
+                         # ";",
+                         # node("invoke",
+                         #     token(IDENT, "unlock", locn.line, locn.column, locn.filename),
+                         #     token(LPAREN,"(", locn.line, locn.column, locn.filename),
+                         #     mtx,
+                         #     token(RPAREN,")", locn.line, locn.column, locn.filename))
+                         # ),
                          locn
                   )
 end
@@ -1435,7 +1585,7 @@ end
 procedure mkUnlockSusp(susp, crl, locn)
    local donode, llist
    susp.label := "Suspend1"     # was Suspend0, is now Suspend1
-   susp.children[2] := mkUnlockExpr(susp.children[2],crl,locn)
+   susp.children[2] := mkUnlockFallibleExpr(susp.children[2],crl,locn)
    put(susp.children, token(DO, "do", locn.line, locn.column+2, locn.filename))
    llist := []
    every push(llist, ";", node("invoke",
@@ -1450,7 +1600,7 @@ end
 # suspend expr1 do expr2 -> suspend 1 (expr1; unlock(mtx...) } do { lock(...mtx); expr2 }
 procedure mkUnlockSuspDo(susp, crl, locn)
    local llist
-   susp.children[2] := mkUnlockExpr(susp.children[2],crl,locn)
+   susp.children[2] := mkUnlockFallibleExpr(susp.children[2],crl,locn)
    llist := []
    every push(llist, ";", node("invoke",
                              token(IDENT, "lock", locn.line, locn.column+4, locn.filename),
@@ -1480,6 +1630,6 @@ procedure mkUnlockBreakExpr(brk, expr, crl, breaks, unlocks, locn)
       if 0 = breaks -:= 1 then fail 
       k := k.children[2]
    }
-   k.children[2] := mkUnlockExpr(expr,crl[1+:unlocks],locn)
+   k.children[2] := mkUnlockFallibleExpr(expr,crl[1+:unlocks],locn)
    return   
 end
