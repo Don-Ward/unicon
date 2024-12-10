@@ -1,5 +1,5 @@
 version	U12.1.00
-uid	unigram.u1-1733346803-0
+uid	unigram.u1-1733775516-0
 record	ParseError,2
 	0,lineNumber
 	1,errorMessage
@@ -14,7 +14,7 @@ record	location,3
 impl	local
 link	ximage.u
 invocable	0
-global	311
+global	310
 	0,000005,Keyword,2
 	1,000001,set_of_all_fields,0
 	2,000001,dummyrecno,0
@@ -67,265 +67,264 @@ global	311
 	49,000005,loopUnlocks,2
 	50,000011,location,3
 	51,000005,tokLocn,1
-	52,000005,separate,3
-	53,000005,mkBrace,2
-	54,000005,mkUnlock,3
-	55,000005,mkUnlockFallibleExpr,3
-	56,000005,mkUnlockExpr,3
-	57,000005,mkLockUnlock,3
-	58,000005,mkUnlockSusp,3
-	59,000005,mkUnlockSuspDo,3
-	60,000005,mkUnlockBreak,4
-	61,000005,mkUnlockBreakExpr,6
-	62,000005,yyparse,0
-	63,000005,action_null,0
-	64,000005,action_1,0
-	65,000005,action_2,0
-	66,000005,action_3,0
-	67,000005,action_12,0
-	68,000005,action_13,0
-	69,000005,action_14,0
-	70,000005,action_15,0
-	71,000005,action_17,0
-	72,000005,action_18,0
-	73,000005,action_19,0
-	74,000005,action_20,0
-	75,000005,action_21,0
-	76,000005,action_22,0
-	77,000005,action_23,0
-	78,000005,action_24,0
-	79,000005,action_25,0
-	80,000005,action_26,0
-	81,000005,action_27,0
-	82,000005,action_28,0
-	83,000005,action_30,0
-	84,000005,action_33,0
-	85,000005,action_34,0
-	86,000005,action_35,0
-	87,000005,action_36,0
-	88,000005,action_38,0
-	89,000005,action_40,0
-	90,000005,action_43,0
-	91,000005,action_44,0
-	92,000005,action_45,0
-	93,000005,action_47,0
-	94,000005,action_48,0
-	95,000005,action_49,0
-	96,000005,action_50,0
-	97,000005,action_51,0
-	98,000005,action_52,0
-	99,000005,action_53,0
-	100,000005,action_54,0
-	101,000005,action_55,0
-	102,000005,action_56,0
-	103,000005,action_57,0
-	104,000005,action_59,0
-	105,000005,action_61,0
-	106,000005,action_62,0
-	107,000005,action_63,0
-	108,000005,action_65,0
-	109,000005,action_66,0
-	110,000005,action_67,0
-	111,000005,action_69,0
-	112,000005,action_71,0
-	113,000005,action_73,0
-	114,000005,action_74,0
-	115,000005,action_75,0
-	116,000005,action_76,0
-	117,000005,action_77,0
-	118,000005,action_78,0
-	119,000005,action_79,0
-	120,000005,action_80,0
-	121,000005,action_81,0
-	122,000005,action_84,0
-	123,000005,action_85,0
-	124,000005,action_86,0
-	125,000005,action_87,0
-	126,000005,action_88,0
-	127,000005,action_89,0
-	128,000005,action_90,0
-	129,000005,action_91,0
-	130,000005,action_92,0
-	131,000005,action_93,0
-	132,000005,action_96,0
-	133,000005,action_98,0
-	134,000005,action_100,0
-	135,000005,action_101,0
-	136,000005,action_102,0
-	137,000005,action_103,0
-	138,000005,action_104,0
-	139,000005,action_105,0
-	140,000005,action_106,0
-	141,000005,action_107,0
-	142,000005,action_108,0
-	143,000005,action_109,0
-	144,000005,action_110,0
-	145,000005,action_111,0
-	146,000005,action_112,0
-	147,000005,action_113,0
-	148,000005,action_114,0
-	149,000005,action_115,0
-	150,000005,action_116,0
-	151,000005,action_117,0
-	152,000005,action_118,0
-	153,000005,action_119,0
-	154,000005,action_120,0
-	155,000005,action_121,0
-	156,000005,action_122,0
-	157,000005,action_123,0
-	158,000005,action_124,0
-	159,000005,action_125,0
-	160,000005,action_126,0
-	161,000005,action_127,0
-	162,000005,action_128,0
-	163,000005,action_129,0
-	164,000005,action_130,0
-	165,000005,action_131,0
-	166,000005,action_133,0
-	167,000005,action_135,0
-	168,000005,action_136,0
-	169,000005,action_137,0
-	170,000005,action_139,0
-	171,000005,action_140,0
-	172,000005,action_142,0
-	173,000005,action_143,0
-	174,000005,action_144,0
-	175,000005,action_145,0
-	176,000005,action_146,0
-	177,000005,action_147,0
-	178,000005,action_148,0
-	179,000005,action_149,0
-	180,000005,action_150,0
-	181,000005,action_151,0
-	182,000005,action_152,0
-	183,000005,action_153,0
-	184,000005,action_154,0
-	185,000005,action_155,0
-	186,000005,action_157,0
-	187,000005,action_158,0
-	188,000005,action_160,0
-	189,000005,action_161,0
-	190,000005,action_162,0
-	191,000005,action_163,0
-	192,000005,action_164,0
-	193,000005,action_165,0
-	194,000005,action_167,0
-	195,000005,action_168,0
-	196,000005,action_169,0
-	197,000005,action_170,0
-	198,000005,action_173,0
-	199,000005,action_174,0
-	200,000005,action_175,0
-	201,000005,action_176,0
-	202,000005,action_177,0
-	203,000005,action_179,0
-	204,000005,action_180,0
-	205,000005,action_181,0
-	206,000005,action_182,0
-	207,000005,action_183,0
-	208,000005,action_184,0
-	209,000005,action_185,0
-	210,000005,action_187,0
-	211,000005,action_188,0
-	212,000005,action_189,0
-	213,000005,action_190,0
-	214,000005,action_191,0
-	215,000005,action_192,0
-	216,000005,action_193,0
-	217,000005,action_194,0
-	218,000005,action_195,0
-	219,000005,action_196,0
-	220,000005,action_197,0
-	221,000005,action_198,0
-	222,000005,action_199,0
-	223,000005,action_200,0
-	224,000005,action_201,0
-	225,000005,action_202,0
-	226,000005,action_203,0
-	227,000005,action_204,0
-	228,000005,action_205,0
-	229,000005,action_206,0
-	230,000005,action_207,0
-	231,000005,action_208,0
-	232,000005,action_209,0
-	233,000005,action_210,0
-	234,000005,action_211,0
-	235,000005,action_212,0
-	236,000005,action_213,0
-	237,000005,action_214,0
-	238,000005,action_215,0
-	239,000005,action_217,0
-	240,000005,action_218,0
-	241,000005,action_227,0
-	242,000005,action_228,0
-	243,000005,action_229,0
-	244,000005,action_230,0
-	245,000005,action_231,0
-	246,000005,action_232,0
-	247,000005,action_233,0
-	248,000005,action_234,0
-	249,000005,action_236,0
-	250,000005,action_237,0
-	251,000005,action_238,0
-	252,000005,action_239,0
-	253,000005,action_240,0
-	254,000005,action_241,0
-	255,000005,action_242,0
-	256,000005,action_243,0
-	257,000005,action_244,0
-	258,000005,action_245,0
-	259,000005,action_246,0
-	260,000005,action_247,0
-	261,000005,action_248,0
-	262,000005,action_249,0
-	263,000005,action_250,0
-	264,000005,action_251,0
-	265,000005,action_253,0
-	266,000005,action_254,0
-	267,000005,action_255,0
-	268,000005,action_256,0
-	269,000005,action_257,0
-	270,000005,action_258,0
-	271,000005,action_259,0
-	272,000005,action_260,0
-	273,000005,action_261,0
-	274,000005,action_262,0
-	275,000005,action_263,0
-	276,000005,action_264,0
-	277,000005,action_265,0
-	278,000005,action_266,0
-	279,000005,action_267,0
-	280,000005,action_268,0
-	281,000005,action_269,0
-	282,000005,action_271,0
-	283,000005,action_272,0
-	284,000005,action_273,0
-	285,000005,action_275,0
-	286,000005,action_276,0
-	287,000005,action_277,0
-	288,000005,action_282,0
-	289,000005,action_283,0
-	290,000005,action_285,0
-	291,000005,action_287,0
-	292,000005,action_289,0
-	293,000005,action_290,0
-	294,000005,action_291,0
-	295,000005,action_292,0
-	296,000005,action_294,0
-	297,000005,action_295,0
-	298,000005,action_296,0
-	299,000005,action_302,0
-	300,000005,action_303,0
-	301,000005,action_304,0
-	302,000005,action_305,0
-	303,000005,action_307,0
-	304,000005,action_308,0
-	305,000005,action_313,0
-	306,000005,action_314,0
-	307,000005,action_315,0
-	308,000005,action_320,0
-	309,000005,action_322,0
-	310,000005,action_323,0
+	52,000005,mkBrace,2
+	53,000005,mkUnlock,3
+	54,000005,mkUnlockFallibleExpr,3
+	55,000005,mkUnlockExpr,3
+	56,000005,mkLockUnlock,3
+	57,000005,mkUnlockSusp,3
+	58,000005,mkUnlockSuspDo,3
+	59,000005,mkUnlockBreak,4
+	60,000005,mkUnlockBreakExpr,6
+	61,000005,yyparse,0
+	62,000005,action_null,0
+	63,000005,action_1,0
+	64,000005,action_2,0
+	65,000005,action_3,0
+	66,000005,action_12,0
+	67,000005,action_13,0
+	68,000005,action_14,0
+	69,000005,action_15,0
+	70,000005,action_17,0
+	71,000005,action_18,0
+	72,000005,action_19,0
+	73,000005,action_20,0
+	74,000005,action_21,0
+	75,000005,action_22,0
+	76,000005,action_23,0
+	77,000005,action_24,0
+	78,000005,action_25,0
+	79,000005,action_26,0
+	80,000005,action_27,0
+	81,000005,action_28,0
+	82,000005,action_30,0
+	83,000005,action_33,0
+	84,000005,action_34,0
+	85,000005,action_35,0
+	86,000005,action_36,0
+	87,000005,action_38,0
+	88,000005,action_40,0
+	89,000005,action_43,0
+	90,000005,action_44,0
+	91,000005,action_45,0
+	92,000005,action_47,0
+	93,000005,action_48,0
+	94,000005,action_49,0
+	95,000005,action_50,0
+	96,000005,action_51,0
+	97,000005,action_52,0
+	98,000005,action_53,0
+	99,000005,action_54,0
+	100,000005,action_55,0
+	101,000005,action_56,0
+	102,000005,action_57,0
+	103,000005,action_59,0
+	104,000005,action_61,0
+	105,000005,action_62,0
+	106,000005,action_63,0
+	107,000005,action_65,0
+	108,000005,action_66,0
+	109,000005,action_67,0
+	110,000005,action_69,0
+	111,000005,action_71,0
+	112,000005,action_73,0
+	113,000005,action_74,0
+	114,000005,action_75,0
+	115,000005,action_76,0
+	116,000005,action_77,0
+	117,000005,action_78,0
+	118,000005,action_79,0
+	119,000005,action_80,0
+	120,000005,action_81,0
+	121,000005,action_84,0
+	122,000005,action_85,0
+	123,000005,action_86,0
+	124,000005,action_87,0
+	125,000005,action_88,0
+	126,000005,action_89,0
+	127,000005,action_90,0
+	128,000005,action_91,0
+	129,000005,action_92,0
+	130,000005,action_93,0
+	131,000005,action_96,0
+	132,000005,action_98,0
+	133,000005,action_100,0
+	134,000005,action_101,0
+	135,000005,action_102,0
+	136,000005,action_103,0
+	137,000005,action_104,0
+	138,000005,action_105,0
+	139,000005,action_106,0
+	140,000005,action_107,0
+	141,000005,action_108,0
+	142,000005,action_109,0
+	143,000005,action_110,0
+	144,000005,action_111,0
+	145,000005,action_112,0
+	146,000005,action_113,0
+	147,000005,action_114,0
+	148,000005,action_115,0
+	149,000005,action_116,0
+	150,000005,action_117,0
+	151,000005,action_118,0
+	152,000005,action_119,0
+	153,000005,action_120,0
+	154,000005,action_121,0
+	155,000005,action_122,0
+	156,000005,action_123,0
+	157,000005,action_124,0
+	158,000005,action_125,0
+	159,000005,action_126,0
+	160,000005,action_127,0
+	161,000005,action_128,0
+	162,000005,action_129,0
+	163,000005,action_130,0
+	164,000005,action_131,0
+	165,000005,action_133,0
+	166,000005,action_135,0
+	167,000005,action_136,0
+	168,000005,action_137,0
+	169,000005,action_139,0
+	170,000005,action_140,0
+	171,000005,action_142,0
+	172,000005,action_143,0
+	173,000005,action_144,0
+	174,000005,action_145,0
+	175,000005,action_146,0
+	176,000005,action_147,0
+	177,000005,action_148,0
+	178,000005,action_149,0
+	179,000005,action_150,0
+	180,000005,action_151,0
+	181,000005,action_152,0
+	182,000005,action_153,0
+	183,000005,action_154,0
+	184,000005,action_155,0
+	185,000005,action_157,0
+	186,000005,action_158,0
+	187,000005,action_160,0
+	188,000005,action_161,0
+	189,000005,action_162,0
+	190,000005,action_163,0
+	191,000005,action_164,0
+	192,000005,action_165,0
+	193,000005,action_167,0
+	194,000005,action_168,0
+	195,000005,action_169,0
+	196,000005,action_170,0
+	197,000005,action_173,0
+	198,000005,action_174,0
+	199,000005,action_175,0
+	200,000005,action_176,0
+	201,000005,action_177,0
+	202,000005,action_179,0
+	203,000005,action_180,0
+	204,000005,action_181,0
+	205,000005,action_182,0
+	206,000005,action_183,0
+	207,000005,action_184,0
+	208,000005,action_185,0
+	209,000005,action_187,0
+	210,000005,action_188,0
+	211,000005,action_189,0
+	212,000005,action_190,0
+	213,000005,action_191,0
+	214,000005,action_192,0
+	215,000005,action_193,0
+	216,000005,action_194,0
+	217,000005,action_195,0
+	218,000005,action_196,0
+	219,000005,action_197,0
+	220,000005,action_198,0
+	221,000005,action_199,0
+	222,000005,action_200,0
+	223,000005,action_201,0
+	224,000005,action_202,0
+	225,000005,action_203,0
+	226,000005,action_204,0
+	227,000005,action_205,0
+	228,000005,action_206,0
+	229,000005,action_207,0
+	230,000005,action_208,0
+	231,000005,action_209,0
+	232,000005,action_210,0
+	233,000005,action_211,0
+	234,000005,action_212,0
+	235,000005,action_213,0
+	236,000005,action_214,0
+	237,000005,action_215,0
+	238,000005,action_217,0
+	239,000005,action_218,0
+	240,000005,action_227,0
+	241,000005,action_228,0
+	242,000005,action_229,0
+	243,000005,action_230,0
+	244,000005,action_231,0
+	245,000005,action_232,0
+	246,000005,action_233,0
+	247,000005,action_234,0
+	248,000005,action_236,0
+	249,000005,action_237,0
+	250,000005,action_238,0
+	251,000005,action_239,0
+	252,000005,action_240,0
+	253,000005,action_241,0
+	254,000005,action_242,0
+	255,000005,action_243,0
+	256,000005,action_244,0
+	257,000005,action_245,0
+	258,000005,action_246,0
+	259,000005,action_247,0
+	260,000005,action_248,0
+	261,000005,action_249,0
+	262,000005,action_250,0
+	263,000005,action_251,0
+	264,000005,action_253,0
+	265,000005,action_254,0
+	266,000005,action_255,0
+	267,000005,action_256,0
+	268,000005,action_257,0
+	269,000005,action_258,0
+	270,000005,action_259,0
+	271,000005,action_260,0
+	272,000005,action_261,0
+	273,000005,action_262,0
+	274,000005,action_263,0
+	275,000005,action_264,0
+	276,000005,action_265,0
+	277,000005,action_266,0
+	278,000005,action_267,0
+	279,000005,action_268,0
+	280,000005,action_269,0
+	281,000005,action_271,0
+	282,000005,action_272,0
+	283,000005,action_273,0
+	284,000005,action_275,0
+	285,000005,action_276,0
+	286,000005,action_277,0
+	287,000005,action_282,0
+	288,000005,action_283,0
+	289,000005,action_285,0
+	290,000005,action_287,0
+	291,000005,action_289,0
+	292,000005,action_290,0
+	293,000005,action_291,0
+	294,000005,action_292,0
+	295,000005,action_294,0
+	296,000005,action_295,0
+	297,000005,action_296,0
+	298,000005,action_302,0
+	299,000005,action_303,0
+	300,000005,action_304,0
+	301,000005,action_305,0
+	302,000005,action_307,0
+	303,000005,action_308,0
+	304,000005,action_313,0
+	305,000005,action_314,0
+	306,000005,action_315,0
+	307,000005,action_320,0
+	308,000005,action_322,0
+	309,000005,action_323,0
 
 proc Keyword
 	local	0,001000,x1
@@ -839,10 +838,10 @@ proc Progend
 	local	42,000000,dummyrecno
 	local	43,000000,delete
 	con	0,010000,9,120,122,111,116,124,137,101,123,124
-	con	1,010000,8,114,117,103,113,137,101,123,124
-	con	2,002000,1,0
-	con	3,010000,6,040,145,162,162,157,162
-	con	4,002000,1,1
+	con	1,010000,11,116,117,137,114,117,103,113,137,101,123,124
+	con	2,002000,1,1
+	con	3,002000,1,0
+	con	4,010000,6,040,145,162,162,157,162
 	con	5,010000,1,163
 	con	6,010000,0
 	con	7,010000,17,145,162,162,157,162,072,040,145,155,160,164,171,040,146,151,154,145
@@ -878,23 +877,37 @@ lab L1
 	asgn
 	unmark
 lab L4
-	pnull
-	var	2
+	line	204
+	colm	47
+	synt	if
+	mark0
+	mark	L5
 	var	3
 	str	1
 	line	204
-	colm	64
+	colm	60
 	synt	any
 	invoke	1
+	unmark
+	efail
+lab L5
+	pnull
+	unmark
+	pnull
+	var	2
+	int	2
 	line	204
-	colm	55
+	colm	89
 	synt	any
 	asgn
+	line	204
+	colm	47
+	synt	endif
 	unmark
 lab L2
 	einit	L1
 lab L3
-	mark	L5
+	mark	L6
 	line	206
 	colm	4
 	synt	if
@@ -911,13 +924,13 @@ lab L3
 	colm	7
 	synt	any
 	size
-	int	2
+	int	3
 	line	206
 	colm	23
 	synt	any
 	numgt
 	unmark
-	mark	L6
+	mark	L7
 	line	207
 	colm	7
 	synt	every
@@ -952,14 +965,14 @@ lab L3
 	synt	any
 	invoke	2
 	unmark
-lab L7
-	efail
 lab L8
+	efail
+lab L9
 	line	207
 	colm	7
 	synt	endevery
 	unmark
-lab L6
+lab L7
 	var	7
 	pnull
 	pnull
@@ -974,7 +987,7 @@ lab L6
 	colm	13
 	synt	any
 	size
-	str	3
+	str	4
 	line	210
 	colm	29
 	synt	any
@@ -982,7 +995,7 @@ lab L6
 	line	211
 	colm	14
 	synt	ifelse
-	mark	L9
+	mark	L10
 	pnull
 	pnull
 	pnull
@@ -995,17 +1008,17 @@ lab L6
 	colm	17
 	synt	any
 	size
-	int	4
+	int	2
 	line	211
 	colm	33
 	synt	any
 	numgt
 	unmark
 	str	5
-	goto	L10
-lab L9
-	str	6
+	goto	L11
 lab L10
+	str	6
+lab L11
 	line	211
 	colm	14
 	synt	endifelse
@@ -1021,8 +1034,8 @@ lab L10
 	colm	4
 	synt	endif
 	unmark
-lab L5
-	mark	L11
+lab L6
+	mark	L12
 	line	214
 	colm	4
 	synt	if
@@ -1044,8 +1057,8 @@ lab L5
 	colm	4
 	synt	endif
 	unmark
-lab L11
-	mark	L12
+lab L12
+	mark	L13
 	pnull
 	var	8
 	var	9
@@ -1058,8 +1071,8 @@ lab L11
 	synt	any
 	asgn
 	unmark
-lab L12
-	mark	L13
+lab L13
+	mark	L14
 	pnull
 	var	10
 	var	9
@@ -1072,8 +1085,8 @@ lab L12
 	synt	any
 	asgn
 	unmark
-lab L13
-	mark	L14
+lab L14
+	mark	L15
 	var	11
 	var	0
 	line	218
@@ -1081,8 +1094,8 @@ lab L13
 	synt	any
 	invoke	1
 	unmark
-lab L14
-	mark	L15
+lab L15
+	mark	L16
 	var	12
 	var	0
 	line	219
@@ -1090,28 +1103,28 @@ lab L14
 	synt	any
 	invoke	1
 	unmark
-lab L15
-	mark	L16
+lab L16
+	mark	L17
 	pnull
 	var	13
-	int	4
+	int	2
 	line	221
 	colm	12
 	synt	any
 	asgn
 	unmark
-lab L16
-	mark	L17
+lab L17
+	mark	L18
 	pnull
 	var	14
-	int	4
+	int	2
 	line	222
 	colm	11
 	synt	any
 	asgn
 	unmark
-lab L17
-	mark	L18
+lab L18
+	mark	L19
 	pnull
 	var	15
 	var	9
@@ -1124,8 +1137,8 @@ lab L17
 	synt	any
 	asgn
 	unmark
-lab L18
-	mark	L19
+lab L19
+	mark	L20
 	line	227
 	colm	4
 	synt	every
@@ -1148,7 +1161,7 @@ lab L18
 	asgn
 	pop
 	mark0
-	mark	L22
+	mark	L23
 	pnull
 	var	16
 	line	228
@@ -1160,7 +1173,7 @@ lab L18
 	synt	any
 	invoke	0
 	unmark
-lab L22
+lab L23
 	var	18
 	var	15
 	var	16
@@ -1169,38 +1182,38 @@ lab L22
 	synt	any
 	invoke	2
 	unmark
-lab L20
-	efail
 lab L21
+	efail
+lab L22
 	line	227
 	colm	4
 	synt	endevery
 	unmark
-lab L19
-	mark	L23
-lab L24
+lab L20
+	mark	L24
+lab L25
 	line	234
 	colm	4
 	synt	repeat
-	mark	L24
-	mark	L27
+	mark	L25
+	mark	L28
 	pnull
 	var	19
-	int	2
+	int	3
 	line	235
 	colm	13
 	synt	any
 	asgn
 	unmark
-lab L27
-	mark	L28
+lab L28
+	mark	L29
 	line	236
 	colm	7
 	synt	every
 	mark0
 	pnull
 	var	20
-	mark	L31
+	mark	L32
 	pnull
 	pnull
 	var	17
@@ -1224,15 +1237,15 @@ lab L27
 	colm	60
 	synt	any
 	esusp
-	goto	L32
-lab L31
+	goto	L33
+lab L32
 	pnull
 	var	21
 	line	236
 	colm	62
 	synt	any
 	bang
-lab L32
+lab L33
 	line	236
 	colm	19
 	synt	any
@@ -1260,17 +1273,17 @@ lab L32
 	synt	any
 	null
 	unmark
-	mark	L33
+	mark	L34
 	pnull
 	var	19
-	int	4
+	int	2
 	line	238
 	colm	19
 	synt	any
 	asgn
 	unmark
-lab L33
-	mark	L34
+lab L34
+	mark	L35
 	var	22
 	var	20
 	line	239
@@ -1278,8 +1291,8 @@ lab L33
 	synt	any
 	invoke	1
 	unmark
-lab L34
-	mark	L35
+lab L35
+	mark	L36
 	pnull
 	var	16
 	pnull
@@ -1298,8 +1311,8 @@ lab L34
 	synt	any
 	asgn
 	unmark
-lab L35
-	mark	L36
+lab L36
+	mark	L37
 	line	241
 	colm	13
 	synt	if
@@ -1323,8 +1336,8 @@ lab L35
 	colm	13
 	synt	endif
 	unmark
-lab L36
-	mark	L37
+lab L37
+	mark	L38
 	var	24
 	str	10
 	var	20
@@ -1340,7 +1353,7 @@ lab L36
 	synt	any
 	invoke	4
 	unmark
-lab L37
+lab L38
 	var	25
 	pnull
 	var	16
@@ -1362,21 +1375,21 @@ lab L37
 	colm	10
 	synt	endif
 	unmark
-lab L29
-	efail
 lab L30
+	efail
+lab L31
 	line	236
 	colm	7
 	synt	endevery
 	unmark
-lab L28
+lab L29
 	line	246
 	colm	5
 	synt	if
 	mark0
 	pnull
 	var	19
-	int	2
+	int	3
 	line	246
 	colm	14
 	synt	any
@@ -1384,20 +1397,20 @@ lab L28
 	unmark
 	unmark
 	pnull
-	goto	L26
+	goto	L27
 	line	246
 	colm	5
 	synt	endif
-lab L25
-	unmark
-	goto	L24
 lab L26
+	unmark
+	goto	L25
+lab L27
 	line	234
 	colm	4
 	synt	endrepeat
 	unmark
-lab L23
-	mark	L38
+lab L24
+	mark	L39
 	line	252
 	colm	3
 	synt	every
@@ -1422,15 +1435,15 @@ lab L23
 	synt	any
 	invoke	0
 	pop
-lab L39
-	efail
 lab L40
+	efail
+lab L41
 	line	252
 	colm	3
 	synt	endevery
 	unmark
-lab L38
-	mark	L41
+lab L39
+	mark	L42
 	line	253
 	colm	3
 	synt	every
@@ -1455,15 +1468,15 @@ lab L38
 	synt	any
 	invoke	0
 	pop
-lab L42
-	efail
 lab L43
+	efail
+lab L44
 	line	253
 	colm	3
 	synt	endevery
 	unmark
-lab L41
-	mark	L44
+lab L42
+	mark	L45
 	var	26
 	var	0
 	line	255
@@ -1471,8 +1484,8 @@ lab L41
 	synt	any
 	invoke	1
 	unmark
-lab L44
-	mark	L45
+lab L45
+	mark	L46
 	line	257
 	colm	4
 	synt	if
@@ -1505,9 +1518,9 @@ lab L44
 	synt	any
 	invoke	1
 	pop
-lab L46
-	efail
 lab L47
+	efail
+lab L48
 	line	258
 	colm	7
 	synt	endevery
@@ -1515,8 +1528,8 @@ lab L47
 	colm	4
 	synt	endif
 	unmark
-lab L45
-	mark	L48
+lab L46
+	mark	L49
 	line	261
 	colm	3
 	synt	if
@@ -1542,8 +1555,8 @@ lab L45
 	colm	3
 	synt	endif
 	unmark
-lab L48
-	mark	L49
+lab L49
+	mark	L50
 	line	269
 	colm	4
 	synt	if
@@ -1565,8 +1578,8 @@ lab L48
 	colm	4
 	synt	endif
 	unmark
-lab L49
-	mark	L50
+lab L50
+	mark	L51
 	line	270
 	colm	4
 	synt	if
@@ -1578,7 +1591,7 @@ lab L49
 	synt	any
 	nonnull
 	unmark
-	mark	L51
+	mark	L52
 	var	31
 	var	0
 	pnull
@@ -1591,7 +1604,7 @@ lab L49
 	synt	any
 	invoke	2
 	unmark
-lab L51
+lab L52
 	line	270
 	colm	44
 	synt	if
@@ -1616,8 +1629,8 @@ lab L51
 	colm	4
 	synt	endif
 	unmark
-lab L50
-	mark	L52
+lab L51
+	mark	L53
 	var	32
 	var	0
 	line	271
@@ -1625,8 +1638,8 @@ lab L50
 	synt	any
 	invoke	1
 	unmark
-lab L52
-	mark	L53
+lab L53
+	mark	L54
 	var	6
 	var	33
 	line	272
@@ -1634,8 +1647,8 @@ lab L52
 	synt	any
 	invoke	1
 	unmark
-lab L53
-	mark	L54
+lab L54
+	mark	L55
 	line	276
 	colm	4
 	synt	if
@@ -1652,13 +1665,13 @@ lab L53
 	colm	8
 	synt	any
 	size
-	int	2
+	int	3
 	line	276
 	colm	29
 	synt	any
 	numgt
 	unmark
-	mark	L55
+	mark	L56
 	var	35
 	var	33
 	str	12
@@ -1667,8 +1680,8 @@ lab L53
 	synt	any
 	invoke	2
 	unmark
-lab L55
-	mark	L56
+lab L56
+	mark	L57
 	line	278
 	colm	7
 	synt	every
@@ -1680,7 +1693,7 @@ lab L55
 	pnull
 	var	37
 	pnull
-	int	4
+	int	2
 	pnull
 	var	34
 	line	278
@@ -1706,7 +1719,7 @@ lab L55
 	asgn
 	pop
 	mark0
-	mark	L59
+	mark	L60
 	var	35
 	var	33
 	var	38
@@ -1720,7 +1733,7 @@ lab L55
 	synt	any
 	invoke	2
 	unmark
-lab L59
+lab L60
 	line	280
 	colm	10
 	synt	if
@@ -1749,14 +1762,14 @@ lab L59
 	colm	10
 	synt	endif
 	unmark
-lab L57
-	efail
 lab L58
+	efail
+lab L59
 	line	278
 	colm	7
 	synt	endevery
 	unmark
-lab L56
+lab L57
 	var	6
 	var	33
 	line	282
@@ -1767,8 +1780,8 @@ lab L56
 	colm	4
 	synt	endif
 	unmark
-lab L54
-	mark	L60
+lab L55
+	mark	L61
 	line	286
 	colm	4
 	synt	if
@@ -1800,13 +1813,13 @@ lab L54
 	colm	10
 	synt	any
 	size
-	int	2
+	int	3
 	line	287
 	colm	29
 	synt	any
 	numgt
 	unmark
-	mark	L61
+	mark	L62
 	pnull
 	var	41
 	pnull
@@ -1820,8 +1833,8 @@ lab L54
 	synt	any
 	asgn
 	unmark
-lab L61
-	mark	L62
+lab L62
+	mark	L63
 	var	35
 	var	33
 	str	15
@@ -1833,8 +1846,8 @@ lab L61
 	synt	any
 	invoke	5
 	unmark
-lab L62
-	mark	L63
+lab L63
+	mark	L64
 	var	43
 	var	40
 	var	41
@@ -1843,8 +1856,8 @@ lab L62
 	synt	any
 	invoke	2
 	unmark
-lab L63
-	mark	L64
+lab L64
+	mark	L65
 	line	291
 	colm	7
 	synt	every
@@ -1863,15 +1876,15 @@ lab L63
 	synt	any
 	invoke	3
 	pop
-lab L65
-	efail
 lab L66
+	efail
+lab L67
 	line	291
 	colm	7
 	synt	endevery
 	unmark
-lab L64
-	mark	L67
+lab L65
+	mark	L68
 	var	6
 	var	33
 	str	17
@@ -1880,19 +1893,19 @@ lab L64
 	synt	any
 	invoke	2
 	unmark
-lab L67
-	mark	L68
+lab L68
+	mark	L69
 	pnull
 	var	42
 	dup
-	int	4
+	int	2
 	line	293
 	colm	18
 	synt	any
 	plus
 	asgn
 	unmark
-lab L68
+lab L69
 	pnull
 	var	40
 	var	9
@@ -1908,7 +1921,7 @@ lab L68
 	colm	4
 	synt	endif
 	unmark
-lab L60
+lab L61
 	pnull
 	line	296
 	colm	1
@@ -37614,6 +37627,7 @@ proc InsertLocks
 	local	17,000000,loopUnlocks
 	local	18,000000,mkUnlockBreak
 	local	19,000000,mkUnlockBreakExpr
+	local	20,000000,warning
 	con	0,010000,8,164,162,145,145,156,157,144,145
 	con	1,010000,8,143,162,151,164,151,143,141,154
 	con	2,002000,1,2
@@ -37627,51 +37641,55 @@ proc InsertLocks
 	con	10,010000,4,116,145,170,164
 	con	11,010000,5,120,144,143,157,060
 	con	12,010000,5,120,144,143,157,061
-	con	13,010000,5,164,157,153,145,156
-	con	14,002000,3,274
-	con	15,010000,12,103,154,141,163,163,137,137,163,164,141,164,145
-	con	16,010000,13,115,145,164,150,157,144,137,137,163,164,141,164,145
+	con	13,010000,6,151,156,166,157,153,145
+	con	14,010000,5,164,157,153,145,156
+	con	15,010000,6,165,156,154,157,143,153
+	con	16,010000,44,105,170,160,154,151,143,151,164,040,143,141,154,154,040,157,146,040,165,156,154,157,143,153,040,151,156,040,141,040,143,162,151,164,151,143,141,154,040,162,145,147,151,157,156
+	con	17,010000,7,127,141,162,156,151,156,147
+	con	18,002000,3,274
+	con	19,010000,12,103,154,141,163,163,137,137,163,164,141,164,145
+	con	20,010000,13,115,145,164,150,157,144,137,137,163,164,141,164,145
 	declend
-	line	1191
+	line	1192
 	colm	11
 	synt	any
 	mark	L1
-	line	1194
+	line	1195
 	colm	4
 	synt	if
 	mark0
 	pnull
 	var	0
-	line	1194
+	line	1195
 	colm	7
 	synt	any
 	nonnull
 	unmark
-	line	1195
+	line	1196
 	colm	7
 	synt	ifelse
 	mark	L2
 	pnull
 	var	6
 	var	0
-	line	1195
+	line	1196
 	colm	14
 	synt	any
 	invoke	1
 	str	0
-	line	1195
+	line	1196
 	colm	19
 	synt	any
 	lexeq
 	unmark
 	mark	L4
-	line	1196
+	line	1197
 	colm	10
 	synt	case
 	mark0
 	pnull
 	var	0
-	line	1196
+	line	1197
 	colm	17
 	synt	any
 	field	label
@@ -37679,7 +37697,7 @@ proc InsertLocks
 	mark	L6
 	ccase
 	str	1
-	line	1197
+	line	1198
 	colm	24
 	synt	any
 	eqv
@@ -37691,16 +37709,16 @@ proc InsertLocks
 	pnull
 	pnull
 	var	0
-	line	1199
+	line	1200
 	colm	28
 	synt	any
 	field	children
 	int	2
-	line	1199
+	line	1200
 	colm	37
 	synt	any
 	subsc
-	line	1199
+	line	1200
 	colm	20
 	synt	any
 	invoke	2
@@ -37711,17 +37729,17 @@ lab L7
 	pnull
 	pnull
 	var	0
-	line	1200
+	line	1201
 	colm	30
 	synt	any
 	field	children
 	int	3
-	line	1200
+	line	1201
 	colm	39
 	synt	any
 	subsc
 	var	1
-	line	1200
+	line	1201
 	colm	27
 	synt	any
 	invoke	2
@@ -37730,7 +37748,7 @@ lab L8
 	mark	L9
 	var	9
 	var	1
-	line	1201
+	line	1202
 	colm	19
 	synt	any
 	invoke	1
@@ -37744,19 +37762,19 @@ lab L9
 	pnull
 	pnull
 	var	0
-	line	1202
+	line	1204
 	colm	41
 	synt	any
 	field	parent
-	line	1202
+	line	1204
 	colm	48
 	synt	any
 	field	children
-	line	1202
+	line	1204
 	colm	34
 	synt	any
 	invoke	2
-	line	1202
+	line	1204
 	colm	18
 	synt	any
 	asgn
@@ -37767,16 +37785,16 @@ lab L10
 	pnull
 	pnull
 	var	0
-	line	1205
+	line	1208
 	colm	18
 	synt	any
 	field	parent
-	line	1205
+	line	1208
 	colm	25
 	synt	any
 	field	children
 	var	3
-	line	1205
+	line	1208
 	colm	34
 	synt	any
 	subsc
@@ -37784,24 +37802,24 @@ lab L10
 	pnull
 	pnull
 	var	0
-	line	1205
+	line	1208
 	colm	56
 	synt	any
 	field	children
 	int	3
-	line	1205
+	line	1208
 	colm	65
 	synt	any
 	subsc
 	pnull
 	pnull
 	var	0
-	line	1205
+	line	1208
 	colm	72
 	synt	any
 	field	children
 	int	2
-	line	1205
+	line	1208
 	colm	81
 	synt	any
 	subsc
@@ -37809,24 +37827,24 @@ lab L10
 	pnull
 	pnull
 	var	0
-	line	1205
+	line	1208
 	colm	96
 	synt	any
 	field	children
 	int	4
-	line	1205
+	line	1208
 	colm	105
 	synt	any
 	subsc
-	line	1205
+	line	1208
 	colm	93
 	synt	any
 	invoke	1
-	line	1205
+	line	1208
 	colm	53
 	synt	any
 	invoke	3
-	line	1205
+	line	1208
 	colm	38
 	synt	any
 	asgn
@@ -37835,7 +37853,7 @@ lab L6
 	mark	L11
 	ccase
 	str	5
-	line	1209
+	line	1212
 	colm	21
 	synt	any
 	eqv
@@ -37846,40 +37864,40 @@ lab L6
 	pnull
 	pnull
 	var	0
-	line	1210
+	line	1213
 	colm	30
 	synt	any
 	field	children
 	int	2
-	line	1210
+	line	1213
 	colm	39
 	synt	any
 	subsc
 	var	1
-	line	1210
+	line	1213
 	colm	27
 	synt	any
 	invoke	2
 	unmark
 lab L12
-	line	1211
+	line	1214
 	colm	16
 	synt	if
 	mark0
 	pnull
 	pnull
 	var	1
-	line	1211
+	line	1214
 	colm	19
 	synt	any
 	size
 	int	6
-	line	1211
+	line	1214
 	colm	24
 	synt	any
 	numgt
 	unmark
-	line	1213
+	line	1216
 	colm	19
 	synt	ifelse
 	mark	L13
@@ -37887,16 +37905,16 @@ lab L12
 	pnull
 	pnull
 	var	0
-	line	1213
+	line	1216
 	colm	25
 	synt	any
 	field	children
 	int	2
-	line	1213
+	line	1216
 	colm	34
 	synt	any
 	subsc
-	line	1213
+	line	1216
 	colm	22
 	synt	any
 	null
@@ -37909,19 +37927,19 @@ lab L12
 	pnull
 	pnull
 	var	0
-	line	1214
+	line	1217
 	colm	47
 	synt	any
 	field	parent
-	line	1214
+	line	1217
 	colm	54
 	synt	any
 	field	children
-	line	1214
+	line	1217
 	colm	40
 	synt	any
 	invoke	2
-	line	1214
+	line	1217
 	colm	24
 	synt	any
 	asgn
@@ -37932,16 +37950,16 @@ lab L15
 	pnull
 	pnull
 	var	0
-	line	1215
+	line	1218
 	colm	24
 	synt	any
 	field	parent
-	line	1215
+	line	1218
 	colm	31
 	synt	any
 	field	children
 	var	3
-	line	1215
+	line	1218
 	colm	40
 	synt	any
 	subsc
@@ -37952,24 +37970,24 @@ lab L15
 	pnull
 	pnull
 	var	0
-	line	1215
+	line	1218
 	colm	75
 	synt	any
 	field	children
 	int	4
-	line	1215
+	line	1218
 	colm	84
 	synt	any
 	subsc
-	line	1215
+	line	1218
 	colm	72
 	synt	any
 	invoke	1
-	line	1215
+	line	1218
 	colm	55
 	synt	any
 	invoke	3
-	line	1215
+	line	1218
 	colm	44
 	synt	any
 	asgn
@@ -37979,12 +37997,12 @@ lab L13
 	pnull
 	pnull
 	var	0
-	line	1217
+	line	1220
 	colm	25
 	synt	any
 	field	children
 	int	2
-	line	1217
+	line	1220
 	colm	34
 	synt	any
 	subsc
@@ -37992,12 +38010,12 @@ lab L13
 	pnull
 	pnull
 	var	0
-	line	1217
+	line	1220
 	colm	64
 	synt	any
 	field	children
 	int	2
-	line	1217
+	line	1220
 	colm	73
 	synt	any
 	subsc
@@ -38006,32 +38024,32 @@ lab L13
 	pnull
 	pnull
 	var	0
-	line	1217
+	line	1220
 	colm	93
 	synt	any
 	field	children
 	int	4
-	line	1217
+	line	1220
 	colm	102
 	synt	any
 	subsc
-	line	1217
+	line	1220
 	colm	90
 	synt	any
 	invoke	1
-	line	1217
+	line	1220
 	colm	61
 	synt	any
 	invoke	3
-	line	1217
+	line	1220
 	colm	38
 	synt	any
 	asgn
 lab L14
-	line	1213
+	line	1216
 	colm	19
 	synt	endifelse
-	line	1211
+	line	1214
 	colm	16
 	synt	endif
 	goto	L5
@@ -38039,7 +38057,7 @@ lab L11
 	mark	L16
 	ccase
 	str	7
-	line	1222
+	line	1225
 	colm	23
 	synt	any
 	eqv
@@ -38051,239 +38069,44 @@ lab L11
 	pnull
 	pnull
 	var	0
-	line	1223
+	line	1226
 	colm	31
 	synt	any
 	field	children
 	int	2
-	line	1223
+	line	1226
 	colm	40
 	synt	any
 	subsc
-	line	1223
+	line	1226
 	colm	28
 	synt	any
 	nonnull
 	var	1
-	line	1223
+	line	1226
 	colm	27
 	synt	any
 	invoke	2
 	unmark
 lab L17
-	line	1224
+	line	1227
 	colm	16
 	synt	if
 	mark0
 	pnull
 	pnull
 	var	1
-	line	1224
+	line	1227
 	colm	19
 	synt	any
 	size
 	int	6
-	line	1224
+	line	1227
 	colm	24
 	synt	any
 	numgt
 	unmark
-	var	15
-	var	0
-	var	1
-	var	12
-	pnull
-	pnull
-	var	0
-	line	1226
-	colm	51
-	synt	any
-	field	children
-	int	4
-	line	1226
-	colm	60
-	synt	any
-	subsc
-	line	1226
-	colm	48
-	synt	any
-	invoke	1
-	line	1226
-	colm	31
-	synt	any
-	invoke	3
-	line	1224
-	colm	16
-	synt	endif
-	goto	L5
-lab L16
 	mark	L18
-	ccase
-	str	8
-	line	1230
-	colm	23
-	synt	any
-	eqv
-	unmark
-	pop
-	mark	L19
-	var	8
-	pnull
-	pnull
-	pnull
-	var	0
-	line	1231
-	colm	31
-	synt	any
-	field	children
-	int	2
-	line	1231
-	colm	40
-	synt	any
-	subsc
-	line	1231
-	colm	28
-	synt	any
-	nonnull
-	var	1
-	line	1231
-	colm	27
-	synt	any
-	invoke	2
-	unmark
-lab L19
-	mark	L20
-	var	8
-	pnull
-	pnull
-	pnull
-	var	0
-	line	1232
-	colm	31
-	synt	any
-	field	children
-	int	3
-	line	1232
-	colm	40
-	synt	any
-	subsc
-	line	1232
-	colm	28
-	synt	any
-	nonnull
-	var	1
-	line	1232
-	colm	27
-	synt	any
-	invoke	2
-	unmark
-lab L20
-	line	1233
-	colm	16
-	synt	if
-	mark0
-	pnull
-	pnull
-	var	1
-	line	1233
-	colm	19
-	synt	any
-	size
-	int	6
-	line	1233
-	colm	24
-	synt	any
-	numgt
-	unmark
-	var	16
-	var	0
-	var	1
-	var	12
-	pnull
-	pnull
-	var	0
-	line	1235
-	colm	53
-	synt	any
-	field	children
-	int	4
-	line	1235
-	colm	62
-	synt	any
-	subsc
-	line	1235
-	colm	50
-	synt	any
-	invoke	1
-	line	1235
-	colm	33
-	synt	any
-	invoke	3
-	line	1233
-	colm	16
-	synt	endif
-	goto	L5
-lab L18
-	mark	L21
-	ccase
-	str	9
-	line	1239
-	colm	21
-	synt	any
-	eqv
-	unmark
-	pop
-	line	1240
-	colm	16
-	synt	if
-	mark0
-	pnull
-	pnull
-	var	1
-	line	1240
-	colm	19
-	synt	any
-	size
-	int	6
-	line	1240
-	colm	24
-	synt	any
-	numgt
-	unmark
-	mark	L22
-	pnull
-	var	4
-	var	17
-	var	0
-	var	1
-	line	1242
-	colm	38
-	synt	any
-	invoke	2
-	line	1242
-	colm	24
-	synt	any
-	asgn
-	unmark
-lab L22
-	line	1243
-	colm	19
-	synt	if
-	mark0
-	pnull
-	pnull
-	var	4
-	line	1243
-	colm	26
-	synt	any
-	field	unlocks
-	int	6
-	line	1243
-	colm	35
-	synt	any
-	numgt
-	unmark
-	mark	L23
 	pnull
 	var	3
 	var	10
@@ -38291,36 +38114,327 @@ lab L22
 	pnull
 	pnull
 	var	0
-	line	1244
-	colm	47
+	line	1229
+	colm	44
 	synt	any
 	field	parent
-	line	1244
-	colm	54
+	line	1229
+	colm	51
 	synt	any
 	field	children
-	line	1244
-	colm	40
+	line	1229
+	colm	37
 	synt	any
 	invoke	2
+	line	1229
+	colm	21
+	synt	any
+	asgn
+	unmark
+lab L18
+	pnull
+	pnull
+	pnull
+	pnull
+	var	0
+	line	1230
+	colm	21
+	synt	any
+	field	parent
+	line	1230
+	colm	28
+	synt	any
+	field	children
+	var	3
+	line	1230
+	colm	37
+	synt	any
+	subsc
+	var	15
+	var	0
+	var	1
+	var	12
+	pnull
+	pnull
+	var	0
+	line	1230
+	colm	76
+	synt	any
+	field	children
+	int	4
+	line	1230
+	colm	85
+	synt	any
+	subsc
+	line	1230
+	colm	73
+	synt	any
+	invoke	1
+	line	1230
+	colm	56
+	synt	any
+	invoke	3
+	line	1230
+	colm	41
+	synt	any
+	asgn
+	line	1227
+	colm	16
+	synt	endif
+	goto	L5
+lab L16
+	mark	L19
+	ccase
+	str	8
+	line	1234
+	colm	23
+	synt	any
+	eqv
+	unmark
+	pop
+	mark	L20
+	var	8
+	pnull
+	pnull
+	pnull
+	var	0
+	line	1235
+	colm	31
+	synt	any
+	field	children
+	int	2
+	line	1235
+	colm	40
+	synt	any
+	subsc
+	line	1235
+	colm	28
+	synt	any
+	nonnull
+	var	1
+	line	1235
+	colm	27
+	synt	any
+	invoke	2
+	unmark
+lab L20
+	mark	L21
+	var	8
+	pnull
+	pnull
+	pnull
+	var	0
+	line	1236
+	colm	31
+	synt	any
+	field	children
+	int	3
+	line	1236
+	colm	40
+	synt	any
+	subsc
+	line	1236
+	colm	28
+	synt	any
+	nonnull
+	var	1
+	line	1236
+	colm	27
+	synt	any
+	invoke	2
+	unmark
+lab L21
+	line	1237
+	colm	16
+	synt	if
+	mark0
+	pnull
+	pnull
+	var	1
+	line	1237
+	colm	19
+	synt	any
+	size
+	int	6
+	line	1237
+	colm	24
+	synt	any
+	numgt
+	unmark
+	mark	L22
+	pnull
+	var	3
+	var	10
+	var	0
+	pnull
+	pnull
+	var	0
+	line	1239
+	colm	44
+	synt	any
+	field	parent
+	line	1239
+	colm	51
+	synt	any
+	field	children
+	line	1239
+	colm	37
+	synt	any
+	invoke	2
+	line	1239
+	colm	21
+	synt	any
+	asgn
+	unmark
+lab L22
+	pnull
+	pnull
+	pnull
+	pnull
+	var	0
+	line	1240
+	colm	21
+	synt	any
+	field	parent
+	line	1240
+	colm	28
+	synt	any
+	field	children
+	var	3
+	line	1240
+	colm	37
+	synt	any
+	subsc
+	var	16
+	var	0
+	var	1
+	var	12
+	pnull
+	pnull
+	var	0
+	line	1240
+	colm	78
+	synt	any
+	field	children
+	int	4
+	line	1240
+	colm	87
+	synt	any
+	subsc
+	line	1240
+	colm	75
+	synt	any
+	invoke	1
+	line	1240
+	colm	58
+	synt	any
+	invoke	3
+	line	1240
+	colm	41
+	synt	any
+	asgn
+	line	1237
+	colm	16
+	synt	endif
+	goto	L5
+lab L19
+	mark	L23
+	ccase
+	str	9
 	line	1244
+	colm	21
+	synt	any
+	eqv
+	unmark
+	pop
+	line	1245
+	colm	16
+	synt	if
+	mark0
+	pnull
+	pnull
+	var	1
+	line	1245
+	colm	19
+	synt	any
+	size
+	int	6
+	line	1245
+	colm	24
+	synt	any
+	numgt
+	unmark
+	mark	L24
+	pnull
+	var	4
+	var	17
+	var	0
+	var	1
+	line	1247
+	colm	38
+	synt	any
+	invoke	2
+	line	1247
 	colm	24
 	synt	any
 	asgn
 	unmark
-lab L23
-	line	1245
-	colm	22
-	synt	ifelse
-	mark	L24
+lab L24
+	line	1248
+	colm	19
+	synt	if
+	mark0
 	pnull
 	pnull
 	var	4
-	line	1245
+	line	1248
+	colm	26
+	synt	any
+	field	unlocks
+	int	6
+	line	1248
+	colm	35
+	synt	any
+	numgt
+	unmark
+	mark	L25
+	pnull
+	var	3
+	var	10
+	var	0
+	pnull
+	pnull
+	var	0
+	line	1249
+	colm	47
+	synt	any
+	field	parent
+	line	1249
+	colm	54
+	synt	any
+	field	children
+	line	1249
+	colm	40
+	synt	any
+	invoke	2
+	line	1249
+	colm	24
+	synt	any
+	asgn
+	unmark
+lab L25
+	line	1250
+	colm	22
+	synt	ifelse
+	mark	L26
+	pnull
+	pnull
+	var	4
+	line	1250
 	colm	30
 	synt	any
 	field	expr
-	line	1245
+	line	1250
 	colm	25
 	synt	any
 	null
@@ -38330,16 +38444,16 @@ lab L23
 	pnull
 	pnull
 	var	0
-	line	1246
+	line	1251
 	colm	27
 	synt	any
 	field	parent
-	line	1246
+	line	1251
 	colm	34
 	synt	any
 	field	children
 	var	3
-	line	1246
+	line	1251
 	colm	43
 	synt	any
 	subsc
@@ -38348,7 +38462,7 @@ lab L23
 	var	1
 	pnull
 	var	4
-	line	1246
+	line	1251
 	colm	77
 	synt	any
 	field	unlocks
@@ -38356,62 +38470,62 @@ lab L23
 	pnull
 	pnull
 	var	0
-	line	1246
+	line	1251
 	colm	97
 	synt	any
 	field	children
 	int	4
-	line	1246
+	line	1251
 	colm	106
 	synt	any
 	subsc
-	line	1246
+	line	1251
 	colm	94
 	synt	any
 	invoke	1
-	line	1246
+	line	1251
 	colm	63
 	synt	any
 	invoke	4
-	line	1246
+	line	1251
 	colm	47
 	synt	any
 	asgn
-	goto	L25
-lab L24
-	mark	L26
+	goto	L27
+lab L26
+	mark	L28
 	var	8
 	pnull
 	var	4
-	line	1248
+	line	1253
 	colm	41
 	synt	any
 	field	expr
 	var	1
-	line	1248
+	line	1253
 	colm	36
 	synt	any
 	invoke	2
 	unmark
-lab L26
+lab L28
 	var	19
 	var	0
 	pnull
 	var	4
-	line	1249
+	line	1254
 	colm	51
 	synt	any
 	field	expr
 	var	1
 	pnull
 	var	4
-	line	1249
+	line	1254
 	colm	67
 	synt	any
 	field	breaks
 	pnull
 	var	4
-	line	1249
+	line	1254
 	colm	80
 	synt	any
 	field	unlocks
@@ -38419,95 +38533,95 @@ lab L26
 	pnull
 	pnull
 	var	0
-	line	1249
+	line	1254
 	colm	100
 	synt	any
 	field	children
 	int	4
-	line	1249
+	line	1254
 	colm	109
 	synt	any
 	subsc
-	line	1249
+	line	1254
 	colm	97
 	synt	any
 	invoke	1
-	line	1249
+	line	1254
 	colm	42
 	synt	any
 	invoke	6
-lab L25
-	line	1245
+lab L27
+	line	1250
 	colm	22
 	synt	endifelse
-	line	1243
+	line	1248
 	colm	19
 	synt	endif
-	line	1240
+	line	1245
 	colm	16
 	synt	endif
 	goto	L5
-lab L21
-	mark	L27
+lab L23
+	mark	L29
 	ccase
 	str	10
-	line	1255
+	line	1260
 	colm	20
 	synt	any
 	eqv
 	unmark
 	pop
-	line	1256
+	line	1261
 	colm	16
 	synt	if
 	mark0
 	pnull
 	pnull
 	var	1
-	line	1256
+	line	1261
 	colm	19
 	synt	any
 	size
 	int	6
-	line	1256
+	line	1261
 	colm	24
 	synt	any
 	numgt
 	unmark
-	mark	L28
+	mark	L30
 	pnull
 	var	4
 	var	17
 	var	0
 	var	1
-	line	1258
+	line	1263
 	colm	38
 	synt	any
 	invoke	2
-	line	1258
+	line	1263
 	colm	24
 	synt	any
 	asgn
 	unmark
-lab L28
-	line	1259
+lab L30
+	line	1264
 	colm	19
 	synt	if
 	mark0
 	pnull
 	pnull
 	var	4
-	line	1259
+	line	1264
 	colm	26
 	synt	any
 	field	unlocks
 	int	6
-	line	1259
+	line	1264
 	colm	35
 	synt	any
 	numgt
 	unmark
-	mark	L29
+	mark	L31
 	pnull
 	var	3
 	var	10
@@ -38515,39 +38629,39 @@ lab L28
 	pnull
 	pnull
 	var	0
-	line	1260
+	line	1265
 	colm	47
 	synt	any
 	field	parent
-	line	1260
+	line	1265
 	colm	54
 	synt	any
 	field	children
-	line	1260
+	line	1265
 	colm	40
 	synt	any
 	invoke	2
-	line	1260
+	line	1265
 	colm	24
 	synt	any
 	asgn
 	unmark
-lab L29
+lab L31
 	pnull
 	pnull
 	pnull
 	pnull
 	var	0
-	line	1261
+	line	1266
 	colm	24
 	synt	any
 	field	parent
-	line	1261
+	line	1266
 	colm	31
 	synt	any
 	field	children
 	var	3
-	line	1261
+	line	1266
 	colm	40
 	synt	any
 	subsc
@@ -38558,48 +38672,48 @@ lab L29
 	pnull
 	pnull
 	var	0
-	line	1261
+	line	1266
 	colm	75
 	synt	any
 	field	children
 	int	4
-	line	1261
+	line	1266
 	colm	84
 	synt	any
 	subsc
-	line	1261
+	line	1266
 	colm	72
 	synt	any
 	invoke	1
-	line	1261
+	line	1266
 	colm	55
 	synt	any
 	invoke	3
-	line	1261
+	line	1266
 	colm	44
 	synt	any
 	asgn
-	line	1259
+	line	1264
 	colm	19
 	synt	endif
-	line	1256
+	line	1261
 	colm	16
 	synt	endif
 	goto	L5
-lab L27
-	mark	L30
+lab L29
+	mark	L32
 	ccase
-	mark	L31
+	mark	L33
 	str	11
-	line	1266
+	line	1271
 	colm	21
 	synt	any
 	esusp
-	goto	L32
-lab L31
+	goto	L34
+lab L33
 	str	12
-lab L32
-	line	1266
+lab L34
+	line	1271
 	colm	31
 	synt	any
 	eqv
@@ -38608,14 +38722,141 @@ lab L32
 	pnull
 	var	5
 	int	4
-	line	1267
+	line	1272
 	colm	23
 	synt	any
 	asgn
 	goto	L5
-lab L30
+lab L32
+	mark	L35
+	ccase
+	str	13
+	line	1275
+	colm	22
+	synt	any
+	eqv
+	unmark
 	pop
-	line	1272
+	mark	L36
+	line	1276
+	colm	16
+	synt	if
+	mark0
+	pnull
+	pnull
+	var	1
+	line	1276
+	colm	19
+	synt	any
+	size
+	int	6
+	line	1276
+	colm	24
+	synt	any
+	numgt
+	unmark
+	line	1278
+	colm	19
+	synt	if
+	mark0
+	pnull
+	var	6
+	pnull
+	pnull
+	var	0
+	line	1278
+	colm	29
+	synt	any
+	field	children
+	int	4
+	line	1278
+	colm	38
+	synt	any
+	subsc
+	line	1278
+	colm	26
+	synt	any
+	invoke	1
+	str	14
+	line	1278
+	colm	42
+	synt	any
+	lexeq
+	pop
+	pnull
+	pnull
+	pnull
+	pnull
+	var	0
+	line	1278
+	colm	56
+	synt	any
+	field	children
+	int	4
+	line	1278
+	colm	65
+	synt	any
+	subsc
+	line	1278
+	colm	68
+	synt	any
+	field	s
+	str	15
+	line	1278
+	colm	71
+	synt	any
+	lexeq
+	unmark
+	var	20
+	str	16
+	pnull
+	pnull
+	pnull
+	var	0
+	line	1280
+	colm	32
+	synt	any
+	field	children
+	int	4
+	line	1280
+	colm	41
+	synt	any
+	subsc
+	line	1280
+	colm	44
+	synt	any
+	field	line
+	pnull
+	pnull
+	pnull
+	var	0
+	line	1280
+	colm	53
+	synt	any
+	field	children
+	int	4
+	line	1280
+	colm	62
+	synt	any
+	subsc
+	line	1280
+	colm	65
+	synt	any
+	field	filename
+	str	17
+	line	1279
+	colm	29
+	synt	any
+	invoke	4
+	line	1278
+	colm	19
+	synt	endif
+	line	1276
+	colm	16
+	synt	endif
+	unmark
+lab L36
+	line	1283
 	colm	16
 	synt	every
 	mark0
@@ -38623,57 +38864,88 @@ lab L30
 	pnull
 	pnull
 	var	0
-	line	1272
+	line	1283
 	colm	37
 	synt	any
 	field	children
-	line	1272
+	line	1283
 	colm	34
 	synt	any
 	bang
 	var	1
-	line	1272
+	line	1283
 	colm	33
 	synt	any
 	invoke	2
 	pop
-lab L33
+lab L37
 	efail
-lab L34
-	line	1272
+lab L38
+	line	1283
+	colm	16
+	synt	endevery
+	goto	L5
+lab L35
+	pop
+	line	1288
+	colm	16
+	synt	every
+	mark0
+	var	8
+	pnull
+	pnull
+	var	0
+	line	1288
+	colm	37
+	synt	any
+	field	children
+	line	1288
+	colm	34
+	synt	any
+	bang
+	var	1
+	line	1288
+	colm	33
+	synt	any
+	invoke	2
+	pop
+lab L39
+	efail
+lab L40
+	line	1288
 	colm	16
 	synt	endevery
 lab L5
-	line	1196
+	line	1197
 	colm	10
 	synt	endcase
 	unmark
 lab L4
-	line	1278
+	line	1294
 	colm	10
 	synt	if
 	mark0
 	pnull
 	pnull
 	var	1
-	line	1278
+	line	1294
 	colm	13
 	synt	any
 	size
 	int	6
-	line	1278
+	line	1294
 	colm	18
 	synt	any
 	numgt
 	pop
 	pnull
 	var	5
-	line	1278
+	line	1294
 	colm	24
 	synt	any
 	null
 	unmark
-	line	1279
+	line	1295
 	colm	13
 	synt	every
 	mark0
@@ -38682,7 +38954,7 @@ lab L4
 	pnull
 	pnull
 	var	0
-	line	1279
+	line	1295
 	colm	26
 	synt	any
 	field	children
@@ -38693,46 +38965,46 @@ lab L4
 	pnull
 	pnull
 	var	0
-	line	1279
+	line	1295
 	colm	49
 	synt	any
 	field	children
-	line	1279
+	line	1295
 	colm	46
 	synt	any
 	size
 	push1
-	line	1279
+	line	1295
 	colm	43
 	synt	any
 	toby
-	line	1279
+	line	1295
 	colm	38
 	synt	any
 	asgn
-	line	1279
+	line	1295
 	colm	35
 	synt	any
 	subsc
-	line	1279
+	line	1295
 	colm	21
 	synt	any
 	asgn
 	pop
 	mark0
-	line	1280
+	line	1296
 	colm	16
 	synt	if
 	mark0
 	pnull
 	var	6
 	var	2
-	line	1280
+	line	1296
 	colm	23
 	synt	any
 	invoke	1
-	str	13
-	line	1280
+	str	14
+	line	1296
 	colm	27
 	synt	any
 	lexeq
@@ -38740,12 +39012,12 @@ lab L4
 	pnull
 	pnull
 	var	2
-	line	1280
+	line	1296
 	colm	41
 	synt	any
 	field	tok
-	int	14
-	line	1280
+	int	18
+	line	1296
 	colm	46
 	synt	any
 	lexeq
@@ -38754,12 +39026,12 @@ lab L4
 	pnull
 	pnull
 	var	0
-	line	1282
+	line	1298
 	colm	21
 	synt	any
 	field	children
 	var	3
-	line	1282
+	line	1298
 	colm	30
 	synt	any
 	subsc
@@ -38768,51 +39040,51 @@ lab L4
 	var	1
 	var	12
 	var	2
-	line	1282
+	line	1298
 	colm	61
 	synt	any
 	invoke	1
-	line	1282
+	line	1298
 	colm	45
 	synt	any
 	invoke	3
-	line	1282
+	line	1298
 	colm	34
 	synt	any
 	asgn
-	line	1280
+	line	1296
 	colm	16
 	synt	endif
 	unmark
-lab L35
+lab L41
 	efail
-lab L36
-	line	1279
+lab L42
+	line	1295
 	colm	13
 	synt	endevery
-	line	1278
+	line	1294
 	colm	10
 	synt	endif
 	goto	L3
 lab L2
-	line	1286
+	line	1302
 	colm	14
 	synt	if
 	mark0
 	pnull
 	var	6
 	var	0
-	line	1286
+	line	1302
 	colm	21
 	synt	any
 	invoke	1
-	str	15
-	line	1286
+	str	19
+	line	1302
 	colm	26
 	synt	any
 	lexeq
 	unmark
-	line	1288
+	line	1304
 	colm	10
 	synt	every
 	mark0
@@ -38821,37 +39093,37 @@ lab L2
 	pnull
 	pnull
 	var	0
-	line	1288
+	line	1304
 	colm	24
 	synt	any
 	field	foreachmethod
-	line	1288
+	line	1304
 	colm	38
 	synt	any
 	invoke	0
-	line	1288
+	line	1304
 	colm	21
 	synt	any
 	bang
-	line	1288
+	line	1304
 	colm	18
 	synt	any
 	asgn
 	pop
 	mark0
-	line	1289
+	line	1305
 	colm	13
 	synt	if
 	mark0
 	pnull
 	var	6
 	var	2
-	line	1289
+	line	1305
 	colm	20
 	synt	any
 	invoke	1
-	str	16
-	line	1289
+	str	20
+	line	1305
 	colm	24
 	synt	any
 	lexeq
@@ -38859,51 +39131,51 @@ lab L2
 	var	8
 	pnull
 	var	2
-	line	1290
+	line	1306
 	colm	29
 	synt	any
 	field	procbody
 	var	1
-	line	1290
+	line	1306
 	colm	27
 	synt	any
 	invoke	2
-	line	1289
+	line	1305
 	colm	13
 	synt	endif
 	unmark
-lab L37
+lab L43
 	efail
-lab L38
-	line	1288
+lab L44
+	line	1304
 	colm	10
 	synt	endevery
-	line	1286
+	line	1302
 	colm	14
 	synt	endif
 lab L3
-	line	1195
+	line	1196
 	colm	7
 	synt	endifelse
-	line	1194
+	line	1195
 	colm	4
 	synt	endif
 	unmark
 lab L1
-	mark	L39
-	mark	L40
+	mark	L45
+	mark	L46
 	var	0
-	line	1298
+	line	1314
 	colm	4
 	synt	any
 	pret
-lab L40
+lab L46
 	synt	any
 	pfail
 	unmark
-lab L39
+lab L45
 	pnull
-	line	1299
+	line	1315
 	colm	1
 	synt	any
 	pfail
@@ -38914,11 +39186,11 @@ proc findNodeIndex
 	local	2,000020,n
 	con	0,002000,1,1
 	declend
-	line	1301
+	line	1317
 	colm	11
 	synt	any
 	mark	L1
-	line	1303
+	line	1319
 	colm	4
 	synt	every
 	mark0
@@ -38928,22 +39200,22 @@ proc findNodeIndex
 	int	0
 	pnull
 	var	1
-	line	1303
+	line	1319
 	colm	20
 	synt	any
 	size
 	push1
-	line	1303
+	line	1319
 	colm	17
 	synt	any
 	toby
-	line	1303
+	line	1319
 	colm	12
 	synt	any
 	asgn
 	pop
 	mark0
-	line	1304
+	line	1320
 	colm	7
 	synt	if
 	mark0
@@ -38951,39 +39223,39 @@ proc findNodeIndex
 	pnull
 	var	1
 	var	2
-	line	1304
+	line	1320
 	colm	18
 	synt	any
 	subsc
 	var	0
-	line	1304
+	line	1320
 	colm	22
 	synt	any
 	eqv
 	unmark
 	mark	L4
 	var	2
-	line	1304
+	line	1320
 	colm	34
 	synt	any
 	pret
 lab L4
 	synt	any
 	pfail
-	line	1304
+	line	1320
 	colm	7
 	synt	endif
 	unmark
 lab L2
 	efail
 lab L3
-	line	1303
+	line	1319
 	colm	4
 	synt	endevery
 	unmark
 lab L1
 	pnull
-	line	1306
+	line	1322
 	colm	1
 	synt	any
 	pfail
@@ -39013,7 +39285,7 @@ proc loopUnlocks
 	con	13,010000,8,160,162,157,143,142,157,144,171
 	con	14,010000,8,143,162,151,164,151,143,141,154
 	declend
-	line	1310
+	line	1329
 	colm	11
 	synt	any
 	mark	L1
@@ -39022,52 +39294,52 @@ proc loopUnlocks
 	var	6
 	int	0
 	int	0
-	line	1312
+	line	1331
 	colm	30
 	synt	any
 	keywd	null
-	line	1312
+	line	1331
 	colm	23
 	synt	any
 	invoke	3
-	line	1312
+	line	1331
 	colm	11
 	synt	any
 	asgn
 	unmark
 lab L1
 	mark	L2
-	line	1313
+	line	1332
 	colm	4
 	synt	if
 	mark0
 	pnull
 	var	7
 	var	0
-	line	1313
+	line	1332
 	colm	11
 	synt	any
 	invoke	1
 	str	1
-	line	1313
+	line	1332
 	colm	16
 	synt	any
 	lexeq
 	unmark
-	line	1314
+	line	1333
 	colm	7
 	synt	if
 	mark0
 	pnull
 	pnull
 	var	0
-	line	1314
+	line	1333
 	colm	12
 	synt	any
 	field	label
 	mark	L3
 	str	2
-	line	1314
+	line	1333
 	colm	31
 	synt	any
 	esusp
@@ -39075,7 +39347,7 @@ lab L1
 lab L3
 	str	3
 lab L4
-	line	1314
+	line	1333
 	colm	19
 	synt	any
 	lexeq
@@ -39084,7 +39356,7 @@ lab L4
 	pnull
 	var	2
 	int	4
-	line	1316
+	line	1335
 	colm	16
 	synt	any
 	asgn
@@ -39096,16 +39368,16 @@ lab L5
 	pnull
 	pnull
 	var	0
-	line	1317
+	line	1336
 	colm	17
 	synt	any
 	field	children
 	int	5
-	line	1317
+	line	1336
 	colm	26
 	synt	any
 	subsc
-	line	1317
+	line	1336
 	colm	12
 	synt	any
 	asgn
@@ -39113,37 +39385,37 @@ lab L5
 lab L6
 	mark	L7
 lab L8
-	line	1318
+	line	1337
 	colm	10
 	synt	while
 	mark0
 	pnull
 	var	7
 	var	3
-	line	1318
+	line	1337
 	colm	20
 	synt	any
 	invoke	1
 	str	1
-	line	1318
+	line	1337
 	colm	24
 	synt	any
 	lexeq
 	unmark
 	mark	L8
-	line	1319
+	line	1338
 	colm	13
 	synt	ifelse
 	mark	L11
 	pnull
 	pnull
 	var	3
-	line	1319
+	line	1338
 	colm	17
 	synt	any
 	field	label
 	str	2
-	line	1319
+	line	1338
 	colm	24
 	synt	any
 	lexeq
@@ -39153,7 +39425,7 @@ lab L8
 	var	2
 	dup
 	int	4
-	line	1320
+	line	1339
 	colm	22
 	synt	any
 	plus
@@ -39165,34 +39437,34 @@ lab L13
 	pnull
 	pnull
 	var	3
-	line	1320
+	line	1339
 	colm	35
 	synt	any
 	field	children
 	int	5
-	line	1320
+	line	1339
 	colm	44
 	synt	any
 	subsc
-	line	1320
+	line	1339
 	colm	31
 	synt	any
 	asgn
 	goto	L12
 lab L11
-	line	1321
+	line	1340
 	colm	20
 	synt	ifelse
 	mark	L14
 	pnull
 	pnull
 	var	3
-	line	1321
+	line	1340
 	colm	24
 	synt	any
 	field	label
 	str	3
-	line	1321
+	line	1340
 	colm	31
 	synt	any
 	lexeq
@@ -39202,7 +39474,7 @@ lab L11
 	var	2
 	dup
 	int	4
-	line	1322
+	line	1341
 	colm	22
 	synt	any
 	plus
@@ -39223,12 +39495,12 @@ lab L14
 	pnull
 	pnull
 	var	5
-	line	1324
+	line	1343
 	colm	22
 	synt	any
 	field	expr
 	var	3
-	line	1324
+	line	1343
 	colm	28
 	synt	any
 	asgn
@@ -39243,36 +39515,36 @@ lab L18
 lab L19
 	pnull
 lab L15
-	line	1321
+	line	1340
 	colm	20
 	synt	endifelse
 lab L12
-	line	1319
+	line	1338
 	colm	13
 	synt	endifelse
 lab L9
 	unmark
 	goto	L8
 lab L10
-	line	1318
+	line	1337
 	colm	10
 	synt	endwhile
 	unmark
 lab L7
 	mark	L20
-	line	1329
+	line	1348
 	colm	10
 	synt	if
 	mark0
 	pnull
 	var	7
 	var	3
-	line	1329
+	line	1348
 	colm	17
 	synt	any
 	invoke	1
 	str	6
-	line	1329
+	line	1348
 	colm	21
 	synt	any
 	lexeq
@@ -39280,16 +39552,16 @@ lab L7
 	pnull
 	pnull
 	var	5
-	line	1329
+	line	1348
 	colm	43
 	synt	any
 	field	expr
 	var	3
-	line	1329
+	line	1348
 	colm	49
 	synt	any
 	asgn
-	line	1329
+	line	1348
 	colm	10
 	synt	endif
 	unmark
@@ -39298,12 +39570,12 @@ lab L20
 	pnull
 	pnull
 	var	5
-	line	1330
+	line	1349
 	colm	16
 	synt	any
 	field	breaks
 	var	2
-	line	1330
+	line	1349
 	colm	24
 	synt	any
 	asgn
@@ -39313,7 +39585,7 @@ lab L21
 	pnull
 	var	4
 	int	0
-	line	1333
+	line	1351
 	colm	17
 	synt	any
 	asgn
@@ -39324,45 +39596,45 @@ lab L22
 	var	3
 	pnull
 	var	0
-	line	1333
+	line	1351
 	colm	30
 	synt	any
 	field	parent
-	line	1333
+	line	1351
 	colm	25
 	synt	any
 	asgn
 	unmark
 lab L23
 lab L24
-	line	1334
+	line	1352
 	colm	10
 	synt	while
 	mark0
 	pnull
 	var	4
 	var	2
-	line	1334
+	line	1352
 	colm	24
 	synt	any
 	numlt
 	pop
 	pnull
 	var	3
-	line	1334
+	line	1352
 	colm	35
 	synt	any
 	nonnull
 	unmark
 	mark	L24
 	mark	L27
-	line	1335
+	line	1353
 	colm	13
 	synt	case
 	mark0
 	pnull
 	var	3
-	line	1335
+	line	1353
 	colm	19
 	synt	any
 	field	label
@@ -39371,7 +39643,7 @@ lab L24
 	ccase
 	mark	L30
 	str	7
-	line	1336
+	line	1354
 	colm	26
 	synt	any
 	esusp
@@ -39379,7 +39651,7 @@ lab L24
 lab L30
 	mark	L32
 	str	8
-	line	1337
+	line	1355
 	colm	26
 	synt	any
 	esusp
@@ -39387,7 +39659,7 @@ lab L30
 lab L32
 	mark	L34
 	str	9
-	line	1338
+	line	1356
 	colm	26
 	synt	any
 	esusp
@@ -39395,7 +39667,7 @@ lab L32
 lab L34
 	mark	L36
 	str	10
-	line	1339
+	line	1357
 	colm	26
 	synt	any
 	esusp
@@ -39403,7 +39675,7 @@ lab L34
 lab L36
 	mark	L38
 	str	11
-	line	1340
+	line	1358
 	colm	26
 	synt	any
 	esusp
@@ -39415,7 +39687,7 @@ lab L37
 lab L35
 lab L33
 lab L31
-	line	1341
+	line	1359
 	colm	27
 	synt	any
 	eqv
@@ -39425,7 +39697,7 @@ lab L31
 	var	4
 	dup
 	int	4
-	line	1341
+	line	1359
 	colm	38
 	synt	any
 	plus
@@ -39435,7 +39707,7 @@ lab L29
 	mark	L40
 	ccase
 	str	13
-	line	1342
+	line	1360
 	colm	27
 	synt	any
 	eqv
@@ -39450,7 +39722,7 @@ lab L40
 	mark	L41
 	ccase
 	str	14
-	line	1343
+	line	1361
 	colm	27
 	synt	any
 	eqv
@@ -39459,13 +39731,13 @@ lab L40
 	pnull
 	pnull
 	var	5
-	line	1343
+	line	1361
 	colm	37
 	synt	any
 	field	unlocks
 	dup
 	int	4
-	line	1343
+	line	1361
 	colm	46
 	synt	any
 	plus
@@ -39474,7 +39746,7 @@ lab L40
 lab L41
 	efail
 lab L28
-	line	1335
+	line	1353
 	colm	13
 	synt	endcase
 	unmark
@@ -39483,11 +39755,11 @@ lab L27
 	var	3
 	pnull
 	var	3
-	line	1345
+	line	1363
 	colm	19
 	synt	any
 	field	parent
-	line	1345
+	line	1363
 	colm	15
 	synt	any
 	asgn
@@ -39495,13 +39767,13 @@ lab L25
 	unmark
 	goto	L24
 lab L26
-	line	1334
+	line	1352
 	colm	10
 	synt	endwhile
-	line	1314
+	line	1333
 	colm	7
 	synt	endif
-	line	1313
+	line	1332
 	colm	4
 	synt	endif
 	unmark
@@ -39509,7 +39781,7 @@ lab L2
 	mark	L42
 	mark	L43
 	var	5
-	line	1352
+	line	1367
 	colm	4
 	synt	any
 	pret
@@ -39519,7 +39791,7 @@ lab L43
 	unmark
 lab L42
 	pnull
-	line	1353
+	line	1368
 	colm	1
 	synt	any
 	pfail
@@ -39535,7 +39807,7 @@ proc tokLocn
 	con	2,010000,5,164,157,153,145,156
 	con	3,010000,8,164,162,145,145,156,157,144,145
 	declend
-	line	1358
+	line	1378
 	colm	11
 	synt	any
 lab L1
@@ -39547,11 +39819,11 @@ lab L1
 	str	0
 	int	1
 	int	1
-	line	1361
+	line	1381
 	colm	30
 	synt	any
 	invoke	3
-	line	1361
+	line	1381
 	colm	19
 	synt	any
 	asgn
@@ -39560,19 +39832,19 @@ lab L2
 	einit	L1
 lab L3
 	mark	L4
-	line	1363
+	line	1383
 	colm	4
 	synt	if
 	mark0
 	pnull
 	var	4
 	var	0
-	line	1363
+	line	1383
 	colm	11
 	synt	any
 	invoke	1
 	str	2
-	line	1363
+	line	1383
 	colm	16
 	synt	any
 	lexeq
@@ -39581,57 +39853,57 @@ lab L3
 	var	3
 	pnull
 	var	0
-	line	1363
+	line	1383
 	colm	50
 	synt	any
 	field	filename
 	pnull
 	var	0
-	line	1363
+	line	1383
 	colm	63
 	synt	any
 	field	line
 	pnull
 	var	0
-	line	1363
+	line	1383
 	colm	72
 	synt	any
 	field	column
-	line	1363
+	line	1383
 	colm	47
 	synt	any
 	invoke	3
-	line	1363
+	line	1383
 	colm	32
 	synt	any
 	pret
 lab L5
 	synt	any
 	pfail
-	line	1363
+	line	1383
 	colm	4
 	synt	endif
 	unmark
 lab L4
 	mark	L6
-	line	1364
+	line	1384
 	colm	4
 	synt	if
 	mark0
 	pnull
 	var	4
 	var	0
-	line	1364
+	line	1384
 	colm	11
 	synt	any
 	invoke	1
 	str	3
-	line	1364
+	line	1384
 	colm	16
 	synt	any
 	lexeq
 	unmark
-	line	1365
+	line	1385
 	colm	7
 	synt	every
 	mark0
@@ -39640,33 +39912,33 @@ lab L4
 	pnull
 	pnull
 	var	0
-	line	1365
+	line	1385
 	colm	20
 	synt	any
 	field	children
-	line	1365
+	line	1385
 	colm	17
 	synt	any
 	bang
-	line	1365
+	line	1385
 	colm	15
 	synt	any
 	numeq
 	pop
 	mark0
-	line	1366
+	line	1386
 	colm	10
 	synt	if
 	mark0
 	pnull
 	var	4
 	var	1
-	line	1366
+	line	1386
 	colm	17
 	synt	any
 	invoke	1
 	str	2
-	line	1366
+	line	1386
 	colm	21
 	synt	any
 	lexeq
@@ -39675,290 +39947,62 @@ lab L4
 	var	3
 	pnull
 	var	1
-	line	1366
+	line	1386
 	colm	54
 	synt	any
 	field	filename
 	pnull
 	var	1
-	line	1366
+	line	1386
 	colm	66
 	synt	any
 	field	line
 	pnull
 	var	1
-	line	1366
+	line	1386
 	colm	74
 	synt	any
 	field	column
-	line	1366
+	line	1386
 	colm	52
 	synt	any
 	invoke	3
-	line	1366
+	line	1386
 	colm	37
 	synt	any
 	pret
 lab L9
 	synt	any
 	pfail
-	line	1366
+	line	1386
 	colm	10
 	synt	endif
 	unmark
 lab L7
 	efail
 lab L8
-	line	1365
+	line	1385
 	colm	7
 	synt	endevery
-	line	1364
-	colm	4
-	synt	endif
-	unmark
-lab L6
-	mark	L10
-	mark	L11
-	var	2
-	line	1369
-	colm	4
-	synt	any
-	pret
-lab L11
-	synt	any
-	pfail
-	unmark
-lab L10
-	pnull
-	line	1370
-	colm	1
-	synt	any
-	pfail
-	end
-proc separate
-	local	0,001000,a
-	local	1,001000,b
-	local	2,001000,n
-	local	3,000020,L
-	local	4,000000,type
-	local	5,000000,put
-	local	6,000000,l
-	con	0,010000,4,154,151,163,164
-	con	1,002000,1,1
-	declend
-	line	1373
-	colm	11
-	synt	any
-	mark	L1
-	line	1375
-	colm	4
-	synt	ifelse
-	mark	L2
-	pnull
-	var	4
-	var	0
-	line	1375
-	colm	11
-	synt	any
-	invoke	1
-	str	0
-	line	1375
-	colm	15
-	synt	any
-	numeq
-	unmark
-	mark	L4
-	pnull
-	pnull
-	var	2
-	line	1376
-	colm	7
-	synt	any
-	nonnull
-	pnull
-	var	0
-	line	1376
-	colm	13
-	synt	any
-	size
-	line	1376
-	colm	10
-	synt	any
-	asgn
-	unmark
-lab L4
-	mark	L5
-	pnull
-	var	3
-	pnull
-	line	1377
-	colm	12
-	synt	any
-	llist	0
-	line	1377
-	colm	9
-	synt	any
-	asgn
-	unmark
-lab L5
-	mark	L6
-	line	1378
-	colm	7
-	synt	every
-	mark0
-	pnull
-	int	1
-	var	2
-	push1
-	line	1378
-	colm	15
-	synt	any
-	toby
-	pop
-	mark0
-	var	5
-	var	3
-	pnull
-	var	0
-	var	2
-	line	1378
-	colm	31
-	synt	any
-	subsc
-	var	1
-	line	1378
-	colm	26
-	synt	any
-	invoke	3
-	unmark
-lab L7
-	efail
-lab L8
-	line	1378
-	colm	7
-	synt	endevery
-	unmark
-lab L6
-	mark	L9
-	var	3
-	line	1379
-	colm	7
-	synt	any
-	pret
-lab L9
-	synt	any
-	pfail
-	goto	L3
-lab L2
-	line	1380
-	colm	11
-	synt	if
-	mark0
-	pnull
-	var	4
-	var	1
-	line	1380
-	colm	18
-	synt	any
-	invoke	1
-	str	0
-	line	1380
-	colm	22
-	synt	any
-	numeq
-	unmark
-	mark	L10
-	pnull
-	pnull
-	var	2
-	line	1381
-	colm	7
-	synt	any
-	nonnull
-	pnull
-	var	1
-	line	1381
-	colm	13
-	synt	any
-	size
-	line	1381
-	colm	10
-	synt	any
-	asgn
-	unmark
-lab L10
-	mark	L11
-	pnull
-	var	6
-	pnull
-	line	1382
-	colm	12
-	synt	any
-	llist	0
-	line	1382
-	colm	9
-	synt	any
-	asgn
-	unmark
-lab L11
-	mark	L12
-	line	1383
-	colm	7
-	synt	every
-	mark0
-	pnull
-	int	1
-	var	2
-	push1
-	line	1383
-	colm	15
-	synt	any
-	toby
-	pop
-	mark0
-	var	5
-	var	3
-	var	0
-	pnull
-	var	1
-	var	2
-	line	1383
-	colm	34
-	synt	any
-	subsc
-	line	1383
-	colm	26
-	synt	any
-	invoke	3
-	unmark
-lab L13
-	efail
-lab L14
-	line	1383
-	colm	7
-	synt	endevery
-	unmark
-lab L12
-	mark	L15
-	var	3
 	line	1384
-	colm	7
+	colm	4
+	synt	endif
+	unmark
+lab L6
+	mark	L10
+	mark	L11
+	var	2
+	line	1389
+	colm	4
 	synt	any
 	pret
-lab L15
+lab L11
 	synt	any
 	pfail
-	line	1380
-	colm	11
-	synt	endif
-lab L3
-	line	1375
-	colm	4
-	synt	endifelse
 	unmark
-lab L1
+lab L10
 	pnull
-	line	1387
+	line	1390
 	colm	1
 	synt	any
 	pfail
@@ -39975,7 +40019,7 @@ proc mkBrace
 	con	4,010000,1,175
 	con	5,002000,1,5
 	declend
-	line	1391
+	line	1395
 	colm	11
 	synt	any
 	mark	L1
@@ -39987,23 +40031,23 @@ proc mkBrace
 	str	2
 	pnull
 	var	1
-	line	1393
+	line	1397
 	colm	35
 	synt	any
 	field	line
 	pnull
 	var	1
-	line	1393
+	line	1397
 	colm	46
 	synt	any
 	field	column
 	pnull
 	var	1
-	line	1393
+	line	1397
 	colm	59
 	synt	any
 	field	filename
-	line	1393
+	line	1397
 	colm	22
 	synt	any
 	invoke	5
@@ -40013,37 +40057,37 @@ proc mkBrace
 	str	4
 	pnull
 	var	1
-	line	1395
+	line	1399
 	colm	35
 	synt	any
 	field	line
 	pnull
 	pnull
 	var	1
-	line	1395
+	line	1399
 	colm	46
 	synt	any
 	field	column
 	int	5
-	line	1395
+	line	1399
 	colm	53
 	synt	any
 	plus
 	pnull
 	var	1
-	line	1395
+	line	1399
 	colm	61
 	synt	any
 	field	filename
-	line	1395
+	line	1399
 	colm	22
 	synt	any
 	invoke	5
-	line	1392
+	line	1396
 	colm	15
 	synt	any
 	invoke	4
-	line	1392
+	line	1396
 	colm	4
 	synt	any
 	pret
@@ -40053,7 +40097,7 @@ lab L2
 	unmark
 lab L1
 	pnull
-	line	1397
+	line	1401
 	colm	1
 	synt	any
 	pfail
@@ -40072,35 +40116,32 @@ proc mkUnlock
 	con	0,010000,6,151,156,166,157,153,145
 	con	1,002000,3,257
 	con	2,010000,6,165,156,154,157,143,153
-	con	3,002000,1,2
-	con	4,002000,3,364
-	con	5,010000,1,050
-	con	6,002000,1,8
-	con	7,002000,3,365
-	con	8,010000,1,051
-	con	9,002000,2,10
-	con	10,010000,1,073
-	con	11,010000,8,143,157,155,160,157,165,156,144
+	con	3,002000,3,364
+	con	4,010000,1,050
+	con	5,002000,3,365
+	con	6,010000,1,051
+	con	7,010000,1,073
+	con	8,010000,8,143,157,155,160,157,165,156,144
 	declend
-	line	1400
+	line	1404
 	colm	11
 	synt	any
 	mark	L1
 	pnull
 	var	3
 	pnull
-	line	1402
+	line	1406
 	colm	13
 	synt	any
 	llist	0
-	line	1402
+	line	1406
 	colm	10
 	synt	any
 	asgn
 	unmark
 lab L1
 	mark	L2
-	line	1405
+	line	1409
 	colm	4
 	synt	every
 	mark0
@@ -40108,11 +40149,11 @@ lab L1
 	var	4
 	pnull
 	var	1
-	line	1405
+	line	1409
 	colm	17
 	synt	any
 	bang
-	line	1405
+	line	1409
 	colm	14
 	synt	any
 	asgn
@@ -40127,101 +40168,83 @@ lab L1
 	str	2
 	pnull
 	var	2
-	line	1407
+	line	1411
 	colm	48
 	synt	any
 	field	line
 	pnull
-	pnull
 	var	2
-	line	1407
+	line	1411
 	colm	59
 	synt	any
 	field	column
-	int	3
-	line	1407
-	colm	66
-	synt	any
-	plus
 	pnull
 	var	2
-	line	1407
-	colm	74
+	line	1411
+	colm	72
 	synt	any
 	field	filename
-	line	1407
+	line	1411
 	colm	28
 	synt	any
 	invoke	5
 	var	7
-	int	4
-	str	5
+	int	3
+	str	4
 	pnull
 	var	2
-	line	1408
+	line	1412
 	colm	42
 	synt	any
 	field	line
 	pnull
-	pnull
 	var	2
-	line	1408
+	line	1412
 	colm	53
 	synt	any
 	field	column
-	int	6
-	line	1408
-	colm	60
-	synt	any
-	plus
 	pnull
 	var	2
-	line	1408
-	colm	68
+	line	1412
+	colm	66
 	synt	any
 	field	filename
-	line	1408
+	line	1412
 	colm	28
 	synt	any
 	invoke	5
 	var	4
 	var	7
-	int	7
-	str	8
+	int	5
+	str	6
 	pnull
 	var	2
-	line	1410
+	line	1414
 	colm	42
 	synt	any
 	field	line
 	pnull
-	pnull
 	var	2
-	line	1410
+	line	1414
 	colm	53
 	synt	any
 	field	column
-	int	9
-	line	1410
-	colm	60
-	synt	any
-	plus
 	pnull
 	var	2
-	line	1410
-	colm	69
+	line	1414
+	colm	66
 	synt	any
 	field	filename
-	line	1410
+	line	1414
 	colm	28
 	synt	any
 	invoke	5
-	line	1406
+	line	1410
 	colm	22
 	synt	any
 	invoke	5
-	str	10
-	line	1406
+	str	7
+	line	1410
 	colm	10
 	synt	any
 	invoke	3
@@ -40229,7 +40252,7 @@ lab L1
 lab L3
 	efail
 lab L4
-	line	1405
+	line	1409
 	colm	4
 	synt	endevery
 	unmark
@@ -40238,7 +40261,7 @@ lab L2
 	var	5
 	var	3
 	var	0
-	line	1413
+	line	1417
 	colm	7
 	synt	any
 	invoke	2
@@ -40247,8 +40270,8 @@ lab L5
 	mark	L6
 	var	8
 	var	3
-	str	11
-	line	1414
+	str	8
+	line	1418
 	colm	8
 	synt	any
 	invoke	2
@@ -40261,11 +40284,11 @@ lab L6
 	var	3
 	invoke	-1
 	var	2
-	line	1415
+	line	1419
 	colm	18
 	synt	any
 	invoke	2
-	line	1415
+	line	1419
 	colm	4
 	synt	any
 	pret
@@ -40275,7 +40298,7 @@ lab L8
 	unmark
 lab L7
 	pnull
-	line	1416
+	line	1420
 	colm	1
 	synt	any
 	pfail
@@ -40287,13 +40310,12 @@ proc mkUnlockFallibleExpr
 	local	3,000020,sexpr
 	local	4,000020,fexpr
 	local	5,000020,mtx
-	local	6,000000,trace
-	local	7,000000,type
-	local	8,000000,mkUnlock
-	local	9,000000,push
-	local	10,000000,node
-	local	11,000000,token
-	local	12,000000,put
+	local	6,000000,type
+	local	7,000000,mkUnlock
+	local	8,000000,push
+	local	9,000000,node
+	local	10,000000,token
+	local	11,000000,put
 	con	0,010000,5,164,157,153,145,156
 	con	1,010000,6,151,156,166,157,153,145
 	con	2,002000,3,257
@@ -40307,97 +40329,87 @@ proc mkUnlockFallibleExpr
 	con	10,010000,5,145,154,163,164,061
 	con	11,002000,3,258
 	con	12,010000,1,061
-	con	13,002000,3,274
-	con	14,010000,4,146,141,151,154
-	con	15,010000,5,154,151,155,151,164
-	con	16,010000,5,120,141,162,145,156
-	con	17,002000,3,349
-	con	18,010000,1,134
-	con	19,002000,3,352
-	con	20,010000,1,174
+	con	13,010000,7,153,145,171,167,157,162,144
+	con	14,002000,3,302
+	con	15,010000,1,046
+	con	16,002000,3,274
+	con	17,010000,4,146,141,151,154
+	con	18,010000,5,154,151,155,151,164
+	con	19,010000,5,120,141,162,145,156
+	con	20,002000,3,349
+	con	21,010000,1,134
+	con	22,002000,3,352
+	con	23,010000,1,174
 	declend
-	line	1422
+	line	1426
 	colm	11
 	synt	any
 	mark	L1
-	pnull
-	var	6
-	line	1424
-	colm	13
-	synt	any
-	keywd	trace
-	line	1424
-	colm	10
-	synt	any
-	asgn
-	unmark
-lab L1
-	mark	L2
-	line	1425
+	line	1429
 	colm	4
 	synt	ifelse
-	mark	L3
+	mark	L2
 	pnull
-	var	7
+	var	6
 	var	0
-	line	1425
+	line	1429
 	colm	11
 	synt	any
 	invoke	1
 	str	0
-	line	1425
+	line	1429
 	colm	17
 	synt	any
 	lexeq
 	unmark
-	mark	L5
-	var	8
+	mark	L4
+	var	7
 	var	0
 	var	1
 	var	2
-	line	1426
+	line	1430
 	colm	22
 	synt	any
 	invoke	3
-	line	1426
+	line	1430
 	colm	7
 	synt	any
 	pret
-lab L5
+lab L4
 	synt	any
 	pfail
-	goto	L4
-lab L3
-	mark	L6
+	goto	L3
+lab L2
+	mark	L5
 	pnull
 	var	3
 	pnull
-	line	1428
+	line	1432
 	colm	16
 	synt	any
 	llist	0
-	line	1428
+	line	1432
 	colm	13
+	synt	any
+	asgn
+	unmark
+lab L5
+	mark	L6
+	pnull
+	var	4
+	pnull
+	line	1432
+	colm	29
+	synt	any
+	llist	0
+	line	1432
+	colm	26
 	synt	any
 	asgn
 	unmark
 lab L6
 	mark	L7
-	pnull
-	var	4
-	pnull
-	line	1428
-	colm	29
-	synt	any
-	llist	0
-	line	1428
-	colm	26
-	synt	any
-	asgn
-	unmark
-lab L7
-	mark	L8
-	line	1430
+	line	1434
 	colm	7
 	synt	every
 	mark0
@@ -40405,631 +40417,662 @@ lab L7
 	var	5
 	pnull
 	var	1
-	line	1430
+	line	1434
 	colm	20
 	synt	any
 	bang
-	line	1430
+	line	1434
 	colm	17
 	synt	any
 	asgn
 	pop
 	mark0
-	mark	L11
-	var	9
+	mark	L10
+	var	8
 	var	3
-	var	10
+	var	9
 	str	1
-	var	11
+	var	10
 	int	2
 	str	3
 	pnull
 	var	2
-	line	1432
+	line	1436
 	colm	52
 	synt	any
 	field	line
 	pnull
 	var	2
-	line	1432
+	line	1436
 	colm	63
 	synt	any
 	field	column
 	pnull
 	var	2
-	line	1432
+	line	1436
 	colm	76
 	synt	any
 	field	filename
-	line	1432
+	line	1436
 	colm	32
 	synt	any
 	invoke	5
-	var	11
+	var	10
 	int	4
 	str	5
 	pnull
 	var	2
-	line	1433
+	line	1437
 	colm	46
 	synt	any
 	field	line
 	pnull
 	var	2
-	line	1433
+	line	1437
 	colm	57
 	synt	any
 	field	column
 	pnull
 	var	2
-	line	1433
+	line	1437
 	colm	70
 	synt	any
 	field	filename
-	line	1433
+	line	1437
 	colm	32
 	synt	any
 	invoke	5
 	var	5
-	var	11
+	var	10
 	int	6
 	str	7
 	pnull
 	var	2
-	line	1435
+	line	1439
 	colm	46
 	synt	any
 	field	line
 	pnull
 	var	2
-	line	1435
+	line	1439
 	colm	57
 	synt	any
 	field	column
 	pnull
 	var	2
-	line	1435
+	line	1439
 	colm	70
 	synt	any
 	field	filename
-	line	1435
+	line	1439
 	colm	32
 	synt	any
 	invoke	5
-	line	1431
+	line	1435
 	colm	26
 	synt	any
 	invoke	5
-	var	11
+	var	10
 	int	8
 	str	9
 	pnull
 	var	2
-	line	1436
+	line	1440
 	colm	43
 	synt	any
 	field	line
 	pnull
 	var	2
-	line	1436
+	line	1440
 	colm	54
 	synt	any
 	field	column
 	pnull
 	var	2
-	line	1436
+	line	1440
 	colm	67
 	synt	any
 	field	filename
-	line	1436
+	line	1440
 	colm	28
 	synt	any
 	invoke	5
-	line	1431
+	line	1435
 	colm	14
 	synt	any
 	invoke	3
 	unmark
-lab L11
-	var	9
+lab L10
+	var	8
 	var	4
-	var	11
+	var	10
 	int	8
 	str	9
 	pnull
 	var	2
-	line	1437
+	line	1441
 	colm	41
 	synt	any
 	field	line
 	pnull
 	var	2
-	line	1437
+	line	1441
 	colm	52
 	synt	any
 	field	column
 	pnull
 	var	2
-	line	1437
+	line	1441
 	colm	65
 	synt	any
 	field	filename
-	line	1437
+	line	1441
 	colm	26
 	synt	any
 	invoke	5
-	var	10
+	var	9
 	str	1
-	var	11
+	var	10
 	int	2
 	str	3
 	pnull
 	var	2
-	line	1439
+	line	1443
 	colm	52
 	synt	any
 	field	line
 	pnull
 	var	2
-	line	1439
+	line	1443
 	colm	63
 	synt	any
 	field	column
 	pnull
 	var	2
-	line	1439
+	line	1443
 	colm	76
 	synt	any
 	field	filename
-	line	1439
+	line	1443
 	colm	32
 	synt	any
 	invoke	5
-	var	11
+	var	10
 	int	4
 	str	5
 	pnull
 	var	2
-	line	1440
+	line	1444
 	colm	46
 	synt	any
 	field	line
 	pnull
 	var	2
-	line	1440
+	line	1444
 	colm	57
 	synt	any
 	field	column
 	pnull
 	var	2
-	line	1440
+	line	1444
 	colm	70
 	synt	any
 	field	filename
-	line	1440
+	line	1444
 	colm	32
 	synt	any
 	invoke	5
 	var	5
-	var	11
+	var	10
 	int	6
 	str	7
 	pnull
 	var	2
-	line	1442
+	line	1446
 	colm	46
 	synt	any
 	field	line
 	pnull
 	var	2
-	line	1442
+	line	1446
 	colm	57
 	synt	any
 	field	column
 	pnull
 	var	2
-	line	1442
+	line	1446
 	colm	70
 	synt	any
 	field	filename
-	line	1442
+	line	1446
 	colm	32
 	synt	any
 	invoke	5
-	line	1438
+	line	1442
 	colm	25
 	synt	any
 	invoke	5
-	line	1437
+	line	1441
 	colm	14
 	synt	any
 	invoke	3
 	unmark
-lab L9
+lab L8
 	efail
-lab L10
-	line	1430
+lab L9
+	line	1434
 	colm	7
 	synt	endevery
 	unmark
-lab L8
-	mark	L12
-	var	9
+lab L7
+	mark	L11
+	var	8
 	var	3
 	var	0
 	str	10
-	line	1444
+	line	1448
 	colm	11
 	synt	any
 	invoke	3
 	unmark
-lab L12
-	mark	L13
+lab L11
+	mark	L12
 	pnull
 	var	3
-	var	10
+	var	9
 	str	1
-	var	11
+	var	10
 	int	11
 	str	12
 	pnull
 	var	2
-	line	1446
+	line	1450
 	colm	41
 	synt	any
 	field	line
 	pnull
 	var	2
-	line	1446
+	line	1450
 	colm	52
 	synt	any
 	field	column
 	pnull
 	var	2
-	line	1446
+	line	1450
 	colm	65
 	synt	any
 	field	filename
-	line	1446
-	colm	26
-	synt	any
-	invoke	5
-	var	11
-	int	4
-	str	5
-	pnull
-	var	2
-	line	1447
-	colm	40
-	synt	any
-	field	line
-	pnull
-	var	2
-	line	1447
-	colm	51
-	synt	any
-	field	column
-	pnull
-	var	2
-	line	1447
-	colm	64
-	synt	any
-	field	filename
-	line	1447
+	line	1450
 	colm	26
 	synt	any
 	invoke	5
 	var	10
-	var	3
-	invoke	-1
-	var	11
-	int	6
-	str	7
+	int	4
+	str	5
 	pnull
 	var	2
-	line	1449
+	line	1451
 	colm	40
 	synt	any
 	field	line
 	pnull
 	var	2
-	line	1449
+	line	1451
 	colm	51
 	synt	any
 	field	column
 	pnull
 	var	2
-	line	1449
+	line	1451
 	colm	64
 	synt	any
 	field	filename
-	line	1449
+	line	1451
 	colm	26
 	synt	any
 	invoke	5
-	line	1445
-	colm	20
-	synt	any
-	invoke	5
-	line	1445
-	colm	13
-	synt	any
-	asgn
-	unmark
-lab L13
-	mark	L14
-	var	12
-	var	4
-	var	11
-	int	13
-	str	14
+	var	9
+	var	3
+	invoke	-1
+	var	10
+	int	6
+	str	7
 	pnull
 	var	2
-	line	1450
-	colm	39
+	line	1453
+	colm	40
 	synt	any
 	field	line
 	pnull
 	var	2
-	line	1450
-	colm	50
+	line	1453
+	colm	51
 	synt	any
 	field	column
 	pnull
 	var	2
-	line	1450
-	colm	63
+	line	1453
+	colm	64
 	synt	any
 	field	filename
-	line	1450
-	colm	23
+	line	1453
+	colm	26
 	synt	any
 	invoke	5
-	line	1450
+	line	1449
+	colm	20
+	synt	any
+	invoke	5
+	line	1449
+	colm	13
+	synt	any
+	asgn
+	unmark
+lab L12
+	mark	L13
+	var	11
+	var	4
+	var	9
+	str	13
+	var	10
+	int	14
+	str	15
+	pnull
+	var	2
+	line	1456
+	colm	41
+	synt	any
+	field	line
+	pnull
+	var	2
+	line	1456
+	colm	52
+	synt	any
+	field	column
+	pnull
+	var	2
+	line	1456
+	colm	65
+	synt	any
+	field	filename
+	line	1456
+	colm	28
+	synt	any
+	invoke	5
+	var	10
+	int	16
+	str	17
+	pnull
+	var	2
+	line	1457
+	colm	44
+	synt	any
+	field	line
+	pnull
+	var	2
+	line	1457
+	colm	55
+	synt	any
+	field	column
+	pnull
+	var	2
+	line	1457
+	colm	68
+	synt	any
+	field	filename
+	line	1457
+	colm	28
+	synt	any
+	invoke	5
+	line	1455
+	colm	22
+	synt	any
+	invoke	3
+	line	1455
 	colm	10
+	synt	any
+	invoke	2
+	unmark
+lab L13
+	mark	L14
+	var	8
+	var	4
+	str	10
+	line	1458
+	colm	11
 	synt	any
 	invoke	2
 	unmark
 lab L14
 	mark	L15
-	var	9
-	var	4
-	str	10
-	line	1451
-	colm	11
-	synt	any
-	invoke	2
-	unmark
-lab L15
-	mark	L16
 	pnull
 	var	4
+	var	9
+	str	18
+	var	9
+	str	19
 	var	10
-	str	15
-	var	10
-	str	16
-	var	11
 	int	4
 	str	5
 	pnull
 	var	2
-	line	1454
+	line	1461
 	colm	45
 	synt	any
 	field	line
 	pnull
 	var	2
-	line	1454
+	line	1461
 	colm	56
 	synt	any
 	field	column
 	pnull
 	var	2
-	line	1454
+	line	1461
 	colm	69
 	synt	any
 	field	filename
-	line	1454
+	line	1461
 	colm	31
 	synt	any
 	invoke	5
-	var	10
+	var	9
 	var	4
 	invoke	-1
-	var	11
+	var	10
 	int	6
 	str	7
 	pnull
 	var	2
-	line	1456
+	line	1463
 	colm	45
 	synt	any
 	field	line
 	pnull
 	var	2
-	line	1456
+	line	1463
 	colm	56
 	synt	any
 	field	column
 	pnull
 	var	2
-	line	1456
+	line	1463
 	colm	69
 	synt	any
 	field	filename
-	line	1456
+	line	1463
 	colm	31
 	synt	any
 	invoke	5
-	line	1453
+	line	1460
 	colm	25
 	synt	any
 	invoke	4
-	var	11
-	int	17
-	str	18
+	var	10
+	int	20
+	str	21
 	pnull
 	var	2
-	line	1457
+	line	1464
 	colm	43
 	synt	any
 	field	line
 	pnull
 	var	2
-	line	1457
+	line	1464
 	colm	54
 	synt	any
 	field	column
 	pnull
 	var	2
-	line	1457
+	line	1464
 	colm	67
 	synt	any
 	field	filename
-	line	1457
+	line	1464
 	colm	26
 	synt	any
 	invoke	5
-	var	11
+	var	10
 	int	11
 	str	12
 	pnull
 	var	2
-	line	1458
+	line	1465
 	colm	41
 	synt	any
 	field	line
 	pnull
 	var	2
-	line	1458
+	line	1465
 	colm	52
 	synt	any
 	field	column
 	pnull
 	var	2
-	line	1458
+	line	1465
 	colm	65
 	synt	any
 	field	filename
-	line	1458
+	line	1465
 	colm	26
 	synt	any
 	invoke	5
-	line	1452
+	line	1459
 	colm	20
 	synt	any
 	invoke	4
-	line	1452
+	line	1459
 	colm	13
 	synt	any
 	asgn
 	unmark
-lab L16
-	mark	L17
+lab L15
+	mark	L16
+	var	9
+	str	19
 	var	10
-	str	16
-	var	11
 	int	4
 	str	5
 	pnull
 	var	2
-	line	1461
+	line	1468
 	colm	38
 	synt	any
 	field	line
 	pnull
 	var	2
-	line	1461
+	line	1468
 	colm	49
 	synt	any
 	field	column
 	pnull
 	var	2
-	line	1461
+	line	1468
 	colm	62
 	synt	any
 	field	filename
-	line	1461
+	line	1468
 	colm	24
 	synt	any
 	invoke	5
-	var	10
-	int	19
+	var	9
+	int	22
 	var	3
-	var	11
-	int	19
-	str	20
+	var	10
+	int	22
+	str	23
 	pnull
 	var	2
-	line	1464
+	line	1471
 	colm	45
 	synt	any
 	field	line
 	pnull
 	var	2
-	line	1464
+	line	1471
 	colm	56
 	synt	any
 	field	column
 	pnull
 	var	2
-	line	1464
+	line	1471
 	colm	69
 	synt	any
 	field	filename
-	line	1464
+	line	1471
 	colm	29
 	synt	any
 	invoke	5
 	var	4
-	line	1462
+	line	1469
 	colm	23
 	synt	any
 	invoke	4
-	var	11
+	var	10
 	int	6
 	str	7
 	pnull
 	var	2
-	line	1466
+	line	1473
 	colm	39
 	synt	any
 	field	line
 	pnull
 	var	2
-	line	1466
+	line	1473
 	colm	50
 	synt	any
 	field	column
 	pnull
 	var	2
-	line	1466
+	line	1473
 	colm	63
 	synt	any
 	field	filename
-	line	1466
+	line	1473
 	colm	25
 	synt	any
 	invoke	5
-	line	1460
+	line	1467
 	colm	18
 	synt	any
 	invoke	4
-	line	1460
+	line	1467
 	colm	7
 	synt	any
 	pret
-lab L17
+lab L16
 	synt	any
 	pfail
-lab L4
-	line	1425
+lab L3
+	line	1429
 	colm	4
 	synt	endifelse
 	unmark
-lab L2
+lab L1
 	pnull
-	line	1481
+	line	1475
 	colm	1
 	synt	any
 	pfail
@@ -41046,41 +41089,36 @@ proc mkUnlockExpr
 	local	8,000000,push
 	con	0,002000,3,367
 	con	1,010000,1,054
-	con	2,002000,1,2
-	con	3,010000,6,151,156,166,157,153,145
-	con	4,002000,3,257
-	con	5,010000,6,165,156,154,157,143,153
-	con	6,002000,3,364
-	con	7,010000,1,050
-	con	8,002000,1,8
-	con	9,002000,3,365
-	con	10,010000,1,051
-	con	11,002000,2,10
-	con	12,010000,5,145,154,163,164,061
-	con	13,002000,3,258
-	con	14,010000,1,061
-	con	15,002000,1,1
-	con	16,002000,2,12
+	con	2,010000,6,151,156,166,157,153,145
+	con	3,002000,3,257
+	con	4,010000,6,165,156,154,157,143,153
+	con	5,002000,3,364
+	con	6,010000,1,050
+	con	7,002000,3,365
+	con	8,010000,1,051
+	con	9,010000,5,145,154,163,164,061
+	con	10,002000,3,258
+	con	11,010000,1,061
 	declend
-	line	1542
+	line	1478
 	colm	11
 	synt	any
 	mark	L1
 	pnull
 	var	3
 	pnull
-	line	1544
+	line	1480
 	colm	13
 	synt	any
 	llist	0
-	line	1544
+	line	1480
 	colm	10
 	synt	any
 	asgn
 	unmark
 lab L1
 	mark	L2
-	line	1545
+	line	1481
 	colm	4
 	synt	every
 	mark0
@@ -41088,11 +41126,11 @@ lab L1
 	var	4
 	pnull
 	var	1
-	line	1545
+	line	1481
 	colm	17
 	synt	any
 	bang
-	line	1545
+	line	1481
 	colm	14
 	synt	any
 	asgn
@@ -41105,133 +41143,109 @@ lab L1
 	str	1
 	pnull
 	var	2
-	line	1546
+	line	1482
 	colm	38
 	synt	any
 	field	line
 	pnull
-	pnull
 	var	2
-	line	1546
+	line	1482
 	colm	49
 	synt	any
 	field	column
-	int	2
-	line	1546
-	colm	56
-	synt	any
-	plus
 	pnull
 	var	2
-	line	1546
-	colm	64
+	line	1482
+	colm	62
 	synt	any
 	field	filename
-	line	1546
+	line	1482
 	colm	23
 	synt	any
 	invoke	5
 	var	7
-	str	3
+	str	2
 	var	6
-	int	4
-	str	5
+	int	3
+	str	4
 	pnull
 	var	2
-	line	1548
+	line	1484
 	colm	48
 	synt	any
 	field	line
 	pnull
-	pnull
 	var	2
-	line	1548
+	line	1484
 	colm	59
 	synt	any
 	field	column
-	int	2
-	line	1548
-	colm	66
-	synt	any
-	plus
 	pnull
 	var	2
-	line	1548
-	colm	74
+	line	1484
+	colm	72
 	synt	any
 	field	filename
-	line	1548
+	line	1484
 	colm	28
 	synt	any
 	invoke	5
 	var	6
-	int	6
-	str	7
+	int	5
+	str	6
 	pnull
 	var	2
-	line	1549
+	line	1485
 	colm	42
 	synt	any
 	field	line
 	pnull
-	pnull
 	var	2
-	line	1549
+	line	1485
 	colm	53
 	synt	any
 	field	column
-	int	8
-	line	1549
-	colm	60
-	synt	any
-	plus
 	pnull
 	var	2
-	line	1549
-	colm	68
+	line	1485
+	colm	66
 	synt	any
 	field	filename
-	line	1549
+	line	1485
 	colm	28
 	synt	any
 	invoke	5
 	var	4
 	var	6
-	int	9
-	str	10
+	int	7
+	str	8
 	pnull
 	var	2
-	line	1551
+	line	1487
 	colm	42
 	synt	any
 	field	line
 	pnull
-	pnull
 	var	2
-	line	1551
+	line	1487
 	colm	53
 	synt	any
 	field	column
-	int	11
-	line	1551
-	colm	60
-	synt	any
-	plus
 	pnull
 	var	2
-	line	1551
-	colm	69
+	line	1487
+	colm	66
 	synt	any
 	field	filename
-	line	1551
+	line	1487
 	colm	28
 	synt	any
 	invoke	5
-	line	1547
+	line	1483
 	colm	22
 	synt	any
 	invoke	5
-	line	1546
+	line	1482
 	colm	10
 	synt	any
 	invoke	3
@@ -41239,7 +41253,7 @@ lab L1
 lab L3
 	efail
 lab L4
-	line	1545
+	line	1481
 	colm	4
 	synt	endevery
 	unmark
@@ -41248,8 +41262,8 @@ lab L2
 	var	8
 	var	3
 	var	0
-	str	12
-	line	1553
+	str	9
+	line	1489
 	colm	8
 	synt	any
 	invoke	3
@@ -41258,60 +41272,54 @@ lab L5
 	mark	L6
 	mark	L7
 	var	7
-	str	3
+	str	2
 	var	6
-	int	13
-	str	14
+	int	10
+	str	11
 	pnull
 	var	2
-	line	1556
+	line	1492
 	colm	36
 	synt	any
 	field	line
 	pnull
 	var	2
-	line	1556
+	line	1492
 	colm	47
 	synt	any
 	field	column
 	pnull
 	var	2
-	line	1556
+	line	1492
 	colm	60
 	synt	any
 	field	filename
-	line	1556
+	line	1492
 	colm	21
 	synt	any
 	invoke	5
 	var	6
-	int	6
-	str	7
+	int	5
+	str	6
 	pnull
 	var	2
-	line	1557
+	line	1493
 	colm	35
 	synt	any
 	field	line
 	pnull
-	pnull
 	var	2
-	line	1557
+	line	1493
 	colm	46
 	synt	any
 	field	column
-	int	15
-	line	1557
-	colm	53
-	synt	any
-	plus
 	pnull
 	var	2
-	line	1557
-	colm	61
+	line	1493
+	colm	59
 	synt	any
 	field	filename
-	line	1557
+	line	1493
 	colm	21
 	synt	any
 	invoke	5
@@ -41319,41 +41327,35 @@ lab L5
 	var	3
 	invoke	-1
 	var	6
-	int	9
-	str	10
+	int	7
+	str	8
 	pnull
 	var	2
-	line	1559
+	line	1495
 	colm	35
 	synt	any
 	field	line
 	pnull
-	pnull
 	var	2
-	line	1559
+	line	1495
 	colm	46
 	synt	any
 	field	column
-	int	16
-	line	1559
-	colm	53
-	synt	any
-	plus
 	pnull
 	var	2
-	line	1559
-	colm	62
+	line	1495
+	colm	59
 	synt	any
 	field	filename
-	line	1559
+	line	1495
 	colm	21
 	synt	any
 	invoke	5
-	line	1555
+	line	1491
 	colm	15
 	synt	any
 	invoke	5
-	line	1555
+	line	1491
 	colm	4
 	synt	any
 	pret
@@ -41363,7 +41365,7 @@ lab L7
 	unmark
 lab L6
 	pnull
-	line	1560
+	line	1496
 	colm	1
 	synt	any
 	pfail
@@ -41372,144 +41374,178 @@ proc mkLockUnlock
 	local	0,001000,expr
 	local	1,001000,mtx
 	local	2,001000,locn
-	local	3,000000,mkBrace
-	local	4,000000,node
-	local	5,000000,token
-	local	6,000000,mkUnlockFallibleExpr
-	con	0,010000,8,143,157,155,160,157,165,156,144
-	con	1,010000,6,151,156,166,157,153,145
-	con	2,002000,3,257
-	con	3,010000,4,154,157,143,153
-	con	4,002000,3,364
-	con	5,010000,1,050
-	con	6,002000,3,365
-	con	7,010000,1,051
-	con	8,010000,1,073
+	local	3,000000,type
+	local	4,000000,mkBrace
+	local	5,000000,node
+	local	6,000000,token
+	local	7,000000,mkUnlockFallibleExpr
+	con	0,010000,5,164,157,153,145,156
+	con	1,010000,8,143,157,155,160,157,165,156,144
+	con	2,010000,6,151,156,166,157,153,145
+	con	3,002000,3,257
+	con	4,010000,4,154,157,143,153
+	con	5,002000,3,364
+	con	6,010000,1,050
+	con	7,002000,3,365
+	con	8,010000,1,051
+	con	9,010000,1,073
 	declend
-	line	1563
+	line	1502
 	colm	11
 	synt	any
 	mark	L1
-	mark	L2
-	var	3
-	var	4
-	str	0
-	var	4
-	str	1
-	var	5
-	int	2
-	str	3
-	pnull
-	var	2
-	line	1567
-	colm	53
-	synt	any
-	field	line
-	pnull
-	var	2
-	line	1567
-	colm	64
-	synt	any
-	field	column
-	pnull
-	var	2
-	line	1567
-	colm	77
-	synt	any
-	field	filename
-	line	1567
-	colm	35
-	synt	any
-	invoke	5
-	var	5
-	int	4
-	str	5
-	pnull
-	var	2
-	line	1568
-	colm	49
-	synt	any
-	field	line
-	pnull
-	var	2
-	line	1568
-	colm	60
-	synt	any
-	field	column
-	pnull
-	var	2
-	line	1568
-	colm	73
-	synt	any
-	field	filename
-	line	1568
-	colm	35
-	synt	any
-	invoke	5
-	var	1
-	var	5
-	int	6
-	str	7
-	pnull
-	var	2
-	line	1570
-	colm	49
-	synt	any
-	field	line
-	pnull
-	var	2
-	line	1570
-	colm	60
-	synt	any
-	field	column
-	pnull
-	var	2
-	line	1570
-	colm	73
-	synt	any
-	field	filename
-	line	1570
-	colm	35
-	synt	any
-	invoke	5
-	line	1566
-	colm	28
-	synt	any
-	invoke	5
-	str	8
-	var	6
-	var	0
-	pnull
-	var	1
-	line	1572
-	colm	53
-	synt	any
-	llist	1
-	var	2
-	line	1572
-	colm	46
-	synt	any
-	invoke	3
-	line	1565
-	colm	23
-	synt	any
-	invoke	4
-	var	2
-	line	1564
-	colm	18
-	synt	any
-	invoke	2
-	line	1564
+	line	1510
 	colm	4
+	synt	if
+	mark0
+	pnull
+	var	3
+	var	0
+	line	1510
+	colm	11
+	synt	any
+	invoke	1
+	str	0
+	line	1510
+	colm	17
+	synt	any
+	lexeq
+	unmark
+	mark	L2
+	var	0
+	line	1510
+	colm	32
 	synt	any
 	pret
 lab L2
 	synt	any
 	pfail
+	line	1510
+	colm	4
+	synt	endif
 	unmark
 lab L1
+	mark	L3
+	mark	L4
+	var	4
+	var	5
+	str	1
+	var	5
+	str	2
+	var	6
+	int	3
+	str	4
 	pnull
-	line	1582
+	var	2
+	line	1516
+	colm	53
+	synt	any
+	field	line
+	pnull
+	var	2
+	line	1516
+	colm	64
+	synt	any
+	field	column
+	pnull
+	var	2
+	line	1516
+	colm	77
+	synt	any
+	field	filename
+	line	1516
+	colm	35
+	synt	any
+	invoke	5
+	var	6
+	int	5
+	str	6
+	pnull
+	var	2
+	line	1517
+	colm	49
+	synt	any
+	field	line
+	pnull
+	var	2
+	line	1517
+	colm	60
+	synt	any
+	field	column
+	pnull
+	var	2
+	line	1517
+	colm	73
+	synt	any
+	field	filename
+	line	1517
+	colm	35
+	synt	any
+	invoke	5
+	var	1
+	var	6
+	int	7
+	str	8
+	pnull
+	var	2
+	line	1519
+	colm	49
+	synt	any
+	field	line
+	pnull
+	var	2
+	line	1519
+	colm	60
+	synt	any
+	field	column
+	pnull
+	var	2
+	line	1519
+	colm	73
+	synt	any
+	field	filename
+	line	1519
+	colm	35
+	synt	any
+	invoke	5
+	line	1515
+	colm	28
+	synt	any
+	invoke	5
+	str	9
+	var	7
+	var	0
+	pnull
+	var	1
+	line	1521
+	colm	53
+	synt	any
+	llist	1
+	var	2
+	line	1521
+	colm	46
+	synt	any
+	invoke	3
+	line	1514
+	colm	23
+	synt	any
+	invoke	4
+	var	2
+	line	1513
+	colm	18
+	synt	any
+	invoke	2
+	line	1513
+	colm	4
+	synt	any
+	pret
+lab L4
+	synt	any
+	pfail
+	unmark
+lab L3
+	pnull
+	line	1524
 	colm	1
 	synt	any
 	pfail
@@ -41518,14 +41554,14 @@ proc mkUnlockSusp
 	local	0,001000,susp
 	local	1,001000,crl
 	local	2,001000,locn
-	local	3,000020,donode
-	local	4,000020,llist
-	local	5,000000,mkUnlockFallibleExpr
-	local	6,000000,put
-	local	7,000000,token
-	local	8,000000,push
-	local	9,000000,node
-	local	10,000000,mkBrace
+	local	3,000020,llist
+	local	4,000000,mkUnlockFallibleExpr
+	local	5,000000,put
+	local	6,000000,token
+	local	7,000000,push
+	local	8,000000,node
+	local	9,000000,mkBrace
+	local	10,000000,pop
 	con	0,010000,8,123,165,163,160,145,156,144,061
 	con	1,002000,1,2
 	con	2,002000,3,270
@@ -41534,28 +41570,25 @@ proc mkUnlockSusp
 	con	5,010000,6,151,156,166,157,153,145
 	con	6,002000,3,257
 	con	7,010000,4,154,157,143,153
-	con	8,002000,1,4
-	con	9,002000,3,364
-	con	10,010000,1,050
-	con	11,002000,1,6
-	con	12,002000,3,365
-	con	13,010000,1,051
-	con	14,002000,2,10
-	con	15,010000,8,143,157,155,160,157,165,156,144
+	con	8,002000,3,364
+	con	9,010000,1,050
+	con	10,002000,3,365
+	con	11,010000,1,051
+	con	12,010000,8,143,157,155,160,157,165,156,144
 	declend
-	line	1585
+	line	1527
 	colm	11
 	synt	any
 	mark	L1
 	pnull
 	pnull
 	var	0
-	line	1587
+	line	1529
 	colm	8
 	synt	any
 	field	label
 	str	0
-	line	1587
+	line	1529
 	colm	15
 	synt	any
 	asgn
@@ -41566,80 +41599,80 @@ lab L1
 	pnull
 	pnull
 	var	0
-	line	1588
+	line	1530
 	colm	8
 	synt	any
 	field	children
 	int	1
-	line	1588
+	line	1530
 	colm	17
 	synt	any
 	subsc
-	var	5
+	var	4
 	pnull
 	pnull
 	var	0
-	line	1588
+	line	1530
 	colm	49
 	synt	any
 	field	children
 	int	1
-	line	1588
+	line	1530
 	colm	58
 	synt	any
 	subsc
 	var	1
 	var	2
-	line	1588
+	line	1530
 	colm	44
 	synt	any
 	invoke	3
-	line	1588
+	line	1530
 	colm	21
 	synt	any
 	asgn
 	unmark
 lab L2
 	mark	L3
-	var	6
+	var	5
 	pnull
 	var	0
-	line	1589
+	line	1531
 	colm	12
 	synt	any
 	field	children
-	var	7
+	var	6
 	int	2
 	str	3
 	pnull
 	var	2
-	line	1589
+	line	1531
 	colm	44
 	synt	any
 	field	line
 	pnull
 	pnull
 	var	2
-	line	1589
+	line	1531
 	colm	55
 	synt	any
 	field	column
 	int	1
-	line	1589
+	line	1531
 	colm	62
 	synt	any
 	plus
 	pnull
 	var	2
-	line	1589
+	line	1531
 	colm	70
 	synt	any
 	field	filename
-	line	1589
+	line	1531
 	colm	28
 	synt	any
 	invoke	5
-	line	1589
+	line	1531
 	colm	7
 	synt	any
 	invoke	2
@@ -41647,132 +41680,114 @@ lab L2
 lab L3
 	mark	L4
 	pnull
-	var	4
+	var	3
 	pnull
-	line	1590
+	line	1532
 	colm	13
 	synt	any
 	llist	0
-	line	1590
+	line	1532
 	colm	10
 	synt	any
 	asgn
 	unmark
 lab L4
 	mark	L5
-	line	1591
+	line	1533
 	colm	4
 	synt	every
 	mark0
-	var	8
-	var	4
-	str	4
-	var	9
-	str	5
 	var	7
+	var	3
+	str	4
+	var	8
+	str	5
+	var	6
 	int	6
 	str	7
 	pnull
 	var	2
-	line	1592
+	line	1534
 	colm	53
 	synt	any
 	field	line
 	pnull
-	pnull
 	var	2
-	line	1592
+	line	1534
 	colm	64
 	synt	any
 	field	column
-	int	8
-	line	1592
-	colm	71
-	synt	any
-	plus
 	pnull
 	var	2
-	line	1592
-	colm	79
+	line	1534
+	colm	77
 	synt	any
 	field	filename
-	line	1592
+	line	1534
 	colm	35
 	synt	any
 	invoke	5
-	var	7
-	int	9
-	str	10
+	var	6
+	int	8
+	str	9
 	pnull
 	var	2
-	line	1593
+	line	1535
 	colm	49
 	synt	any
 	field	line
 	pnull
-	pnull
 	var	2
-	line	1593
+	line	1535
 	colm	60
 	synt	any
 	field	column
-	int	11
-	line	1593
-	colm	67
-	synt	any
-	plus
 	pnull
 	var	2
-	line	1593
-	colm	75
+	line	1535
+	colm	73
 	synt	any
 	field	filename
-	line	1593
+	line	1535
 	colm	35
 	synt	any
 	invoke	5
 	pnull
 	var	1
-	line	1594
+	line	1536
 	colm	30
 	synt	any
 	bang
-	var	7
-	int	12
-	str	13
+	var	6
+	int	10
+	str	11
 	pnull
 	var	2
-	line	1595
+	line	1537
 	colm	49
 	synt	any
 	field	line
 	pnull
-	pnull
 	var	2
-	line	1595
+	line	1537
 	colm	60
 	synt	any
 	field	column
-	int	14
-	line	1595
-	colm	67
-	synt	any
-	plus
 	pnull
 	var	2
-	line	1595
-	colm	76
+	line	1537
+	colm	73
 	synt	any
 	field	filename
-	line	1595
+	line	1537
 	colm	35
 	synt	any
 	invoke	5
-	line	1591
+	line	1533
 	colm	31
 	synt	any
 	invoke	5
-	line	1591
+	line	1533
 	colm	14
 	synt	any
 	invoke	3
@@ -41780,46 +41795,87 @@ lab L4
 lab L6
 	efail
 lab L7
-	line	1591
+	line	1533
 	colm	4
 	synt	endevery
 	unmark
 lab L5
 	mark	L8
-	var	8
-	var	4
-	str	15
-	line	1596
+	var	7
+	var	3
+	str	12
+	line	1538
 	colm	8
 	synt	any
 	invoke	2
 	unmark
 lab L8
 	mark	L9
-	var	6
+	var	5
 	pnull
 	var	0
-	line	1597
+	line	1539
 	colm	12
 	synt	any
 	field	children
-	var	10
 	var	9
-	var	4
+	var	8
+	var	3
 	invoke	-1
 	var	2
-	line	1597
+	line	1539
 	colm	30
 	synt	any
 	invoke	2
-	line	1597
+	line	1539
 	colm	7
 	synt	any
 	invoke	2
 	unmark
 lab L9
+	mark	L10
+	var	10
+	var	3
+	line	1541
+	colm	7
+	synt	any
+	invoke	1
+	unmark
+lab L10
+	mark	L11
+	var	7
+	var	3
+	str	4
+	var	0
+	str	12
+	line	1542
+	colm	8
+	synt	any
+	invoke	4
+	unmark
+lab L11
+	mark	L12
+	mark	L13
+	var	9
+	var	8
+	var	3
+	invoke	-1
+	var	2
+	line	1543
+	colm	18
+	synt	any
+	invoke	2
+	line	1543
+	colm	4
+	synt	any
+	pret
+lab L13
+	synt	any
+	pfail
+	unmark
+lab L12
 	pnull
-	line	1598
+	line	1544
 	colm	1
 	synt	any
 	pfail
@@ -41835,21 +41891,21 @@ proc mkUnlockSuspDo
 	local	7,000000,token
 	local	8,000000,put
 	local	9,000000,mkBrace
+	local	10,000000,pull
+	local	11,000000,pop
 	con	0,002000,1,2
 	con	1,010000,1,073
 	con	2,010000,6,151,156,166,157,153,145
 	con	3,002000,3,257
 	con	4,010000,4,154,157,143,153
-	con	5,002000,1,4
-	con	6,002000,3,364
-	con	7,010000,1,050
-	con	8,002000,1,6
-	con	9,002000,3,365
-	con	10,010000,1,051
-	con	11,002000,2,10
-	con	12,010000,8,143,157,155,160,157,165,156,144
+	con	5,002000,3,364
+	con	6,010000,1,050
+	con	7,002000,3,365
+	con	8,010000,1,051
+	con	9,002000,1,4
+	con	10,010000,8,143,157,155,160,157,165,156,144
 	declend
-	line	1601
+	line	1547
 	colm	11
 	synt	any
 	mark	L1
@@ -41857,12 +41913,12 @@ proc mkUnlockSuspDo
 	pnull
 	pnull
 	var	0
-	line	1603
+	line	1549
 	colm	8
 	synt	any
 	field	children
 	int	0
-	line	1603
+	line	1549
 	colm	17
 	synt	any
 	subsc
@@ -41870,22 +41926,22 @@ proc mkUnlockSuspDo
 	pnull
 	pnull
 	var	0
-	line	1603
+	line	1549
 	colm	49
 	synt	any
 	field	children
 	int	0
-	line	1603
+	line	1549
 	colm	58
 	synt	any
 	subsc
 	var	1
 	var	2
-	line	1603
+	line	1549
 	colm	44
 	synt	any
 	invoke	3
-	line	1603
+	line	1549
 	colm	21
 	synt	any
 	asgn
@@ -41895,18 +41951,18 @@ lab L1
 	pnull
 	var	3
 	pnull
-	line	1604
+	line	1550
 	colm	13
 	synt	any
 	llist	0
-	line	1604
+	line	1550
 	colm	10
 	synt	any
 	asgn
 	unmark
 lab L2
 	mark	L3
-	line	1605
+	line	1551
 	colm	4
 	synt	every
 	mark0
@@ -41920,105 +41976,87 @@ lab L2
 	str	4
 	pnull
 	var	2
-	line	1606
+	line	1552
 	colm	53
 	synt	any
 	field	line
 	pnull
-	pnull
 	var	2
-	line	1606
+	line	1552
 	colm	64
 	synt	any
 	field	column
-	int	5
-	line	1606
-	colm	71
-	synt	any
-	plus
 	pnull
 	var	2
-	line	1606
-	colm	79
+	line	1552
+	colm	77
 	synt	any
 	field	filename
-	line	1606
+	line	1552
 	colm	35
 	synt	any
 	invoke	5
 	var	7
-	int	6
-	str	7
+	int	5
+	str	6
 	pnull
 	var	2
-	line	1607
+	line	1553
 	colm	49
 	synt	any
 	field	line
 	pnull
-	pnull
 	var	2
-	line	1607
+	line	1553
 	colm	60
 	synt	any
 	field	column
-	int	8
-	line	1607
-	colm	67
-	synt	any
-	plus
 	pnull
 	var	2
-	line	1607
-	colm	75
+	line	1553
+	colm	73
 	synt	any
 	field	filename
-	line	1607
+	line	1553
 	colm	35
 	synt	any
 	invoke	5
 	pnull
 	var	1
-	line	1608
+	line	1554
 	colm	30
 	synt	any
 	bang
 	var	7
-	int	9
-	str	10
+	int	7
+	str	8
 	pnull
 	var	2
-	line	1609
+	line	1555
 	colm	49
 	synt	any
 	field	line
 	pnull
-	pnull
 	var	2
-	line	1609
+	line	1555
 	colm	60
 	synt	any
 	field	column
-	int	11
-	line	1609
-	colm	67
-	synt	any
-	plus
 	pnull
 	var	2
-	line	1609
-	colm	76
+	line	1555
+	colm	73
 	synt	any
 	field	filename
-	line	1609
+	line	1555
 	colm	35
 	synt	any
 	invoke	5
-	line	1605
+	line	1551
 	colm	31
 	synt	any
 	invoke	5
-	line	1605
+	line	1551
 	colm	14
 	synt	any
 	invoke	3
@@ -42026,7 +42064,7 @@ lab L2
 lab L4
 	efail
 lab L5
-	line	1605
+	line	1551
 	colm	4
 	synt	endevery
 	unmark
@@ -42037,16 +42075,16 @@ lab L3
 	pnull
 	pnull
 	var	0
-	line	1610
+	line	1556
 	colm	19
 	synt	any
 	field	children
-	int	5
-	line	1610
+	int	9
+	line	1556
 	colm	28
 	synt	any
 	subsc
-	line	1610
+	line	1556
 	colm	7
 	synt	any
 	invoke	2
@@ -42055,8 +42093,8 @@ lab L6
 	mark	L7
 	var	5
 	var	3
-	str	12
-	line	1611
+	str	10
+	line	1557
 	colm	8
 	synt	any
 	invoke	2
@@ -42067,12 +42105,12 @@ lab L7
 	pnull
 	pnull
 	var	0
-	line	1612
+	line	1558
 	colm	8
 	synt	any
 	field	children
-	int	5
-	line	1612
+	int	9
+	line	1558
 	colm	17
 	synt	any
 	subsc
@@ -42081,18 +42119,73 @@ lab L7
 	var	3
 	invoke	-1
 	var	2
-	line	1612
+	line	1558
 	colm	31
 	synt	any
 	invoke	2
-	line	1612
+	line	1558
 	colm	21
 	synt	any
 	asgn
 	unmark
 lab L8
+	mark	L9
+	var	10
+	var	3
+	line	1560
+	colm	8
+	synt	any
+	invoke	1
+	pop
+	var	10
+	var	3
+	line	1560
+	colm	22
+	synt	any
+	invoke	1
+	unmark
+lab L9
+	mark	L10
+	var	11
+	var	3
+	line	1561
+	colm	7
+	synt	any
+	invoke	1
+	pop
+	var	5
+	var	3
+	str	1
+	var	0
+	str	10
+	line	1561
+	colm	22
+	synt	any
+	invoke	4
+	unmark
+lab L10
+	mark	L11
+	mark	L12
+	var	9
+	var	6
+	var	3
+	invoke	-1
+	var	2
+	line	1562
+	colm	18
+	synt	any
+	invoke	2
+	line	1562
+	colm	4
+	synt	any
+	pret
+lab L12
+	synt	any
+	pfail
+	unmark
+lab L11
 	pnull
-	line	1613
+	line	1563
 	colm	1
 	synt	any
 	pfail
@@ -42105,7 +42198,7 @@ proc mkUnlockBreak
 	local	4,000000,mkUnlock
 	con	0,002000,1,1
 	declend
-	line	1619
+	line	1569
 	colm	11
 	synt	any
 	mark	L1
@@ -42117,18 +42210,18 @@ proc mkUnlockBreak
 	int	0
 	dup
 	var	2
-	line	1620
+	line	1570
 	colm	30
 	synt	any
 	plus
 	synt	any
 	sect
 	var	3
-	line	1620
+	line	1570
 	colm	19
 	synt	any
 	invoke	3
-	line	1620
+	line	1570
 	colm	4
 	synt	any
 	pret
@@ -42138,7 +42231,7 @@ lab L2
 	unmark
 lab L1
 	pnull
-	line	1621
+	line	1571
 	colm	1
 	synt	any
 	pfail
@@ -42156,14 +42249,14 @@ proc mkUnlockBreakExpr
 	con	1,002000,1,0
 	con	2,002000,1,1
 	declend
-	line	1626
+	line	1576
 	colm	11
 	synt	any
 	mark	L1
 	pnull
 	var	6
 	var	0
-	line	1628
+	line	1578
 	colm	5
 	synt	any
 	asgn
@@ -42171,7 +42264,7 @@ proc mkUnlockBreakExpr
 lab L1
 	mark	L2
 lab L3
-	line	1629
+	line	1579
 	colm	4
 	synt	while
 	mark0
@@ -42179,24 +42272,24 @@ lab L3
 	pnull
 	pnull
 	var	6
-	line	1629
+	line	1579
 	colm	11
 	synt	any
 	field	children
 	int	0
-	line	1629
+	line	1579
 	colm	20
 	synt	any
 	subsc
 	var	1
-	line	1629
+	line	1579
 	colm	24
 	synt	any
 	neqv
 	unmark
 	mark	L3
 	mark	L6
-	line	1630
+	line	1580
 	colm	7
 	synt	if
 	mark0
@@ -42204,23 +42297,23 @@ lab L3
 	pnull
 	int	1
 	var	3
-	line	1630
+	line	1580
 	colm	12
 	synt	any
 	numeq
 	dup
 	int	2
-	line	1630
+	line	1580
 	colm	21
 	synt	any
 	minus
 	asgn
 	unmark
-	line	1630
+	line	1580
 	colm	32
 	synt	any
 	pfail
-	line	1630
+	line	1580
 	colm	7
 	synt	endif
 	unmark
@@ -42230,16 +42323,16 @@ lab L6
 	pnull
 	pnull
 	var	6
-	line	1631
+	line	1581
 	colm	13
 	synt	any
 	field	children
 	int	0
-	line	1631
+	line	1581
 	colm	22
 	synt	any
 	subsc
-	line	1631
+	line	1581
 	colm	9
 	synt	any
 	asgn
@@ -42247,7 +42340,7 @@ lab L4
 	unmark
 	goto	L3
 lab L5
-	line	1629
+	line	1579
 	colm	4
 	synt	endwhile
 	unmark
@@ -42257,12 +42350,12 @@ lab L2
 	pnull
 	pnull
 	var	6
-	line	1633
+	line	1583
 	colm	5
 	synt	any
 	field	children
 	int	0
-	line	1633
+	line	1583
 	colm	14
 	synt	any
 	subsc
@@ -42273,18 +42366,18 @@ lab L2
 	int	2
 	dup
 	var	4
-	line	1633
+	line	1583
 	colm	52
 	synt	any
 	plus
 	synt	any
 	sect
 	var	5
-	line	1633
+	line	1583
 	colm	41
 	synt	any
 	invoke	3
-	line	1633
+	line	1583
 	colm	18
 	synt	any
 	asgn
@@ -42293,7 +42386,7 @@ lab L7
 	mark	L8
 	mark	L9
 	pnull
-	line	1634
+	line	1584
 	colm	4
 	synt	any
 	pret
@@ -42303,7 +42396,7 @@ lab L9
 	unmark
 lab L8
 	pnull
-	line	1635
+	line	1585
 	colm	1
 	synt	any
 	pfail
@@ -42361,34 +42454,34 @@ proc yyparse
 	con	14,002000,1,2
 	declend
 	filen	unigram.icn
-	line	3372
+	line	3322
 	colm	11
 	synt	any
 	mark	L1
-	line	3380
+	line	3330
 	colm	3
 	synt	if
 	mark0
 	pnull
 	var	6
-	line	3380
+	line	3330
 	colm	6
 	synt	any
 	null
 	unmark
 	var	7
-	line	3380
+	line	3330
 	colm	24
 	synt	any
 	invoke	0
-	line	3380
+	line	3330
 	colm	3
 	synt	endif
 	unmark
 lab L1
 	mark	L2
 	var	8
-	line	3381
+	line	3331
 	colm	14
 	synt	any
 	invoke	0
@@ -42398,7 +42491,7 @@ lab L2
 	pnull
 	var	9
 	int	0
-	line	3382
+	line	3332
 	colm	13
 	synt	any
 	asgn
@@ -42408,7 +42501,7 @@ lab L3
 	pnull
 	var	10
 	int	0
-	line	3383
+	line	3333
 	colm	13
 	synt	any
 	asgn
@@ -42419,11 +42512,11 @@ lab L4
 	var	11
 	pnull
 	int	1
-	line	3384
+	line	3334
 	colm	16
 	synt	any
 	neg
-	line	3384
+	line	3334
 	colm	13
 	synt	any
 	asgn
@@ -42433,7 +42526,7 @@ lab L5
 	pnull
 	var	2
 	int	0
-	line	3385
+	line	3335
 	colm	13
 	synt	any
 	asgn
@@ -42443,7 +42536,7 @@ lab L6
 	var	12
 	var	13
 	var	2
-	line	3386
+	line	3336
 	colm	7
 	synt	any
 	invoke	2
@@ -42451,7 +42544,7 @@ lab L6
 lab L7
 	mark	L8
 lab L9
-	line	3388
+	line	3338
 	colm	3
 	synt	repeat
 	mark	L9
@@ -42459,7 +42552,7 @@ lab L9
 	pnull
 	var	4
 	int	1
-	line	3389
+	line	3339
 	colm	14
 	synt	any
 	asgn
@@ -42473,15 +42566,15 @@ lab L12
 	pnull
 	var	2
 	int	1
-	line	3392
+	line	3342
 	colm	27
 	synt	any
 	plus
-	line	3392
+	line	3342
 	colm	19
 	synt	any
 	subsc
-	line	3392
+	line	3342
 	colm	8
 	synt	any
 	asgn
@@ -42489,28 +42582,28 @@ lab L12
 lab L13
 	mark	L14
 lab L15
-	line	3394
+	line	3344
 	colm	5
 	synt	while
 	mark0
 	pnull
 	var	0
 	int	0
-	line	3394
+	line	3344
 	colm	15
 	synt	any
 	numeq
 	unmark
 	mark	L15
 	mark	L18
-	line	3396
+	line	3346
 	colm	7
 	synt	if
 	mark0
 	pnull
 	var	11
 	int	0
-	line	3396
+	line	3346
 	colm	17
 	synt	any
 	numlt
@@ -42519,24 +42612,24 @@ lab L15
 	pnull
 	var	11
 	var	15
-	line	3397
+	line	3347
 	colm	24
 	synt	any
 	invoke	0
-	line	3397
+	line	3347
 	colm	16
 	synt	any
 	asgn
 	unmark
 lab L19
-	line	3399
+	line	3349
 	colm	9
 	synt	if
 	mark0
 	pnull
 	var	11
 	int	0
-	line	3399
+	line	3349
 	colm	19
 	synt	any
 	numlt
@@ -42545,25 +42638,25 @@ lab L19
 	pnull
 	var	11
 	int	0
-	line	3400
+	line	3350
 	colm	18
 	synt	any
 	asgn
 	unmark
 lab L20
-	line	3401
+	line	3351
 	colm	11
 	synt	if
 	mark0
 	pnull
 	pnull
 	var	16
-	line	3401
+	line	3351
 	colm	14
 	synt	any
 	nonnull
 	int	1
-	line	3401
+	line	3351
 	colm	23
 	synt	any
 	numeq
@@ -42571,17 +42664,17 @@ lab L20
 	var	17
 	var	2
 	var	11
-	line	3401
+	line	3351
 	colm	42
 	synt	any
 	invoke	2
-	line	3401
+	line	3351
 	colm	11
 	synt	endif
-	line	3399
+	line	3349
 	colm	9
 	synt	endif
-	line	3396
+	line	3346
 	colm	7
 	synt	endif
 	unmark
@@ -42594,29 +42687,29 @@ lab L18
 	pnull
 	var	2
 	int	1
-	line	3405
+	line	3355
 	colm	30
 	synt	any
 	plus
-	line	3405
+	line	3355
 	colm	22
 	synt	any
 	subsc
-	line	3405
+	line	3355
 	colm	11
 	synt	any
 	asgn
 	unmark
 lab L21
 	mark	L22
-	line	3407
+	line	3357
 	colm	7
 	synt	if
 	mark0
 	pnull
 	var	0
 	int	0
-	line	3407
+	line	3357
 	colm	15
 	synt	any
 	numne
@@ -42626,13 +42719,13 @@ lab L21
 	var	0
 	dup
 	var	11
-	line	3407
+	line	3357
 	colm	39
 	synt	any
 	plus
 	asgn
 	int	0
-	line	3407
+	line	3357
 	colm	51
 	synt	any
 	numge
@@ -42640,7 +42733,7 @@ lab L21
 	pnull
 	var	0
 	int	2
-	line	3408
+	line	3358
 	colm	15
 	synt	any
 	numle
@@ -42651,16 +42744,16 @@ lab L21
 	pnull
 	var	0
 	int	1
-	line	3408
+	line	3358
 	colm	38
 	synt	any
 	plus
-	line	3408
+	line	3358
 	colm	34
 	synt	any
 	subsc
 	var	11
-	line	3408
+	line	3358
 	colm	42
 	synt	any
 	numeq
@@ -42673,15 +42766,15 @@ lab L21
 	pnull
 	var	0
 	int	1
-	line	3411
+	line	3361
 	colm	31
 	synt	any
 	plus
-	line	3411
+	line	3361
 	colm	27
 	synt	any
 	subsc
-	line	3411
+	line	3361
 	colm	17
 	synt	any
 	asgn
@@ -42691,7 +42784,7 @@ lab L23
 	var	12
 	var	13
 	var	2
-	line	3412
+	line	3362
 	colm	13
 	synt	any
 	invoke	2
@@ -42701,7 +42794,7 @@ lab L24
 	var	12
 	var	20
 	var	21
-	line	3413
+	line	3363
 	colm	13
 	synt	any
 	invoke	2
@@ -42712,25 +42805,25 @@ lab L25
 	var	11
 	pnull
 	int	1
-	line	3414
+	line	3364
 	colm	19
 	synt	any
 	neg
-	line	3414
+	line	3364
 	colm	16
 	synt	any
 	asgn
 	unmark
 lab L26
 	mark	L27
-	line	3415
+	line	3365
 	colm	9
 	synt	if
 	mark0
 	pnull
 	var	10
 	int	0
-	line	3415
+	line	3365
 	colm	22
 	synt	any
 	numgt
@@ -42739,12 +42832,12 @@ lab L26
 	var	10
 	dup
 	int	1
-	line	3416
+	line	3366
 	colm	22
 	synt	any
 	minus
 	asgn
-	line	3415
+	line	3365
 	colm	9
 	synt	endif
 	unmark
@@ -42753,7 +42846,7 @@ lab L27
 	pnull
 	var	4
 	int	0
-	line	3417
+	line	3367
 	colm	18
 	synt	any
 	asgn
@@ -42763,7 +42856,7 @@ lab L28
 	unmark
 	pnull
 	goto	L17
-	line	3407
+	line	3357
 	colm	7
 	synt	endif
 	unmark
@@ -42776,29 +42869,29 @@ lab L22
 	pnull
 	var	2
 	int	1
-	line	3421
+	line	3371
 	colm	28
 	synt	any
 	plus
-	line	3421
+	line	3371
 	colm	20
 	synt	any
 	subsc
-	line	3421
+	line	3371
 	colm	9
 	synt	any
 	asgn
 	unmark
 lab L29
 	mark	L30
-	line	3423
+	line	3373
 	colm	5
 	synt	ifelse
 	mark	L31
 	pnull
 	var	0
 	int	0
-	line	3423
+	line	3373
 	colm	13
 	synt	any
 	numne
@@ -42808,13 +42901,13 @@ lab L29
 	var	0
 	dup
 	var	11
-	line	3423
+	line	3373
 	colm	37
 	synt	any
 	plus
 	asgn
 	int	0
-	line	3423
+	line	3373
 	colm	49
 	synt	any
 	numge
@@ -42822,7 +42915,7 @@ lab L29
 	pnull
 	var	0
 	int	2
-	line	3424
+	line	3374
 	colm	13
 	synt	any
 	numle
@@ -42833,16 +42926,16 @@ lab L29
 	pnull
 	var	0
 	int	1
-	line	3424
+	line	3374
 	colm	36
 	synt	any
 	plus
-	line	3424
+	line	3374
 	colm	32
 	synt	any
 	subsc
 	var	11
-	line	3424
+	line	3374
 	colm	40
 	synt	any
 	numeq
@@ -42855,15 +42948,15 @@ lab L29
 	pnull
 	var	0
 	int	1
-	line	3426
+	line	3376
 	colm	30
 	synt	any
 	plus
-	line	3426
+	line	3376
 	colm	26
 	synt	any
 	subsc
-	line	3426
+	line	3376
 	colm	16
 	synt	any
 	asgn
@@ -42873,7 +42966,7 @@ lab L33
 	pnull
 	var	4
 	int	1
-	line	3427
+	line	3377
 	colm	16
 	synt	any
 	asgn
@@ -42886,14 +42979,14 @@ lab L34
 	goto	L32
 lab L31
 	mark	L35
-	line	3431
+	line	3381
 	colm	7
 	synt	if
 	mark0
 	pnull
 	var	10
 	int	0
-	line	3431
+	line	3381
 	colm	20
 	synt	any
 	lexeq
@@ -42902,11 +42995,11 @@ lab L31
 	mark	L37
 	pnull
 	var	23
-	line	3432
+	line	3382
 	colm	10
 	synt	any
 	nonnull
-	line	3432
+	line	3382
 	colm	19
 	synt	any
 	esusp
@@ -42915,7 +43008,7 @@ lab L37
 	var	24
 lab L38
 	str	3
-	line	3432
+	line	3382
 	colm	27
 	synt	any
 	invoke	1
@@ -42925,24 +43018,24 @@ lab L36
 	var	9
 	dup
 	int	1
-	line	3433
+	line	3383
 	colm	17
 	synt	any
 	plus
 	asgn
-	line	3431
+	line	3381
 	colm	7
 	synt	endif
 	unmark
 lab L35
-	line	3435
+	line	3385
 	colm	7
 	synt	ifelse
 	mark	L39
 	pnull
 	var	10
 	int	4
-	line	3435
+	line	3385
 	colm	20
 	synt	any
 	numlt
@@ -42951,31 +43044,31 @@ lab L35
 	pnull
 	var	10
 	int	4
-	line	3436
+	line	3386
 	colm	19
 	synt	any
 	asgn
 	unmark
 lab L41
 lab L42
-	line	3437
+	line	3387
 	colm	9
 	synt	repeat
 	mark	L42
 	mark	L45
-	line	3438
+	line	3388
 	colm	11
 	synt	if
 	mark0
 	pnull
 	pnull
 	var	13
-	line	3438
+	line	3388
 	colm	14
 	synt	any
 	size
 	int	1
-	line	3438
+	line	3388
 	colm	24
 	synt	any
 	numlt
@@ -42984,11 +43077,11 @@ lab L42
 	mark	L47
 	pnull
 	var	23
-	line	3439
+	line	3389
 	colm	14
 	synt	any
 	nonnull
-	line	3439
+	line	3389
 	colm	23
 	synt	any
 	esusp
@@ -42997,7 +43090,7 @@ lab L47
 	var	24
 lab L48
 	str	5
-	line	3439
+	line	3389
 	colm	31
 	synt	any
 	invoke	1
@@ -43005,14 +43098,14 @@ lab L48
 lab L46
 	mark	L49
 	int	1
-	line	3440
+	line	3390
 	colm	13
 	synt	any
 	pret
 lab L49
 	synt	any
 	pfail
-	line	3438
+	line	3388
 	colm	11
 	synt	endif
 	unmark
@@ -43025,28 +43118,28 @@ lab L45
 	pnull
 	var	13
 	int	1
-	line	3442
+	line	3392
 	colm	35
 	synt	any
 	subsc
-	line	3442
+	line	3392
 	colm	26
 	synt	any
 	subsc
-	line	3442
+	line	3392
 	colm	15
 	synt	any
 	asgn
 	unmark
 lab L50
-	line	3443
+	line	3393
 	colm	11
 	synt	ifelse
 	mark	L51
 	pnull
 	var	0
 	int	0
-	line	3443
+	line	3393
 	colm	20
 	synt	any
 	numne
@@ -43056,13 +43149,13 @@ lab L50
 	var	0
 	dup
 	int	6
-	line	3443
+	line	3393
 	colm	33
 	synt	any
 	plus
 	asgn
 	int	0
-	line	3443
+	line	3393
 	colm	42
 	synt	any
 	numge
@@ -43070,7 +43163,7 @@ lab L50
 	pnull
 	var	0
 	int	2
-	line	3444
+	line	3394
 	colm	25
 	synt	any
 	numle
@@ -43081,16 +43174,16 @@ lab L50
 	pnull
 	var	0
 	int	1
-	line	3444
+	line	3394
 	colm	46
 	synt	any
 	plus
-	line	3444
+	line	3394
 	colm	42
 	synt	any
 	subsc
 	int	6
-	line	3444
+	line	3394
 	colm	50
 	synt	any
 	lexeq
@@ -43103,15 +43196,15 @@ lab L50
 	pnull
 	var	0
 	int	1
-	line	3445
+	line	3395
 	colm	35
 	synt	any
 	plus
-	line	3445
+	line	3395
 	colm	31
 	synt	any
 	subsc
-	line	3445
+	line	3395
 	colm	21
 	synt	any
 	asgn
@@ -43121,7 +43214,7 @@ lab L53
 	var	12
 	var	13
 	var	2
-	line	3446
+	line	3396
 	colm	17
 	synt	any
 	invoke	2
@@ -43131,7 +43224,7 @@ lab L54
 	var	12
 	var	20
 	var	21
-	line	3447
+	line	3397
 	colm	17
 	synt	any
 	invoke	2
@@ -43141,7 +43234,7 @@ lab L55
 	pnull
 	var	4
 	int	0
-	line	3448
+	line	3398
 	colm	22
 	synt	any
 	asgn
@@ -43153,19 +43246,19 @@ lab L56
 	goto	L52
 lab L51
 	mark	L57
-	line	3452
+	line	3402
 	colm	13
 	synt	if
 	mark0
 	pnull
 	pnull
 	var	13
-	line	3452
+	line	3402
 	colm	16
 	synt	any
 	size
 	int	0
-	line	3452
+	line	3402
 	colm	26
 	synt	any
 	numeq
@@ -43173,7 +43266,7 @@ lab L51
 	mark	L58
 	var	24
 	str	7
-	line	3453
+	line	3403
 	colm	20
 	synt	any
 	invoke	1
@@ -43181,14 +43274,14 @@ lab L51
 lab L58
 	mark	L59
 	int	1
-	line	3454
+	line	3404
 	colm	15
 	synt	any
 	pret
 lab L59
 	synt	any
 	pfail
-	line	3452
+	line	3402
 	colm	13
 	synt	endif
 	unmark
@@ -43196,7 +43289,7 @@ lab L57
 	mark	L60
 	var	25
 	var	13
-	line	3456
+	line	3406
 	colm	16
 	synt	any
 	invoke	1
@@ -43204,64 +43297,64 @@ lab L57
 lab L60
 	var	25
 	var	20
-	line	3457
+	line	3407
 	colm	16
 	synt	any
 	invoke	1
 lab L52
-	line	3443
+	line	3393
 	colm	11
 	synt	endifelse
 lab L43
 	unmark
 	goto	L42
 lab L44
-	line	3437
+	line	3387
 	colm	9
 	synt	endrepeat
 	goto	L40
 lab L39
 	mark	L61
-	line	3463
+	line	3413
 	colm	9
 	synt	if
 	mark0
 	pnull
 	var	11
 	int	0
-	line	3463
+	line	3413
 	colm	19
 	synt	any
 	numeq
 	unmark
 	mark	L62
 	int	1
-	line	3463
+	line	3413
 	colm	28
 	synt	any
 	pret
 lab L62
 	synt	any
 	pfail
-	line	3463
+	line	3413
 	colm	9
 	synt	endif
 	unmark
 lab L61
 	mark	L63
-	line	3464
+	line	3414
 	colm	9
 	synt	if
 	mark0
 	pnull
 	pnull
 	var	16
-	line	3464
+	line	3414
 	colm	12
 	synt	any
 	nonnull
 	int	1
-	line	3464
+	line	3414
 	colm	21
 	synt	any
 	numeq
@@ -43269,25 +43362,25 @@ lab L61
 	mark	L64
 	pnull
 	var	3
-	line	3465
+	line	3415
 	colm	18
 	synt	any
 	keywd	null
-	line	3465
+	line	3415
 	colm	15
 	synt	any
 	asgn
 	unmark
 lab L64
 	mark	L65
-	line	3466
+	line	3416
 	colm	11
 	synt	if
 	mark0
 	pnull
 	var	11
 	int	8
-	line	3466
+	line	3416
 	colm	21
 	synt	any
 	numle
@@ -43299,31 +43392,31 @@ lab L64
 	pnull
 	var	11
 	int	1
-	line	3466
+	line	3416
 	colm	53
 	synt	any
 	plus
-	line	3466
+	line	3416
 	colm	46
 	synt	any
 	subsc
-	line	3466
+	line	3416
 	colm	37
 	synt	any
 	asgn
-	line	3466
+	line	3416
 	colm	11
 	synt	endif
 	unmark
 lab L65
 	mark	L66
-	line	3467
+	line	3417
 	colm	11
 	synt	if
 	mark0
 	var	27
 	var	3
-	line	3467
+	line	3417
 	colm	21
 	synt	any
 	invoke	1
@@ -43331,7 +43424,7 @@ lab L65
 	pnull
 	var	3
 	int	0
-	line	3467
+	line	3417
 	colm	33
 	synt	any
 	numeq
@@ -43339,11 +43432,11 @@ lab L65
 	pnull
 	var	3
 	str	9
-	line	3467
+	line	3417
 	colm	46
 	synt	any
 	asgn
-	line	3467
+	line	3417
 	colm	11
 	synt	endif
 	unmark
@@ -43356,11 +43449,11 @@ lab L66
 	str	12
 	var	3
 	str	13
-	line	3468
+	line	3418
 	colm	16
 	synt	any
 	invoke	7
-	line	3464
+	line	3414
 	colm	9
 	synt	endif
 	unmark
@@ -43369,20 +43462,20 @@ lab L63
 	var	11
 	pnull
 	int	1
-	line	3471
+	line	3421
 	colm	19
 	synt	any
 	neg
-	line	3471
+	line	3421
 	colm	16
 	synt	any
 	asgn
 lab L40
-	line	3435
+	line	3385
 	colm	7
 	synt	endifelse
 lab L32
-	line	3423
+	line	3373
 	colm	5
 	synt	endifelse
 	unmark
@@ -43394,15 +43487,15 @@ lab L30
 	pnull
 	var	2
 	int	1
-	line	3474
+	line	3424
 	colm	30
 	synt	any
 	plus
-	line	3474
+	line	3424
 	colm	22
 	synt	any
 	subsc
-	line	3474
+	line	3424
 	colm	11
 	synt	any
 	asgn
@@ -43410,27 +43503,27 @@ lab L16
 	unmark
 	goto	L15
 lab L17
-	line	3394
+	line	3344
 	colm	5
 	synt	endwhile
 	unmark
 lab L14
 	mark	L67
-	line	3477
+	line	3427
 	colm	5
 	synt	if
 	mark0
 	pnull
 	var	4
 	int	0
-	line	3477
+	line	3427
 	colm	17
 	synt	any
 	numeq
 	unmark
 	unmark
 	goto	L10
-	line	3477
+	line	3427
 	colm	5
 	synt	endif
 	unmark
@@ -43443,15 +43536,15 @@ lab L67
 	pnull
 	var	0
 	int	1
-	line	3480
+	line	3430
 	colm	21
 	synt	any
 	plus
-	line	3480
+	line	3430
 	colm	17
 	synt	any
 	subsc
-	line	3480
+	line	3430
 	colm	9
 	synt	any
 	asgn
@@ -43463,18 +43556,18 @@ lab L68
 	pnull
 	var	20
 	var	1
-	line	3481
+	line	3431
 	colm	20
 	synt	any
 	subsc
-	line	3481
+	line	3431
 	colm	11
 	synt	any
 	asgn
 	unmark
 lab L69
 	mark	L70
-	line	3482
+	line	3432
 	colm	5
 	synt	if
 	mark0
@@ -43483,35 +43576,35 @@ lab L69
 	pnull
 	var	31
 	var	0
-	line	3482
+	line	3432
 	colm	21
 	synt	any
 	subsc
-	line	3482
+	line	3432
 	colm	26
 	synt	any
 	invoke	0
-	line	3482
+	line	3432
 	colm	12
 	synt	any
 	asgn
 	unmark
 	mark	L71
 	var	30
-	line	3482
+	line	3432
 	colm	34
 	synt	any
 	pret
 lab L71
 	synt	any
 	pfail
-	line	3482
+	line	3432
 	colm	5
 	synt	endif
 	unmark
 lab L70
 	mark	L72
-	line	3485
+	line	3435
 	colm	5
 	synt	every
 	mark0
@@ -43519,7 +43612,7 @@ lab L70
 	int	1
 	var	1
 	push1
-	line	3485
+	line	3435
 	colm	13
 	synt	any
 	toby
@@ -43527,7 +43620,7 @@ lab L70
 	mark0
 	var	25
 	var	13
-	line	3485
+	line	3435
 	colm	26
 	synt	any
 	invoke	1
@@ -43535,7 +43628,7 @@ lab L70
 lab L73
 	efail
 lab L74
-	line	3485
+	line	3435
 	colm	5
 	synt	endevery
 	unmark
@@ -43546,18 +43639,18 @@ lab L72
 	pnull
 	var	13
 	int	1
-	line	3486
+	line	3436
 	colm	24
 	synt	any
 	subsc
-	line	3486
+	line	3436
 	colm	13
 	synt	any
 	asgn
 	unmark
 lab L75
 	mark	L76
-	line	3488
+	line	3438
 	colm	5
 	synt	every
 	mark0
@@ -43565,7 +43658,7 @@ lab L75
 	int	1
 	var	1
 	push1
-	line	3488
+	line	3438
 	colm	13
 	synt	any
 	toby
@@ -43573,7 +43666,7 @@ lab L75
 	mark0
 	var	25
 	var	20
-	line	3488
+	line	3438
 	colm	26
 	synt	any
 	invoke	1
@@ -43581,7 +43674,7 @@ lab L75
 lab L77
 	efail
 lab L78
-	line	3488
+	line	3438
 	colm	5
 	synt	endevery
 	unmark
@@ -43594,28 +43687,28 @@ lab L76
 	pnull
 	var	0
 	int	1
-	line	3489
+	line	3439
 	colm	21
 	synt	any
 	plus
-	line	3489
+	line	3439
 	colm	17
 	synt	any
 	subsc
-	line	3489
+	line	3439
 	colm	9
 	synt	any
 	asgn
 	unmark
 lab L79
-	line	3490
+	line	3440
 	colm	5
 	synt	ifelse
 	mark	L80
 	pnull
 	var	2
 	int	0
-	line	3490
+	line	3440
 	colm	16
 	synt	any
 	numeq
@@ -43623,7 +43716,7 @@ lab L79
 	pnull
 	var	1
 	int	0
-	line	3490
+	line	3440
 	colm	26
 	synt	any
 	numeq
@@ -43632,7 +43725,7 @@ lab L79
 	pnull
 	var	2
 	int	14
-	line	3492
+	line	3442
 	colm	15
 	synt	any
 	asgn
@@ -43642,7 +43735,7 @@ lab L82
 	var	12
 	var	13
 	int	14
-	line	3493
+	line	3443
 	colm	11
 	synt	any
 	invoke	2
@@ -43652,21 +43745,21 @@ lab L83
 	var	12
 	var	20
 	var	29
-	line	3494
+	line	3444
 	colm	11
 	synt	any
 	invoke	2
 	unmark
 lab L84
 	mark	L85
-	line	3495
+	line	3445
 	colm	7
 	synt	if
 	mark0
 	pnull
 	var	11
 	int	0
-	line	3495
+	line	3445
 	colm	17
 	synt	any
 	numlt
@@ -43675,24 +43768,24 @@ lab L84
 	pnull
 	var	11
 	var	15
-	line	3496
+	line	3446
 	colm	24
 	synt	any
 	invoke	0
-	line	3496
+	line	3446
 	colm	16
 	synt	any
 	asgn
 	unmark
 lab L86
-	line	3497
+	line	3447
 	colm	9
 	synt	if
 	mark0
 	pnull
 	var	11
 	int	0
-	line	3497
+	line	3447
 	colm	19
 	synt	any
 	numlt
@@ -43700,26 +43793,26 @@ lab L86
 	pnull
 	var	11
 	int	0
-	line	3497
+	line	3447
 	colm	35
 	synt	any
 	asgn
-	line	3497
+	line	3447
 	colm	9
 	synt	endif
-	line	3495
+	line	3445
 	colm	7
 	synt	endif
 	unmark
 lab L85
-	line	3499
+	line	3449
 	colm	7
 	synt	if
 	mark0
 	pnull
 	var	11
 	int	0
-	line	3499
+	line	3449
 	colm	17
 	synt	any
 	numeq
@@ -43727,7 +43820,7 @@ lab L85
 	unmark
 	pnull
 	goto	L11
-	line	3499
+	line	3449
 	colm	7
 	synt	endif
 	goto	L81
@@ -43740,29 +43833,29 @@ lab L80
 	pnull
 	var	1
 	int	1
-	line	3504
+	line	3454
 	colm	26
 	synt	any
 	plus
-	line	3504
+	line	3454
 	colm	22
 	synt	any
 	subsc
-	line	3504
+	line	3454
 	colm	11
 	synt	any
 	asgn
 	unmark
 lab L87
 	mark	L88
-	line	3505
+	line	3455
 	colm	7
 	synt	ifelse
 	mark	L89
 	pnull
 	var	0
 	int	0
-	line	3505
+	line	3455
 	colm	15
 	synt	any
 	numne
@@ -43772,13 +43865,13 @@ lab L87
 	var	0
 	dup
 	var	2
-	line	3505
+	line	3455
 	colm	39
 	synt	any
 	plus
 	asgn
 	int	0
-	line	3505
+	line	3455
 	colm	52
 	synt	any
 	numge
@@ -43786,7 +43879,7 @@ lab L87
 	pnull
 	var	0
 	int	2
-	line	3506
+	line	3456
 	colm	15
 	synt	any
 	numle
@@ -43797,16 +43890,16 @@ lab L87
 	pnull
 	var	0
 	int	1
-	line	3506
+	line	3456
 	colm	38
 	synt	any
 	plus
-	line	3506
+	line	3456
 	colm	34
 	synt	any
 	subsc
 	var	2
-	line	3506
+	line	3456
 	colm	42
 	synt	any
 	numeq
@@ -43818,15 +43911,15 @@ lab L87
 	pnull
 	var	0
 	int	1
-	line	3507
+	line	3457
 	colm	31
 	synt	any
 	plus
-	line	3507
+	line	3457
 	colm	27
 	synt	any
 	subsc
-	line	3507
+	line	3457
 	colm	17
 	synt	any
 	asgn
@@ -43839,20 +43932,20 @@ lab L89
 	pnull
 	var	1
 	int	1
-	line	3510
+	line	3460
 	colm	31
 	synt	any
 	plus
-	line	3510
+	line	3460
 	colm	27
 	synt	any
 	subsc
-	line	3510
+	line	3460
 	colm	17
 	synt	any
 	asgn
 lab L90
-	line	3505
+	line	3455
 	colm	7
 	synt	endifelse
 	unmark
@@ -43861,7 +43954,7 @@ lab L88
 	var	12
 	var	13
 	var	2
-	line	3512
+	line	3462
 	colm	11
 	synt	any
 	invoke	2
@@ -43870,19 +43963,19 @@ lab L91
 	var	12
 	var	20
 	var	29
-	line	3513
+	line	3463
 	colm	11
 	synt	any
 	invoke	2
 lab L81
-	line	3490
+	line	3440
 	colm	5
 	synt	endifelse
 lab L10
 	unmark
 	goto	L9
 lab L11
-	line	3388
+	line	3338
 	colm	3
 	synt	endrepeat
 	unmark
@@ -43890,7 +43983,7 @@ lab L8
 	mark	L92
 	mark	L93
 	int	0
-	line	3517
+	line	3467
 	colm	3
 	synt	any
 	pret
@@ -43900,17 +43993,17 @@ lab L93
 	unmark
 lab L92
 	pnull
-	line	3518
+	line	3468
 	colm	1
 	synt	any
 	pfail
 	end
 proc action_null
 	declend
-	line	3524
+	line	3474
 	colm	11
 	synt	any
-	line	3526
+	line	3476
 	colm	1
 	synt	any
 	pfail
@@ -43920,7 +44013,7 @@ proc action_1
 	local	1,000000,valstk
 	con	0,002000,1,2
 	declend
-	line	3528
+	line	3478
 	colm	11
 	synt	any
 	mark	L1
