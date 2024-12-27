@@ -444,10 +444,7 @@ procedure test_other()
          "Record"        : ABC(1,2,3)
          "Procedure"     : test_other
          "Std function"  : cos
-# Add a dummy test to replace the Thread test, so the number of succesful tests remain unchanged
-         "Dummy Thread"  : &null
-# ToDo: investigate why this test causes a crash
-#         "Thread"        : thread hypersomnia()
+         "Thread"        : thread hypersomnia()
          "Co-expr"       : create stop()
          "Pattern"       : <abc>
          ]
