@@ -392,7 +392,7 @@ int co_chng(struct b_coexpr *ncp,
     * Each co-expression has its own posix thread. So always switch
     * to the new thread state when changing co-expressions.
     */
-#ifdef NativeCoSwitch
+#ifdef NativeCoswitch
    if (ccp->program != ncp->program) {
       curtstate = ncp->tstate;
       global_curtstate = ncp->tstate;
