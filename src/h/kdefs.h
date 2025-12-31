@@ -10,6 +10,7 @@
 
 KDef(allocated,K_ALLOCATED)
 KDef(ascii,K_ASCII)
+KDef(assert,K_ASSERT)
 KDef(clock,K_CLOCK)
 KDef(col,K_COL)
 KDef(collections,K_COLLECTIONS)

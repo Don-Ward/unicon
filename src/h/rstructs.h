@@ -579,7 +579,8 @@ struct threadstate {
 
    struct descrip Kywd_pos;         /* TLS */
    struct descrip ksub;             /* TLS */
-   struct descrip Kywd_ran;        /*  TLS  */
+   struct descrip Kywd_ran;         /* TLS */
+   struct descrip Kywd_asrt;        /* TLS */
 #ifdef PatternType
    int  K_patindex;                /* TLS */
 #endif                                 /* PatternType */
@@ -697,6 +698,7 @@ struct progstate {
     */
    struct descrip Kywd_err;          /* Probably mutex. not important now */
    struct descrip Kywd_prog;
+   struct descrip Kywd_asrt;
 
    struct descrip Kywd_trc;         /* leave global for now   */
    struct b_coexpr *Mainhead;
