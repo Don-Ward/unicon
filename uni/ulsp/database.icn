@@ -55,7 +55,7 @@ class LSPDB(
                                   "record", "static"]
       syntax_reserved_words := ["all", "by", "default", "do", "end", "else", "of", "then"]
 
-      keywords := ["&allocated", "&ascii", "&clock", "&col", "&collections", "&column",
+      keywords := ["&allocated", "&ascii", "&assert", "&clock", "&col", "&collections", "&column",
                    "&control", "&cset", "&current", "&date", "&dateline", "&digits", "&dump",
                    "&e", "&errno", "&error", "&errornumber", "&errortext", "&errorvalue",
                    "&errout", "&eventcode", "&eventsource", "&eventvalue", "&fail",

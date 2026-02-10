@@ -892,7 +892,7 @@ method isValidKeyword(expr)
 end
 
 #
-# check whether a keyword is not suppoted by the keyword() function
+# check whether a keyword is not supported by the keyword() function
 # and return its value or list of values
 #
 method isGlobalKeyword(expr)
@@ -928,6 +928,7 @@ method isGlobalKeyword(expr)
          "&resize":  { data := &resize      }
          "&ascii":   { data := &ascii       }
          "&cset":    { data := &cset        }
+         "&assert":  { data := &assert      }
          default:   { fail }
          }
          return image(data)
@@ -1483,7 +1484,7 @@ initially()
           "&errno","&window","&col","&row","&x","&y","&interval",
           "&control","&shift","&meta","&lpress","&mpress","&rpress",
           "&lrelease","&mrelease","&rrelease","&ldrag","&mdrag",
-          "&rdrag","&resize","&ascii","&cset"
+          "&rdrag","&resize","&ascii","&cset","&assert"
           )
    GlobalKeywords :=
       set("&clock","&date","&now","&dateline","&digits","&e","&fail",

@@ -40,7 +40,7 @@ contexts:
 
   keywords:
     - match: '(?x)(&(
-          allocated|ascii|clock|col|collections|column|control|cset|current|
+          allocated|ascii|assert|clock|col|collections|column|control|cset|current|
           date|dateline|digits|dump|
           errno|error|errornumber|errortext|errorvalue|errout|eventcode|eventsource|eventvalue|e|
           fail|features|file|host|input|interval|

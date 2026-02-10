@@ -834,7 +834,7 @@ Returns nil if line starts inside a string, t if in a comment."
       ;; shorter patterns that match portions such as cset
       (cons 
        (regexp-opt 
-		'("&allocated" "&ascii" "&clock" "&col" "&collections" "&column" 
+		'("&allocated" "&ascii" "&assert" "&clock" "&col" "&collections" "&column"
 		  "&control" "&cset" "&current" "&date" "&dateline" "&digits" "&dump"
 		  "&e" "&errno" "&error" "&errornumber" "&errortext" "&errorvalue" "&errout"
 		  "&eventcode" "&eventsource" "&eventvalue" "&fail" "&features" 
