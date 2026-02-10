@@ -1,0 +1,245 @@
+# Author    Don Ward
+#           January 2026
+#
+# Tests for the &assert keyword.
+#
+# This program makes heavy use of the verify PDCO.
+#   verify { label, test } executes the test expression inside the verify routine
+#   and keeps a count of successes and failures. It is thread safe.
+#   expectFail expects failure (which counts as a success).
+#
+# --------------------------------------------------------------------------------
+
+# The blank line before this is significant (to unidoc): it means the comments above
+# appear in unidoc's  description of the file.
+
+# Define a macro that hides stuff from unidoc (unidoc's parser doesn't run the
+# macroprocessor, so it sees a line beginning with a token it doesn't recognise
+# and ignores the line).
+$define HIDE
+
+package AssertKywdTest
+invocable all
+import testing
+link ximage
+
+HIDE global T                   # Testing instance.
+HIDE global Abort_on_Failed_Assertion
+
+# Variables for values that are used in subsequent T.verify predicates
+HIDE global x,y,z, mtx, locks
+
+# Run all tests
+procedure runTests(args)  # The first argument controls the value of quiet
+   T := tester("&assert Tests", \args[1] | 1, &output)
+   T.start()
+   T.verify {"initial settings", (T.passes = 0) & (T.fails = 0) } # Must be the first test (obvs)
+
+   T.verify {"initial value is null", /&assert }
+   &assert("This should not result in a call of &null { }")
+   # If we get to here, there was no call to a null procedure, which would have aborted the program.
+   T.verify {"If &assert is null, nothing happens", 0=0}
+
+   # ----------------------------------------
+   # Check the number of parameters.
+   &assert := "numArgs"
+   T.verify {"&assert is non null after string assignment", \&assert}
+   T.verify {"&assert has the assigned string value", &assert == "numArgs"}
+   x := &assert();  T.verify {"&assert() returns the expected number of arguments", x = 2}
+   x := &assert(1); T.verify {"&assert(1) returns the expected number of arguments", x = 3}
+   x := &assert(1,2,3,4); T.verify {"&assert(1,2,3,4) returns the expected number of arguments", x = 6}
+   x := &assert(
+                1,2,
+
+                3,
+                4,5
+                ); T.verify {"Multi-line assert calls return the expected number of arguments", x = 7}
+   x:= &assert(if /y then 4 else 5)
+   T.verify {"&assert(if /y then 4 else 5) " ||
+                "returns the expected number of arguments", x = 3}
+   # Check that only &assert() is modified, other ways are untouched.
+   x := &assert ! [[ 3,2,1,0 ]]; T.verify { "assert ! ... does not have arguments appended", x = 4}
+   x := &assert{1}; T.verify{ "&assert { ... } does not have arguments appended", x = 1}
+   x := &assert([create 2, create 3]); T.verify{ "&assert([ create ...]) does not have arguments appended", x = 2 }
+   z := &assert; x := z(); T.verify { "z := &assert; z()  does not have arguments apppended", x = 0 }
+
+   # ----------------------------------------
+   # Check that the added parameters are correct.
+   &assert := "FnLnArgs"
+   x := &assert();      T.verify {"Last two parameters are correct ()", x == &file || ":" || &line }
+   x := &assert(0);     T.verify {"Last two parameters are correct (0)", x == &file || ":" || &line }
+   x := &assert(1,2,3); T.verify {"Last two parameters are correct (1,2,3)", x == &file || ":" || &line }
+   x := &assert(1,
+                2,
+                3,
+
+                4
+                ); T.verify {"Last two parameters are correct (multi-line)", x == &file || ":" || &line }
+
+   # ----------------------------------------
+   # Make sure that &assert() and &assert{} do the same thing at run time.
+   # This produces output, which is checked by the test harness after this program has finished.
+   &assert := "printArgs"
+   T.verify {"&assert can be reassigned", &assert == "printArgs" }
+   # These invocations should not be transformed.
+   &assert { }
+   &assert { 41, &file, &line }
+   &assert { 42, "AssertKywdTest.icn", 85 }
+   &assert ! [[ create 42, create "AssertKywdTest.icn", create 86 ]]
+   # These invocations should be transformed.
+   &assert (42)
+   &assert (1,2,3,4,5,6)
+
+   # ----------------------------------------
+   # Check procedure values and null values
+   #???? &assert := printArgs
+   #???? write(ximage(&assert))
+   #???? T.verify {"&assert is non null after proc assignment", \&assert}
+   #???? T.verify {"&assert has the assigned proc value", &assert === printArgs}
+   #???? &assert := &null
+   #???? T.verify{"&assert can be reset to &null", /&assert}
+
+   # ----------------------------------------
+   # Check that each argument can be tested.
+   &assert := "testArgs"        # testArgs returns number of failures
+   x:=&assert(1);         T.verify{"A literal value succeeds", x=0}
+   x:=&assert(1,2,3,4);   T.verify{"Every literal value succeeds", x=0}
+   y := z := 4
+   x:= &assert(y=z);      T.verify{"Simple arithmetic comparisons succeed", x=0}
+   x:= &assert(y=3);      T.verify{"Comparisons with different values fail", x=1}
+   x:= &assert(y~=z, /z); T.verify{"All parameters are tested", x=2}
+   x:= &assert(y>9, z=4, 
+               \x, 0=1, 
+               ((y+z)=9));T.verify{"A mixture of failures and successes works correctly", x=3}
+
+   # ----------------------------------------
+   &assert := "failOnTestFail"
+   T.expectFail {"Assert failure causes procedure failure", 
+                    testAssertFailurePropagation() }
+
+   # ----------------------------------------
+   # ToDo:
+   #     Test multiple threads
+   #        Different threads can have different values for &assert
+   #        &assert value is inherited.
+   #     Test GC doesn't affect anything
+   # 
+
+   # ----------------------------------------
+   # Check correct behaviour inside critical regions.
+   /mtx := mutex()
+   # Check that the locking count is working.
+   lock(mtx);   &assert(locks = 1)  # runTests() will fail at this point if not true
+   lock(mtx);   &assert(locks = 2)  # runTests() will fail at this point if not true
+   unlock(mtx); &assert(locks = 1)  # runTests() will fail at this point if not true
+   unlock(mtx); &assert(locks = 0)  # runTests() will fail at this point if not true
+
+   T.expectFail {"Failing assert propagates failure (1)", failInsideRegion() }
+   T.verify {"Failing assert unlocks mutex (1)", locks = 0}
+   T.expectFail {"Failing assert propagates failure (2)", failInsideRegions() }
+   T.verify {"Failing assert unlocks mutex (2)", locks = 0}
+
+   # ----------------------------------------
+   # Check correct behaviour when using threads.
+   y := &assert
+   &assert(y ~== "numArgs")
+   write("Creating Thread")
+   wait(thread {
+      write("Thread running")
+      T.verify {"Threads inherit &assert", \&assert == y }
+      &assert := "numArgs"; T.verify {"Thread &assert value may change", &assert == "numArgs"}
+      # Can't use &assert() here because of the implicit fail
+      x := &assert{0};         T.verify {"Threads may use assert{args}", x=1 }
+      x := &assert ! [[0, 1]]; T.verify {"Threads may use assert ! args", x=2 }
+      T.verify {"&assert() OK in procedure called by thread", 3 = threadAssert(42)}
+   })
+   T.verify {"Thread values of &assert do not affect other threads", y == &assert }
+
+   # Check the example myAssert routine in failure mode
+   # **** Note the need to include the package name ****
+   &assert := "AssertKywdTest__myAssert"
+   T.verify { "myAssert in place", &assert == "AssertKywdTest__myAssert" }
+   T.expectFail {" Expected failure using myAssert", testFailureOfmyAssert() }
+   # ----------------------------------------
+   # Report results
+   T.finish()
+
+   # After reporting the results, stop the program
+   Abort_on_Failed_Assertion := 1
+   testFailureOfmyAssert()
+
+   write(&errout, "Problem: The program did not stop when an assert failed")
+   exit(T.fails + 1)
+end
+
+procedure testAssertFailurePropagation ( )
+   T.verify {"Expected &assert", &assert == "failOnTestFail"}
+   x := &assert(1=1, 2=2, 42 = (4 * integer(sqrt(100))) + 2) # should succeed (and return null)
+   T.verify {"Expected pass", /x}
+   &assert(0=1)  # expected to fail, and then exit procedure with a failure
+
+   # ----------------------------------------------------------------------
+   # Unreachable code -- if all goes to plan
+   T.expectFail {"Shouldn't happen", 0=0 }
+   return # success (which is actually the wrong answer)
+end
+
+procedure failInsideRegion (  )
+   T.verify {"Mutex unlocked (1)", locks = 0}
+   critical mtx: {
+      T.verify {"Mutex locked (1)", locks > 0}
+      &assert(0=1) # should unlock mtx and exit procedure
+      # Unreachable code (if all goes well)
+      T.verify{"Unreachable code (1)", 0=1} # will fail the test
+   }
+   return # success
+end
+
+procedure failInsideRegions (  )
+   critical mtx: {
+      T.verify {"Mutex locked (2)", locks = 1}
+      critical mtx: {
+         T.verify {"Mutex locked again", locks = 2 }
+         &assert(0=1) # should unlock mtx twice and exit procedure
+         # Unreachable code (if all goes well)
+         T.verify{"Unreachable code (2)", 0=1} # will fail the test
+      }
+   }
+   return # success
+end
+
+procedure threadAssert ( args  )
+   T.verify {"numArgs in use", &assert == "numArgs"}
+   return &assert(args)
+end
+
+
+procedure testFailureOfmyAssert (  )
+   &assert(0=1)
+   return # Success -- Unreachable
+end
+
+procedure myAssert ( args )
+   local n, nargs := *args - 2 # Subtract &file and &line
+
+   every n := 1 to nargs do {
+      if not @args[n] then {
+         # Check global variable for what to do on assertion failure
+         if \Abort_on_Failed_Assertion then {
+            stop(
+                 @args[nargs+1],            # &file
+                 ": Line ", @args[nargs+2], # &line
+                 " Assert failure  -- argument ", n)
+         } else {
+            write(&errout,
+                  @args[nargs+1],            # &file
+                  ": Line ", @args[nargs+2], # &line
+                  " Assert failure  -- argument ", n)
+            fail
+         }
+      }
+   }
+   # If we get to here, no assertion failed
+   return # success
+end
+

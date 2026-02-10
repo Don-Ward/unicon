@@ -1,0 +1,83 @@
+import AssertKywdTest
+invocable all
+# The first argument is the value of quiet, which affect the amount of output.
+#   quiet = 0      Output the result of each test (plus pass/fail counts)
+#   quiet = 1      Output any tests that fail plus pass/fail counts at the end
+#   quiet = 2      No output; just a count of failures (if any)
+#   The default value is 1.
+procedure main(args)
+   runTests(args)
+end
+
+# assert proc to return number of arguments supplied:  Never fails.
+procedure numArgs(args)
+   return *\args | 0
+end
+
+# assert proc to return the last two parameters (&file and &line): Never fails.
+procedure FnLnArgs(args)
+   if *args >= 2 then {
+      return @(args[*args-1]) || ":" || @(args[*args])
+   }
+   # otherwise fail
+end
+
+# assert proc to print each argument: never fails.
+procedure printArgs(args)
+   local a, n, v
+   write("There are ", *args, " parameters")
+   n := 0
+   every n := 1 to *args do {
+      v := @args[n]; write("  p", left(n, 4), v); n+:=1
+   }
+   return *args
+end
+
+# assert proc to evaluate each argument and return count of failures: Never fails.
+procedure testArgs(args)
+   local n, fails := 0, ln, fn
+   every n := 1 to *args -2 do {
+      if not @args[n] then {
+         /ln := @args[*args]
+         /fn := @args[*args-1]
+         write(fn, ": Line ", ln, " Failure: argument ", n)
+         fails +:= 1
+      }
+   }
+   return fails
+end
+
+# assert proc to fail iff one of the arguments fail.
+procedure failOnTestFail (args)
+   local n, ln, fn
+   every n := 1 to *args -2 do {
+      if not @args[n] then {
+         /ln := @args[*args]
+         /fn := @args[*args-1]
+         write(fn, ": Line ", ln, " Failure: argument ", n)
+         fail
+      }
+   }
+   return # success
+end
+
+# NB. These local lock/unlock procedures are not thread safe!
+#     But they aren't used concurrently in this test program.
+#     They have to be global so that they are used inside critical regions.
+procedure lock ( M )
+   /AssertKywdTest::locks := 0
+   #write("Locks = ", AssertKywdTest::locks)
+   proc("lock",0)(M)   # use the built-in lock()
+   if 50 < (AssertKywdTest::locks +:= 1) then stop("Lock recursion!")
+   return # success
+end
+
+procedure unlock ( M )
+   if /AssertKywdTest::locks | (AssertKywdTest::locks <= 0) then stop("impermissable unlock")
+   AssertKywdTest::locks -:= 1
+   proc("unlock",0)(M) # use the built-in unlock
+   #write("Unlocks = ", AssertKywdTest::locks)
+   return # success
+end
+
+
