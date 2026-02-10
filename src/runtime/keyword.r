@@ -51,6 +51,26 @@ keyword{4} allocated
       }
 end
 
+/*
+ * An assert procedure ...
+ *   expects to be called as a PDCO with at least three arguments.
+ *   expects the final two arguments to be the &file and &line of the invocation.
+ *   expects all its arguments (barring the final two) to succeed, and then succeeds.
+ *   may exit, or fail: a failure will cause the failure of the calling procedure.
+ */
+"&assert - a variable containing the name of an assert procedure."
+keyword{1} assert
+   abstract {
+      return kywdstr
+      }
+    inline {
+#if !ConcurrentCOMPILER
+      CURTSTATE();
+#endif                                  /* !ConcurrentCOMPILER */
+      return kywdstr(&kywd_asrt);
+      }
+end
+
 #if NT
 /* redefine deprected functions to fix warnings on Windows*/
 #define timezone _timezone

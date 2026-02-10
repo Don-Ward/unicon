@@ -554,6 +554,9 @@
 #define k_random kywd_ran.vword.integr  /* value of &random */
 #define k_trace kywd_trc.vword.integr   /* value of &trace */
 #define k_dump kywd_dmp.vword.integr    /* value of &dump */
+/* &assert can be a string or a proc. In either case the value is a pointer. */
+/* Fingers crossed that sptr is treated the same way as dptr */
+#define k_assert kywd_asrt.vword.dptr   /* value of &assert */
 
 #ifdef FncTrace
    #define k_ftrace kywd_ftrc.vword.integr      /* value of &ftrace */
@@ -1060,6 +1063,7 @@
       #define kywd_pos       (curtstate->Kywd_pos)
       #define k_subject      (curtstate->ksub)
       #define kywd_ran       (curtstate->Kywd_ran)
+      #define kywd_asrt      (curtstate->Kywd_asrt)
       #define value_tmp      (curtstate->Value_tmp)
 
       #define k_current     (curtstate->K_current)
@@ -1316,6 +1320,7 @@
         cp->have_thread = 1;                                            \
         SET_FLAG(cp->status, Ts_Attached);                              \
         SET_FLAG(cp->status, Ts_Posix);                                 \
+        cp->program->Kywd_asrt = curtstate->Kywd_asrt;                  \
         /*if (!(nstat & Ts_Sync ))pthread_detach(&new->thread);*/       \
       } while (0)
 #else                                  /* PthreadCoswitch */

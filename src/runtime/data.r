@@ -188,6 +188,7 @@ struct descrip k_eventvalue = {D_Null}; /* &eventvalue */
 #if !ConcurrentCOMPILER
 struct descrip k_subject;               /* &subject */
 struct descrip kywd_ran = {D_Integer};  /* &random */
+struct descrip kywd_asrt;               /* &assert */
 struct descrip kywd_pos = {D_Integer};  /* &pos */
 #endif                                  /* ConcurrentCOMPILER */
 #endif                                  /* MultiProgram */

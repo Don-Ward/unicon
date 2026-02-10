@@ -628,6 +628,9 @@ void init_threadstate( struct threadstate *ts)
 
    ts->Kywd_ran = zerodesc;
    IntVal(ts->Kywd_ran) = unicon_getrandom();
+
+   ts->Kywd_asrt = nulldesc;
+
    ts->K_errornumber = 0;
    ts->K_level = 0;
    ts->T_errornumber = 0;

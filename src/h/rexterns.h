@@ -176,6 +176,7 @@ extern struct b_real realzero;          /* real zero block */
    extern int k_patindex;               /* index for pattern element */
 #endif                         /* Pattern Type */
    extern struct descrip kywd_ran;      /* descriptor for &random */
+   extern struct descrip kywd_asrt;     /* descriptor for &assert */
    extern struct descrip t_errorvalue;  /* tentative k_errorvalue value */
 
 #ifdef DescripAmpAllocated

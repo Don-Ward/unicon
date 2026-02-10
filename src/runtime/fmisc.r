@@ -2193,6 +2193,9 @@ static stringint siKeywords[] = {
 #endif                                  /* Concurrent */
          fail;
          }
+      else if (strcmp(kname,"assert") == 0) {
+        return tstate->Kywd_asrt;
+      }
       else if (strcmp(kname,"collections") == 0) {
          suspend C_integer p->colltot;
          suspend C_integer p->collstat;

@@ -626,6 +626,10 @@ void initalloc(word codesize)
            postqual(&maps3);
         else if (Pointer(maps3))
            markblock(&maps3);
+
+        /* Mark the value of the &assert keyword */
+        PostDescrip(kywd_asrt);
+
 #ifdef Concurrent
        }                /* These two braces match the curtstate loop */
    }            /* and struct threadstate declaration above */
@@ -823,6 +827,8 @@ static void markprogram(struct progstate *pstate)
 #ifdef Graphics3D
    PostDescrip(pstate->AmperPick);
 #endif                                  /* Graphics3D */
+
+   PostDescrip(pstate->Kywd_asrt);
 
    /* Kywd_err, &error, always an integer */
    /* Kywd_pos, &pos, always an integer */
