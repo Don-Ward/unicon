@@ -317,6 +317,25 @@ the ASCII characters.
 
 \bigskip\hrule\vspace{0.1cm}
 \noindent
+{\bf \&assert := procedure  \textbar \hspace{0.1cm} string \textbar \hspace{0.1cm} null}
+\hfill {\bf Assertion routine}
+
+\noindent
+\index{ASCII, \&assert}\texttt{\&assert} specifies an assertion routine for the
+current thread.
+An invocation of \texttt{\&assert} using parentheses is converted into a
+User Defined Control Expression, \texttt{\&file} and \texttt{\&line} are
+appended to the parameters, and the invocation is surrounded by an expression
+that propagates failure -- so if an assert routine fails, the procedure that
+called it fails.
+Other invocations (e.g. using the apply operator \texttt{!} ) are not modified.
+\ConcurrencyIssue Assigning a value to \texttt{\&assert} in one thread does
+not affect the value in any another thread.
+Assigning \texttt{null} to it suppresses assertions in the current thread.
+The initial value is \texttt{null}.
+
+\bigskip\hrule\vspace{0.1cm}
+\noindent
 {\bf \&clock : string* } \hfill {\bf time of day}
 
 \noindent

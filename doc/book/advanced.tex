@@ -15,6 +15,7 @@ its results can be used in different locations throughout the program
 \item Evaluating several generator expressions in parallel
 \item Permuting strings using sophisticated mappings
 \item Using a more efficient list representation
+\item Assertions
 \end{itemize}
 
 \section{Limiting or Negating an Expression}
@@ -724,13 +725,76 @@ i.e. instead of
 \noindent list comprehension never produces an array.
 
 Although the conversion from the array form to the more general
-representation is automatic, when it is required, the conversion in the
+representation is automatic when it is required, the conversion in the
 other direction is not. To convert a general list into an array it may
 be supplied as the only parameter to the \texttt{list} function. If
 the list meets the requirements (either all the elements are integers
 or all of them are reals) the function will return a new array that
 consists of the values in the list. If the list does not meet the
 requirements, the function returns the list parameter unchanged.
+
+\section{Assertions}
+\index{assertion}
+
+ Assertions may be viewed as a form of documentation that is checked at run
+ time: they can describe the state the code expects to find before it runs
+ (its preconditions), and the state the code expects to result in when it
+ is finished running (postconditions); they can also specify, and enforce,
+ any invariants of a class.
+
+ In many languages the assert condition is either true -- and the program
+ continues execution -- or it is false and execution stops at that point.
+ Unicon allows you to write your own custom assert procedure that can
+ succeed, exit the program or fail.  If an assert routine fails then the
+ calling procedure also fails. There may also be more than one assert
+ condition.  The order of evaluation of the conditions is defined by the
+ assert routine, which is specified by making an assignment to
+ \texttt{\&assert}.
+
+ The \texttt{\&assert} keyword is treated specially by the compiler: if it
+ sees a normal invocation of \texttt{\&assert} it converts it to a user
+ defined control structure and adds \texttt{\&file} and \texttt{\&line} to
+ the parameters. It also surrounds the invocation with code that propagates
+ any failure. A line like
+   \iconcode{
+   \&assert(x>0, y<10)
+}
+\noindent is transformed by the Unicon compiler into
+\iconcode{
+    (\textbackslash\&assert \& ( \&assert\{x>0, y<10, \&file, \&line\} | fail ))
+}
+\noindent
+Here is a simple routine which, when assigned to \texttt{\&assert}, checks
+each supplied parameter and depending on the value of a global variable,
+either stops or fails if one of the parameters does not succeed.
+
+\iconcode{
+procedure myAssert ( args )\\
+\> local n, nargs := *args - 2 \# Subtract \&file and \&line\\
+\> every n := 1 to nargs do \{\\
+\>\> if not @args[n] then \{\\
+\>\>\> \# Check global variable for what to do on assertion failure\\
+\>\>\> if \textbackslash Abort\_on\_Failed\_Assertion then \{\\
+\>\>\>\> stop(\\
+\>\>\>\>\> @args[nargs+1], \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \# \&file\\
+\>\>\>\>\> ": Line ", @args[nargs+2], \# \&line\\
+\>\>\>\>\> " Assert failure  -{}- argument ", n)\\
+\>\>\>\} else \{\\
+\>\>\>\>  write(\&errout,\\
+\>\>\>\>\> @args[nargs+1], \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \# \&file\\
+\>\>\>\>\> ": Line ", @args[nargs+2], \# \&line\\
+\>\>\>\>\> " Assert failure  -{}- argument ", n)\\
+\>\>\>\> fail\\
+\>\>\> \}\\
+\>\> \}\\
+\> \}\\
+\> \# If we get to here, no assertion failed\\
+\> return \# success\\
+end\\
+}
+
+
+ 
 
 \section*{Summary}
 
