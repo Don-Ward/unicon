@@ -164,7 +164,7 @@ procedure Keyword(x1,x2)
                        "errno","window","col","row","x","y","interval",
                        "control","shift","meta","lpress","mpress","rpress",
                        "lrelease","mrelease","rrelease","ldrag","mdrag",
-                       "rdrag","resize","ascii","cset"])
+                       "rdrag","resize","ascii","cset", "assert"])
       }
 
    # verify that x2 is a valid keyword
@@ -1012,7 +1012,128 @@ procedure InvocationNode(args[])
    }
 end
 
+# Search a treenode (recursively) for a create expression
+procedure hasCreate ( tn )
+   local n
+   if type(tn) == "treenode" then {
+      if tn.label == "create" then return
+      every n := 1 to *tn.children do {
+         if hasCreate(tn.children[n]) then return
+      }
+   }
+end
+
+procedure isNotPDCO (args)
+   if /args then return # not a PDCO
+   if type(args) ~== "treenode" | args.label ~== "Brack" then return # not a PDCO
+   # If the children have at least one create expression, treat it as a PDCO
+   if hasCreate(args) then fail
+   return  # not a PDCO
+end
+
 procedure SimpleInvocation(expr11, lparen, args, rparen)
+   local pdco, col, asrt, fn, ln, n
+# Check for an invocation of &assert and turn it into a PDCO that might fail.
+   if (type(expr11) == "treenode") &
+      (expr11.label == "keyword")  &
+      (expr11.children[2].s == "assert") &
+      (isNotPDCO(args)) then {
+      # Propagate a failure, but if &assert is null, don't call the PDCO.
+      # i.e.  &assert(args...)  -->   ( \&assert & ( &assert{args...,&file,&line} | fail ))
+      fn := lparen.filename
+      if /args then {# An invocation of &assert with no arguments: odd, but legal.
+         # Add &file and &line as the only two arguments
+         asrt := node("Pdco1", expr11,
+                      token(LBRACE, "{", lparen.line, lparen.column, fn),
+                      node("pdcolist1",
+                           node("pdcolist0",
+                                node("keyword",
+                                     token(AND, "&", lparen.line, lparen.column+1, fn),
+                                     token(IDENT, "file", lparen.line, lparen.column+2, fn)
+                                    )
+                               ),
+                            token(COMMA, ",", lparen.line, lparen.column+5, fn),
+                            node("keyword",
+                                 token(AND, "&", lparen.line, lparen.column+6, fn),
+                                 token(IDENT, "line", lparen.line, lparen.column+7, fn)
+                                )
+                          ),
+                      token(RBRACE, "}", rparen.line, rparen.column+8, fn)
+                    )
+      } else { # Create the inner PDCO structure &assert { args ... , &file, &line}
+         ln := lparen.line
+         col := lparen.column
+         if (type(args) == "treenode") & (args.label == "elst1") then { # Many arguments
+            # The first argument in a PDCO is a special case
+            asrt := node("Pdco1", expr11,
+                         token(LBRACE,"{", ln, col, fn),
+                         pdco := node("pdcolist0", args.children[1]), # reassigned below
+                         token(RBRACE,"}", rparen.line, rparen.column+11, fn)
+                        )
+            # include the subsequent arguments
+            every n := 2 to *args.children by 2 do {
+               pdco := node("pdcolist1",
+                             pdco,              # previous arguments
+                             args.children[n],  # comma
+                             args.children[n+1] # next argument
+                           )
+            }
+         } else { # single argument
+            asrt := node("Pdco1", expr11,
+                         token(LBRACE,"{", ln, col, fn),
+                         pdco := node("pdcolist0", args), # reassigned below
+                         token(RBRACE,"}", rparen.line, rparen.column+11, fn)
+                        )
+         }
+
+         # Add &file and &line to the end of the arguments
+         pdco := node("pdcolist1",
+                       node("pdcolist1",
+                            pdco,
+                            token(COMMA, ",", rparen.line, rparen.column, fn),
+                            node("keyword",
+                                 token(AND, "&", rparen.line, rparen.column+1, fn),
+                                 token(IDENT, "file", rparen.line, rparen.column+2, fn)
+                                )
+                          ),
+                       token(COMMA, ",", rparen.line, rparen.column+5, fn),
+                       node("keyword",
+                                   token(AND, "&", rparen.line, rparen.column+6, fn),
+                                   token(IDENT, "line", rparen.line, rparen.column+7, fn)
+                                  )
+                     )
+         # fix up the top level
+         asrt.children[3] := pdco
+      }
+
+      # Now create (\&assert & (PDCO | fail))
+      col := lparen.column - 1
+      asrt := node("Paren",
+                   token(LPAREN, "(", lparen.line, col+:=1,fn),
+                   node("and",
+                        node("ubackslash",
+                             token(BACKSLASH, "\\", lparen.line, col+:=1,fn),
+                             node("keyword",
+                                  token(AND, "&", lparen.line, col+:=1,fn),
+                                  token(IDENT, "assert", lparen.line, col+:=6,fn)
+                                  )
+                            ),
+                        token(AND, "&", lparen.line, col+:=1,fn),
+                        node("Paren",
+                             token(LPAREN, "(", lparen.line, col+:=1,fn),
+                             node(BAR,
+                                  asrt,
+                                  token(BAR, "|", rparen.line, col+:=1,fn),
+                                  token(FAIL, "fail", rparen.line, col+:=4,fn)
+                                 ),
+                             token(RPAREN, ")", rparen.line, col+:=1,fn)
+                            )
+                       ),
+                   token(RPAREN, ")", rparen.line, col+:=1,fn)
+                  )
+      return asrt
+   } # End of transformation of &assert( ... )
+
    if /iconc then
       return node("invoke", expr11, lparen, args, rparen)
 
@@ -1046,6 +1167,8 @@ procedure SimpleInvocation(expr11, lparen, args, rparen)
       }
    return node("invoke", expr11, lparen, args, rparen)
 end
+
+
 
 procedure SuperMethodInvok(args[])
    tmpcount +:= 1
