@@ -7,7 +7,7 @@ int rngAsgnState(struct threadstate *ts, struct descrip v)
 {
   word elems;
 
-  if (ts->rng == NULL) return 0; /* No rng is loaded (shouldn't happen) */
+  if ((ts->rng == NULL) || (ChkNull(ts->Kywd_ran))) return 0; /* No rng is loaded (shouldn't happen) */
 
   elems = 1 + (((ts->rng->info.property.stateBits + 7)/8 + sizeof(word) - 1)/sizeof(word));
 
@@ -21,7 +21,6 @@ int rngAsgnState(struct threadstate *ts, struct descrip v)
       (v.vword.bptr->List.listhead->Intarray.a[0] == ts->rng->info.id))
     {
     /* Copy the array into the rng state */
-/*dbg*    fprintf(stderr, "Overwriting rng state vector\n"); fflush(stderr); */
       memcpy(&(ts->Kywd_ran.vword.bptr->List.listhead->Intarray.a[0]),
              &(v.vword.bptr->List.listhead->Intarray.a[0]),
              elems * sizeof(word));
