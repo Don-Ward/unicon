@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="basic"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>uscribe User Guide</title>
+<script>
+(function(){try{var t=localStorage.getItem('uscribe-theme');
+if(t==='basic'||t==='classic'||t==='dark')
+document.documentElement.setAttribute('data-theme',t);
+else t='basic';
+document.write('<link id="theme-css" rel="stylesheet" href="_static/theme-'+t+'.css">');
+}catch(e){document.write('<link id="theme-css" rel="stylesheet" href="_static/theme-basic.css">');}})();
+</script>
+<noscript><link id="theme-css" rel="stylesheet" href="_static/theme-basic.css"></noscript>
+<link rel="stylesheet" href="_static/highlight.css">
+<script defer src="_static/search.js"></script>
+<script defer src="_static/highlight-unicon.js"></script>
+<script defer src="_static/theme-switcher.js"></script>
+</head><body>
+<div class="layout">
+<nav class="sidebar" aria-label="Book contents">
+<a class="sidebar-logo" href="index.html"><img src="_static/uscribe-logo.png" alt="uscribe User Guide"></a>
+<div class="book-title"><a href="index.html">uscribe User Guide</a></div>
+<label class="search-hint" for="theme-select">Theme</label>
+<select class="search-box" id="theme-select" aria-label="Color theme">
+<option value="basic">basic</option>
+<option value="classic">classic</option>
+<option value="dark">dark</option>
+</select>
+<p class="search-hint">Filter chapters and sections; Enter for full search</p>
+<input class="search-box" id="nav-search" type="search" 
+placeholder="Search..." aria-label="Filter chapter and section list">
+<ol id="nav-toc">
+<li class="toc-l1"><a href="intro.html">Introduction</a></li>
+<li class="toc-l1"><a href="install.html">Installation</a></li>
+<li class="toc-l1"><a href="quickstart.html">Quick Start</a></li>
+<li class="toc-l1"><a href="reports.html">Reports</a></li>
+<li class="current toc-l1"><a href="config.html">Book Configuration
+</a>
+<ol class="toc-local">
+<li class="toc-sec"><a href="#how-the-file-is-found"><span class="toc-num">5.1</span>How the file is found
+</a>
+</li>
+<li class="toc-sec"><a href="#file-format"><span class="toc-num">5.2</span>File format
+</a>
+</li>
+<li class="toc-sec"><a href="#title"><span class="toc-num">5.3</span>title
+</a>
+</li>
+<li class="toc-sec"><a href="#copyright"><span class="toc-num">5.4</span>copyright
+</a>
+</li>
+<li class="toc-sec"><a href="#logo"><span class="toc-num">5.5</span>logo
+</a>
+</li>
+<li class="toc-sec"><a href="#name"><span class="toc-num">5.6</span>name
+</a>
+</li>
+<li class="toc-sec"><a href="#theme"><span class="toc-num">5.7</span>theme
+</a>
+</li>
+<li class="toc-sec"><a href="#themepath"><span class="toc-num">5.8</span>themePath
+</a>
+</li>
+<li class="toc-sec"><a href="#docclass"><span class="toc-num">5.9</span>docclass
+</a>
+</li>
+<li class="toc-sec"><a href="#frontmatter"><span class="toc-num">5.10</span>frontmatter
+</a>
+</li>
+<li class="toc-sec"><a href="#toctree"><span class="toc-num">5.11</span>toctree
+</a>
+</li>
+<li class="toc-sec"><a href="#sources"><span class="toc-num">5.12</span>sources
+</a>
+</li>
+<li class="toc-sec"><a href="#not-in-book-conf"><span class="toc-num">5.13</span>Not in book.conf
+</a>
+</li>
+<li class="toc-sec"><a href="#this-guide"><span class="toc-num">5.14</span>This guide
+</a>
+</li>
+</ol>
+</li>
+<li class="toc-l1"><a href="markup.html">Markup Reference</a></li>
+<li class="toc-l1"><a href="themes.html">Themes</a></li>
+<li class="toc-l1"><a href="cli.html">Command Line</a></li>
+</ol>
+<p class="search-hint"><a href="search.html">Search page</a></p>
+</nav>
+<div class="main">
+<div class="prevnext">
+<a href="reports.html">&larr; Reports</a>
+<a href="markup.html">Markup Reference &rarr;</a>
+</div>
+<h2 id="book-configuration">
+Book Configuration
+</h2>
+<p>
+Book-wide settings live in 
+<code>book.conf</code>
+. Chapter order lives in 
+<code>book.manifest</code>
+. Per-chapter author, date, and copyright live in the RST field list (see 
+<a href="markup.html#markup-reference">Markup Reference</a>
+). Build invocation (
+<code>--format</code>
+, 
+<code>--targetDir</code>
+) stays on the command line.
+</p>
+<h3 id="how-the-file-is-found">
+How the file is found
+</h3>
+<ol start="1">
+<li>
+<p>
+<code>--config=FILE</code>
+ if you pass it (the file must exist).
+</p>
+</li>
+<li>
+<p>
+Otherwise 
+<code>book.conf</code>
+ in the same directory as the manifest.
+</p>
+</li>
+<li>
+<p>
+If that file is missing, uscribe continues with CLI values and built-in defaults.
+</p>
+</li>
+</ol>
+<p>
+With the usual defaults (
+<code>book.manifest</code>
+ in the current directory), a book directory only needs:
+</p>
+<pre><code class="language-sh">uscribe --targetDir=./out
+</code></pre>
+<h3 id="file-format">
+File format
+</h3>
+<p>
+One 
+<code>key: value</code>
+ per line. Keys are case-insensitive. Blank lines and 
+<code>#</code>
+ comments are ignored. A leading colon on the key is allowed (
+<code>:title:</code>
+), so the file can look like an RST field list if you prefer.
+</p>
+<p>
+Unknown keys print a warning on standard error and are ignored. Values do not wrap to the next line.
+</p>
+<p>
+<code>logo</code>
+ and 
+<code>themePath</code>
+ are paths. Relative paths are resolved against the directory that contains 
+<code>book.conf</code>
+, not against the process current working directory. Absolute paths are left as-is.
+</p>
+<p>
+Command-line options override the file. The Makefile for this guide passes 
+<code>--theme</code>
+ so 
+<code>make classic</code>
+ can change the initial skin without editing 
+<code>book.conf</code>
+.
+</p>
+<h3 id="title">
+title
+</h3>
+<p>
+Book title: HTML 
+<code>&lt;title&gt;</code>
+, sidebar heading, index heading, and the LaTeX 
+<code>\\title</code>
+ / title page. Default if unset: 
+<code>Untitled Book</code>
+. CLI: 
+<code>--title</code>
+.
+</p>
+<h3 id="copyright">
+copyright
+</h3>
+<p>
+Book-wide footer text after © on HTML pages (for example 
+<code>2026, Jafar Al-Gharaibeh</code>
+). This is not a chapter byline; a chapter 
+<code>:copyright:</code>
+ field is separate (see 
+<a href="markup.html#markup-reference">Markup Reference</a>
+). CLI: 
+<code>--copyright</code>
+.
+</p>
+<h3 id="logo">
+logo
+</h3>
+<p>
+Image file. HTML copies it to 
+<code>targetDir/_static/</code>
+ and shows it in the sidebar. LaTeX / PDF copies it next to the 
+<code>.tex</code>
+ and places it on the title page (page 1), not as a numbered figure. CLI: 
+<code>--logo</code>
+.
+</p>
+<h3 id="name">
+name
+</h3>
+<p>
+Basename for the book 
+<code>.tex</code>
+ / 
+<code>.pdf</code>
+ (and the HTML footer 
+<strong>
+pdf
+</strong>
+ link). A trailing 
+<code>.pdf</code>
+ or 
+<code>.tex</code>
+ is stripped. Letters, digits, 
+<code>_</code>
+, and 
+<code>-</code>
+ only. Default: 
+<code>book</code>
+. Ignored for report collections (one PDF per report, named like the HTML stem). CLI: 
+<code>--name</code>
+.
+</p>
+<h3 id="theme">
+theme
+</h3>
+<p>
+Initial HTML theme: 
+<code>basic</code>
+, 
+<code>classic</code>
+, or 
+<code>dark</code>
+ (or a custom name under 
+<code>themePath</code>
+). Default: 
+<code>basic</code>
+. Readers can still switch skins in the sidebar. Ignored for LaTeX / PDF. CLI: 
+<code>--theme</code>
+.
+</p>
+<h3 id="themepath">
+themePath
+</h3>
+<p>
+Directory that contains theme subdirectories (
+<code>DIR/basic/static</code>
+, …). Also accepted as 
+<code>themepath</code>
+ or 
+<code>theme_path</code>
+. If omitted, uscribe searches 
+<code>./themes</code>
+, 
+<code>../themes</code>
+, 
+<code>themes</code>
+, then Unicon's 
+<code>uni/uscribe/themes</code>
+ via 
+<code>&amp;features</code>
+ (
+<code>Binaries at</code>
+ / 
+<code>Libraries at</code>
+). CLI: 
+<code>--themePath</code>
+.
+</p>
+<h3 id="docclass">
+docclass
+</h3>
+<p>
+<code>book</code>
+ (default) or 
+<code>report</code>
+. Report mode is usually selected per chapter with 
+<code>:docclass: report</code>
+ or 
+<code>:trnumber:</code>
+; this key forces the class for every chapter. Also accepted as 
+<code>doc_class</code>
+ or 
+<code>doc-class</code>
+. CLI: 
+<code>--docclass</code>
+.
+</p>
+<p>
+A report is one HTML page and one PDF. The sidebar on that page is the report's sections. 
+<code>index.html</code>
+ is a catalog of links. Workflow and live examples: 
+<a href="reports.html#reports">Reports</a>
+.
+</p>
+<h3 id="frontmatter">
+frontmatter
+</h3>
+<p>
+How many leading chapters are unnumbered front matter (a preface before chapter 1). Default 
+<code>0</code>
+. When set, the HTML sidebar numbers sections as 
+<code>1.1</code>
+, 
+<code>2.3.1</code>
+, … matching the Word outline, and the PDF uses 
+<code>\\frontmatter</code>
+ for those chapters, then the table of contents, then 
+<code>\\mainmatter</code>
+.
+</p>
+<h3 id="toctree">
+toctree
+</h3>
+<p>
+Sidebar tree lines (vertical spine and ticks) on the current chapter's section list. Default off: numbers and indentation only. Set 
+<code>toctree: true</code>
+ (also 
+<code>yes</code>
+ / 
+<code>on</code>
+ / 
+<code>1</code>
+; aliases 
+<code>toc-tree</code>
+, 
+<code>toc_tree</code>
+) to draw the lines.
+</p>
+<h3 id="sources">
+sources
+</h3>
+<p>
+Copy each chapter's RST into 
+<code>targetDir/_sources/</code>
+ (as 
+<code>.txt</code>
+) and add a 
+<strong>
+source
+</strong>
+ (or report 
+<strong>
+txt
+</strong>
+) footer link. Default on. Set 
+<code>sources: false</code>
+ (also 
+<code>no</code>
+ / 
+<code>off</code>
+ / 
+<code>0</code>
+; alias 
+<code>source</code>
+) so the published HTML tree does not include RST. A rebuild in the same 
+<code>--targetDir</code>
+ also deletes a leftover 
+<code>_sources/</code>
+ from a previous build. LaTeX/PDF builds still write 
+<code>.tex</code>
+ next to the PDF; they are a different 
+<code>--format</code>
+ from HTML. CLI: 
+<code>--sources=no</code>
+.
+</p>
+<h3 id="not-in-book-conf">
+Not in book.conf
+</h3>
+<p>
+These stay on the command line because they describe one 
+<em>
+build
+</em>
+, not the book:
+</p>
+<ul>
+<li>
+<p>
+<code>--format</code>
+ — 
+<code>html</code>
+, 
+<code>latex</code>
+, or 
+<code>pdf</code>
+</p>
+</li>
+<li>
+<p>
+<code>--targetDir</code>
+ — output directory (default 
+<code>./htmlBook</code>
+ or 
+<code>./latexBook</code>
+)
+</p>
+</li>
+<li>
+<p>
+<code>--manifest</code>
+ — chapter list (default 
+<code>book.manifest</code>
+)
+</p>
+</li>
+</ul>
+<h3 id="this-guide">
+This guide
+</h3>
+<p>
+The file that builds this manual:
+</p>
+<pre><code class="language-text"># Book-level settings (not chapter order — that is book.manifest).
+# Paths are relative to this file. Command-line options override.
+title: uscribe User Guide
+copyright: 2026, Jafar Al-Gharaibeh
+logo: images/uscribe-logo.png
+name: uscribe-userguide
+theme: basic
+</code></pre>
+<p>
+Chapter order is 
+<code>book.manifest</code>
+ in the same directory.
+</p>
+<div class="prevnext">
+<a href="reports.html">&larr; Reports</a>
+<a href="markup.html">Markup Reference &rarr;</a>
+</div>
+<footer class="footer" role="contentinfo">
+&copy; 2026, Jafar Al-Gharaibeh. | Powered by uscribe | <a href="uscribe-userguide.pdf">pdf</a> | <a href="_sources/config.rst.txt" rel="nofollow">source</a>
+</footer>
+</div></div>
+</body></html>

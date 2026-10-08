@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="basic"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>uscribe User Guide</title>
+<script>
+(function(){try{var t=localStorage.getItem('uscribe-theme');
+if(t==='basic'||t==='classic'||t==='dark')
+document.documentElement.setAttribute('data-theme',t);
+else t='basic';
+document.write('<link id="theme-css" rel="stylesheet" href="_static/theme-'+t+'.css">');
+}catch(e){document.write('<link id="theme-css" rel="stylesheet" href="_static/theme-basic.css">');}})();
+</script>
+<noscript><link id="theme-css" rel="stylesheet" href="_static/theme-basic.css"></noscript>
+<link rel="stylesheet" href="_static/highlight.css">
+<script defer src="_static/search.js"></script>
+<script defer src="_static/highlight-unicon.js"></script>
+<script defer src="_static/theme-switcher.js"></script>
+</head><body>
+<div class="layout">
+<nav class="sidebar" aria-label="Book contents">
+<a class="sidebar-logo" href="index.html"><img src="_static/uscribe-logo.png" alt="uscribe User Guide"></a>
+<div class="book-title"><a href="index.html">uscribe User Guide</a></div>
+<label class="search-hint" for="theme-select">Theme</label>
+<select class="search-box" id="theme-select" aria-label="Color theme">
+<option value="basic">basic</option>
+<option value="classic">classic</option>
+<option value="dark">dark</option>
+</select>
+<p class="search-hint">Filter chapters and sections; Enter for full search</p>
+<input class="search-box" id="nav-search" type="search" 
+placeholder="Search..." aria-label="Filter chapter and section list">
+<ol id="nav-toc">
+<li class="current toc-l1"><a href="intro.html">Introduction
+</a>
+<ol class="toc-local">
+<li class="toc-sec"><a href="#what-uscribe-is-for"><span class="toc-num">1.1</span>What uscribe is for
+</a>
+</li>
+<li class="toc-sec"><a href="#a-taste-of-unicon-highlighting"><span class="toc-num">1.2</span>A taste of Unicon highlighting
+</a>
+</li>
+<li class="toc-sec"><a href="#relation-to-unidoc"><span class="toc-num">1.3</span>Relation to unidoc
+</a>
+</li>
+<li class="toc-sec"><a href="#how-to-read-this-guide"><span class="toc-num">1.4</span>How to read this guide
+</a>
+</li>
+</ol>
+</li>
+<li class="toc-l1"><a href="install.html">Installation</a></li>
+<li class="toc-l1"><a href="quickstart.html">Quick Start</a></li>
+<li class="toc-l1"><a href="reports.html">Reports</a></li>
+<li class="toc-l1"><a href="config.html">Book Configuration</a></li>
+<li class="toc-l1"><a href="markup.html">Markup Reference</a></li>
+<li class="toc-l1"><a href="themes.html">Themes</a></li>
+<li class="toc-l1"><a href="cli.html">Command Line</a></li>
+</ol>
+<p class="search-hint"><a href="search.html">Search page</a></p>
+</nav>
+<div class="main">
+<div class="prevnext">
+<span></span>
+<a href="install.html">Installation &rarr;</a>
+</div>
+<h2 id="introduction">
+Introduction
+</h2>
+<p>
+<em>
+uscribe
+</em>
+ is a prose/book documentation generator for Unicon. It reads a small RST-like markup, builds a doctree, resolves cross-chapter references, and writes themed HTML (and optionally LaTeX/PDF) for Unicon documentation and books.
+</p>
+<p>
+This manual is the user guide for uscribe itself. Sources live under 
+<code>doc/uscribe/</code>
+ in the unicon tree and are built 
+<em>
+with
+</em>
+ uscribe.
+</p>
+<h3 id="what-uscribe-is-for">
+What uscribe is for
+</h3>
+<ul>
+<li>
+<p>
+Multi-chapter books and manuals (ordered by a manifest file)
+</p>
+</li>
+<li>
+<p>
+Standalone reports (UTR-style): one HTML page per report, section navigation in the sidebar, and a catalog 
+<code>index.html</code>
+ of links
+</p>
+</li>
+<li>
+<p>
+HTML output with sidebar navigation (chapters, plus the current chapter's sections), search, and selectable themes
+</p>
+</li>
+<li>
+<p>
+Unicon code samples with syntax highlighting
+</p>
+</li>
+<li>
+<p>
+Images and simple admonitions
+</p>
+</li>
+</ul>
+<p>
+It is 
+<strong>
+not
+</strong>
+ a full RST/docutils toolchain. The markup subset is intentionally small; extend the parser as real documents need more.
+</p>
+<h3 id="a-taste-of-unicon-highlighting">
+A taste of Unicon highlighting
+</h3>
+<p>
+Mark listings with 
+<code>.. code-block:: unicon</code>
+ (also 
+<code>icon</code>
+ or 
+<code>icn</code>
+). In HTML they are highlighted client-side:
+</p>
+<pre><code class="language-unicon">procedure greet(who)
+   write(&quot;Hello, &quot;, \who | &quot;world&quot;, &quot;!&quot;)
+end
+
+procedure main()
+   greet(&quot;uscribe&quot;)
+   greet()
+end
+</code></pre>
+<p>
+See 
+<a href="markup.html#markup-reference">Markup Reference</a>
+ for the full dialect, 
+<a href="quickstart.html#quick-start">Quick Start</a>
+ to generate a tiny book, and 
+<a href="reports.html#reports">Reports</a>
+ for a single paper or a catalog of papers.
+</p>
+<h3 id="relation-to-unidoc">
+Relation to unidoc
+</h3>
+<p>
+<code>uni/unidoc/</code>
+ extracts API docs from Unicon source comments. 
+<em>
+uscribe
+</em>
+ is a separate tool for authored prose. They can coexist; a future 
+<code>.. api::</code>
+ bridge may connect them.
+</p>
+<h3 id="how-to-read-this-guide">
+How to read this guide
+</h3>
+<ul>
+<li>
+<p>
+<a href="install.html#installation">Installation</a>
+ — build and install the 
+<code>uscribe</code>
+ binary
+</p>
+</li>
+<li>
+<p>
+<a href="quickstart.html#quick-start">Quick Start</a>
+ — generate HTML from a tiny book
+</p>
+</li>
+<li>
+<p>
+<a href="reports.html#reports">Reports</a>
+ — one paper, or several papers plus a catalog index
+</p>
+</li>
+<li>
+<p>
+<a href="config.html#book-configuration">Book Configuration</a>
+ — 
+<code>book.conf</code>
+ keys, defaults, and CLI overrides
+</p>
+</li>
+<li>
+<p>
+<a href="markup.html#markup-reference">Markup Reference</a>
+ — headings, lists, inline markup, directives
+</p>
+</li>
+<li>
+<p>
+<a href="themes.html#themes">Themes</a>
+ — basic, classic, dark, and the in-page switcher
+</p>
+</li>
+<li>
+<p>
+<a href="cli.html#command-line">Command Line</a>
+ — CLI options
+</p>
+</li>
+</ul>
+<div class="prevnext">
+<span></span>
+<a href="install.html">Installation &rarr;</a>
+</div>
+<footer class="footer" role="contentinfo">
+&copy; 2026, Jafar Al-Gharaibeh. | Powered by uscribe | <a href="uscribe-userguide.pdf">pdf</a> | <a href="_sources/intro.rst.txt" rel="nofollow">source</a>
+</footer>
+</div></div>
+</body></html>
